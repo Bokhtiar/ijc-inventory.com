@@ -20,6 +20,12 @@ Route::group(["as" => 'user.', "prefix" => 'user', "middleware" => ['auth', 'use
 /* Admin auth routes */
 Route::group(["as" => 'admin.', "prefix" => 'admin', "middleware" => ['auth', 'admin']], function () {
     Route::get('/dashboard', [App\Http\Controllers\Admin\AdminDashboardController::class, 'index'])->name('dashboard');
+
+    /* billing */
+    Route::get('/billing/create', [App\Http\Controllers\Admin\BillingController::class, 'create'])->name('billing.create');
+    Route::post('/billing/store', [App\Http\Controllers\Admin\BillingController::class, 'store'])->name('billing.store');
+    
+    
     Route::get('/logout', [App\Http\Controllers\Admin\AdminDashboardController::class, 'logout'])->name('logout');
 });
 
