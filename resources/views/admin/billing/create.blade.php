@@ -167,7 +167,7 @@
             function dynamic_field(number) {
                 html = '<tr>';
                 html += '<td><input type="text" name="description_service[]" class="form-control" /></td>';
-                html += '<td><input type="text" name="govt_frees[]" class="form-control" /></td>';
+                html += '<td><input type="text" name="govt_fees[]" class="form-control" /></td>';
                 html += '<td><input type="text" name="others_expenses[]" class="form-control" /></td>';
                 html += '<td><input type="text" name="professional_fees[]" class="form-control" /></td>';
                 html += '<td><input type="text" name="tax[]" class="form-control" /></td>';
