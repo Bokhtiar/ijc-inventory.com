@@ -22,7 +22,7 @@
             <section>
                 <div class="d-flex justify-content-between">
                     <h3>{{ $title }}</h3>
-                    <a href="@route('admin.billing.pdf', $billings->billing_id)">Dwonload</a>
+                    <a href="@route('admin.billing.pdf', $billings->billing_id)" class="btn btn-success">Dwonload</a>
                 </div>
                 <!-- ref -->
                 <div style="font-weight: 600; margin-top: 80px;">
@@ -84,10 +84,9 @@
                 </style>
 
 
-                <div style="margin-top: 18%;">
-
+                <div style="margin-top: 30%;">
                     <div style="width: 100%;">
-                        <h3 style="text-align: center; margin-bottom:1px">INVOICE</h3>
+                        <h3 style="text-align: center; margin-bottom:1px; font-weight:600">INVOICE</h3>
                     </div>
 
                     <table style="width:100%; ">
@@ -126,11 +125,11 @@
 
                                 <td style="display: none">
                                     {{ $govt_fees += $item->govt_fees }}
-                                {{ $others_expenses += $item->others_expenses }}
-                                {{ $professional_fees += $item->professional_fees }}
-                                {{ $tax += $item->tax }}
-                                {{ $vat += $item->vat }}
-                                {{ $grand_total += $item->grand_total }}
+                                    {{ $others_expenses += $item->others_expenses }}
+                                    {{ $professional_fees += $item->professional_fees }}
+                                    {{ $tax += $item->tax }}
+                                    {{ $vat += $item->vat }}
+                                    {{ $grand_total += $item->grand_total }}
                                 </td>
                             </tr>
                         @endforeach
@@ -159,7 +158,7 @@
                 <div style="width: 100%">
 
                     <div style="width: 100%; margin-top:20px">
-                        <h3 style=" margin-bottom:6px;">Bank Details</h3>
+                        <h3 style=" margin-bottom:6px; font-weight:600">Bank Details:</h3>
                     </div>
 
                     <div style="float: left;">

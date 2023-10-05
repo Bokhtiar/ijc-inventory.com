@@ -138,7 +138,7 @@ class BillingController extends Controller
 
         $pdf = PDF::loadView('admin\billing\pdf', $data);
 
-        return $pdf->download('itsolutionstuff.pdf');
+        return $pdf->download($billings->ref.'.pdf');
     }
 
     /* resource destory */
