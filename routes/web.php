@@ -27,7 +27,8 @@ Route::group(["as" => 'admin.', "prefix" => 'admin', "middleware" => ['auth', 'a
     Route::get('/billing/pdf/{id}', [App\Http\Controllers\Admin\BillingController::class, 'pdfDownload'])->name('billing.pdf');
     Route::get('/billing/create', [App\Http\Controllers\Admin\BillingController::class, 'create'])->name('billing.create');
     Route::post('/billing/store', [App\Http\Controllers\Admin\BillingController::class, 'store'])->name('billing.store');
-    
+    Route::delete('/billing/destroy/{id}', [App\Http\Controllers\Admin\BillingController::class, 'destroy'])->name('billing.destroy');
+
     
     Route::get('/logout', [App\Http\Controllers\Admin\AdminDashboardController::class, 'logout'])->name('logout');
 });

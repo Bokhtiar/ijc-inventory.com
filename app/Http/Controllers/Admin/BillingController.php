@@ -15,7 +15,7 @@ class BillingController extends Controller
     public function index()
     {
         try {
-            $billings = Billing::latest()->get(['billing_id', 'date', 'telephone', 'email', 'cell_no']);
+            $billings = Billing::latest()->get(['billing_id', 'date', 'ref', 'telephone', 'email', 'cell_no']);
             return view('admin.billing.index', ['title' => "Billing List", 'billings' => $billings]);
         } catch (\Throwable $th) {
             throw $th;
@@ -36,7 +36,7 @@ class BillingController extends Controller
     public function store(Request $request)
     {
         $billing = new Billing();
-        $billing->ref = $request->ref;
+        $billing->ref = "#Inv-".Billing::count() + 1;
         $billing->company_name_location = $request->company_name_location;
         $billing->att = $request->att;
         $billing->date = $request->date;
@@ -49,6 +49,7 @@ class BillingController extends Controller
         $billing->account_number_1 = $request->account_number_1;
         $billing->account_routing_no_1 = $request->account_routing_no_1;
         $billing->bank_name_1 = $request->bank_name_1;
+        $billing->swift_code_1 = $request->swift_code_1;
         $billing->branch_name_1 = $request->branch_name_1;
 
         $billing->account_name_2 = $request->account_name_2;
@@ -56,6 +57,7 @@ class BillingController extends Controller
         $billing->account_routing_no_2 = $request->account_routing_no_2;
         $billing->bank_name_2 = $request->bank_name_2;
         $billing->branch_name_2 = $request->branch_name_2;
+        $billing->swift_code_2 = $request->swift_code_2;
         $billing->footer_about = $request->footer_about;
         $billing->save();
 
@@ -137,5 +139,20 @@ class BillingController extends Controller
         $pdf = PDF::loadView('admin\billing\pdf', $data);
 
         return $pdf->download('itsolutionstuff.pdf');
+    }
+
+    /* resource destory */
+    public function destroy($id)
+    {
+        try {
+            Billing::find($id)->delete();
+            $services = Service::where('billing_id', $id)->get();
+            foreach ($services as $item) {
+                $item->delete();
+            }
+            return redirect()->back()->with('success', "Deleted Successfully Done.");
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

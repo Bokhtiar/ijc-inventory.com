@@ -24,6 +24,7 @@
                 <tr>
                     <th scope="col">Index</th>
                     <th scope="col">Date</th>
+                    <th scope="col">Ref</th>
                     <th scope="col">Telephone</th>
                     <th scope="col">Email</th>
                     <th scope="col">Cell No</th>
@@ -34,7 +35,8 @@
                 @foreach ($billings as $billing)
                     <tr>
                         <th scope="row">{{ $loop->index + 1 }} </th>
-                        <td> {{ $billing->date }} </td>
+                        <td>{{ $billing->date }} </td>
+                        <td>{{ $billing->ref }} </td>
                         <td>{{ $billing->telephone }} </td>
                         <td>{{ $billing->email }} </td>
                         <td>{{ $billing->cell_no }} </td>
@@ -44,12 +46,12 @@
                             <a class="btn btn-sm btn-success" href="@route('admin.billing.show', $billing->billing_id)"><i class="bi bi-eye"></i></a>
                            
 
-                            {{-- <form action="@route('admin.billing.destroy', $billing->billing_id)" method="POST">
+                            <form action="@route('admin.billing.destroy', $billing->billing_id)" method="POST">
                                 @method('DELETE')
                                 @csrf
                                 <button class="btn btn-sm btn-danger" type="submit"><i
                                         class="bi bi-trash"></i></button>
-                            </form><!--delete--> --}}
+                            </form><!--delete-->
                         </td>
                     </tr>
                 @endforeach

@@ -166,7 +166,7 @@
                         <div style=" font-weight: normal;">
                             <span> <strong>01. </strong> {{ $billings->account_name_1 }}</span><br>
                             <span>A/C No: {{ $billings->account_number_1 }}</span><br>
-                            <span>Swift Code: TTBLBDDH030</span> <br>
+                            <span>Swift Code: {{ $billings->swift_code_1 }}</span> <br>
                             <span>Routing No: {{ $billings->account_routing_no_1 }}</span><br>
                             <span style="font-weight: 600;">{{ $billings->bank_name_1 }}</span><br>
                             <span>{{ $billings->branch_name_1 }}</span>
@@ -179,7 +179,7 @@
                             <div style="margin-left: 10px; font-weight: normal;">
                                 <span> <strong>02. </strong> {{ $billings->account_name_2 }}</span><br>
                                 <span>A/C No: {{ $billings->account_number_2 }}</span><br>
-                                <span>Swift Code: TTBLBDDH030</span> <br>
+                                <span>Swift Code: {{ $billings->swift_code_2 }}</span> <br>
                                 <span>Routing No: {{ $billings->account_routing_no_2 }}</span><br>
                                 <span style="font-weight: 600;">{{ $billings->bank_name_2 }}</span><br>
                                 <span>{{ $billings->branch_name_2 }}</span>

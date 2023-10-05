@@ -23,10 +23,7 @@
                 {{-- refence --}}
                 <div class="d-flex ">
                     <div class="my-auto fw-bold">Ref.....</div>
-                    <input required type="text" class="form-control ml-3" name="ref" id="">
-                    <div class="invalid-feedback">
-                        Please choose a username.
-                    </div>
+                    <input disabled required type="text" class="form-control ml-3" value="#Inv-{{ App\Models\Billing::count() + 1 }}" name="ref" id="">
                 </div>
 
                 {{-- heading --}}
@@ -121,6 +118,8 @@
                                 name="account_routing_no_1" id="">
                             <input required type="text" class="form-control mt-2" placeholder="Bank Name"
                                 name="bank_name_1" id="">
+                                <input required type="text" class="form-control mt-2" placeholder="Swift Code"
+                                name="swift_code_1" id="">
                             <input required type="text" class="form-control mt-2" placeholder="Branch Name"
                                 name="branch_name_1" id="">
                         </div>
@@ -130,15 +129,17 @@
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="float-end">
                             <strong>02.</strong>
-                            <input required type="text" class="form-control mt-2" placeholder="Account Name"
+                            <input  required type="text" class="form-control mt-2" placeholder="Account Name"
                                 name="account_name_2" id="">
-                            <input required type="text" class="form-control mt-2" placeholder="Account Number"
+                            <input  required type="text" class="form-control mt-2" placeholder="Account Number"
                                 name="account_number_2" id="">
-                            <input required type="text" class="form-control mt-2" placeholder="Rounting No"
+                            <input  required type="text" class="form-control mt-2" placeholder="Rounting No"
                                 name="account_routing_no_2" id="">
-                            <input required type="text" class="form-control mt-2" placeholder="Bank Name"
+                            <input  required type="text" class="form-control mt-2" placeholder="Bank Name"
                                 name="bank_name_2" id="">
-                            <input required type="text" class="form-control mt-2" placeholder="Branch Name"
+                                <input  required type="text" class="form-control mt-2" placeholder="Swift Code"
+                                name="swift_code_2" id="">
+                            <input  required type="text" class="form-control mt-2" placeholder="Branch Name"
                                 name="branch_name_2" id="">
                         </div>
                     </div>
@@ -171,12 +172,12 @@
             function dynamic_field(number) {
                 html = '<tr>';
                 html += '<td><input required type="text" name="description_service[]" class="form-control" /></td>';
-                html += '<td><input required type="text" name="govt_fees[]" class="form-control" /></td>';
-                html += '<td><input required type="text" name="others_expenses[]" class="form-control" /></td>';
-                html += '<td><input required type="text" name="professional_fees[]" class="form-control" /></td>';
-                html += '<td><input required type="text" name="tax[]" class="form-control" /></td>';
-                html += '<td><input required type="text" name="vat[]" class="form-control" /></td>';
-                html += '<td><input required type="text" name="grand_total[]" class="form-control" /></td>';
+                html += '<td><input required type="number" name="govt_fees[]" class="form-control" /></td>';
+                html += '<td><input required type="number" name="others_expenses[]" class="form-control" /></td>';
+                html += '<td><input required type="number" name="professional_fees[]" class="form-control" /></td>';
+                html += '<td><input required type="number" name="tax[]" class="form-control" /></td>';
+                html += '<td><input required type="number" name="vat[]" class="form-control" /></td>';
+                html += '<td><input required type="number" name="grand_total[]" class="form-control" /></td>';
                 if (number > 1) {
                     html +=
                         '<td><button type="button" name="remove" id="" class="btn btn-danger remove">Remove</button></td></tr>';
