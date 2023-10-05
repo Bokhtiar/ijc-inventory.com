@@ -9,13 +9,20 @@
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
-            <a class="nav-link" href="@route('admin.billing.create')">
+            <a class="nav-link" href="@route('admin.billing.list')">
                 <i class="bi bi-grid"></i>
-                <span>Billing</span>
+                <span>Billing List</span>
             </a>
         </li><!-- End billing Nav -->
 
-        
+        <li class="nav-item">
+            <a class="nav-link" href="@route('admin.billing.create')">
+                <i class="bi bi-grid"></i>
+                <span>Billing Create</span>
+            </a>
+        </li><!-- End billing Nav -->
+
+
 
 
     </ul>

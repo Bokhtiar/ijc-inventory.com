@@ -17,26 +17,29 @@
 
     <section class="">
         <div class="shadow px-4 py-4 bg-white">
-            <form action="@route('admin.billing.store')" method="POST" >
+            <form action="@route('admin.billing.store')" method="POST">
                 @csrf
 
                 {{-- refence --}}
                 <div class="d-flex ">
                     <div class="my-auto fw-bold">Ref.....</div>
-                    <input type="text" class="form-control ml-3" name="ref" id="">
+                    <input required type="text" class="form-control ml-3" name="ref" id="">
+                    <div class="invalid-feedback">
+                        Please choose a username.
+                    </div>
                 </div>
 
                 {{-- heading --}}
                 <div class="row mt-3">
                     {{-- address --}}
                     <div class="col-12 col-sm-12 col-md-5 col-lg-5">
-                        <textarea class="form-control" placeholder="type here company name with location" name="company_name_location" id=""
-                            cols="10" rows="6"></textarea>
+                        <textarea required class="form-control" placeholder="type here company name with location" name="company_name_location"
+                            id="" cols="10" rows="6"></textarea>
 
                         {{-- att --}}
                         <div class="d-flex mt-3">
                             <div class="my-auto fw-bold">Att...</div>
-                            <input type="text" class="form-control ml-3" name="att" id="">
+                            <input required type="text" class="form-control ml-3" name="att" id="">
                         </div>
                     </div>
 
@@ -47,31 +50,31 @@
                             {{-- date --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Date.</div>
-                                <input type="date" class="form-control ml-3" name="date" id="">
+                                <input required type="date" class="form-control ml-3" name="date" id="">
                             </div>
 
                             {{-- cell_no --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Cell_No.</div>
-                                <input type="number" class="form-control ml-3" name="cell_no" id="">
+                                <input required type="number" class="form-control ml-3" name="cell_no" id="">
                             </div>
 
                             {{-- telephone --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Telephone.</div>
-                                <input type="number" class="form-control ml-3" name="telephone" id="">
+                                <input required type="number" class="form-control ml-3" name="telephone" id="">
                             </div>
 
                             {{-- email --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Email.</div>
-                                <input type="email" class="form-control ml-3" name="email" id="">
+                                <input required type="email" class="form-control ml-3" name="email" id="">
                             </div>
 
                             {{-- website --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Website.</div>
-                                <input type="text" class="form-control ml-3" name="website" id="">
+                                <input required type="text" class="form-control ml-3" name="website" id="">
                             </div>
 
                         </div>
@@ -110,16 +113,16 @@
 
                         <div class="float-start">
                             <strong>01.</strong>
-                            <input type="text" class="form-control mt-2" placeholder="Account Name" name="account_name_1"
-                                id="">
-                            <input type="text" class="form-control mt-2" placeholder="Account Number" name="account_number_1"
-                                id="">
-                            <input type="text" class="form-control mt-2" placeholder="Rounting No" name="account_routing_no_1"
-                                id="">
-                            <input type="text" class="form-control mt-2" placeholder="Bank Name" name="bank_name_1"
-                                id="">
-                            <input type="text" class="form-control mt-2" placeholder="Branch Name" name="branch_name_1"
-                                id="">
+                            <input required type="text" class="form-control mt-2" placeholder="Account Name"
+                                name="account_name_1" id="">
+                            <input required type="text" class="form-control mt-2" placeholder="Account Number"
+                                name="account_number_1" id="">
+                            <input required type="text" class="form-control mt-2" placeholder="Rounting No"
+                                name="account_routing_no_1" id="">
+                            <input required type="text" class="form-control mt-2" placeholder="Bank Name"
+                                name="bank_name_1" id="">
+                            <input required type="text" class="form-control mt-2" placeholder="Branch Name"
+                                name="branch_name_1" id="">
                         </div>
 
                     </div>
@@ -127,16 +130,16 @@
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="float-end">
                             <strong>02.</strong>
-                            <input type="text" class="form-control mt-2" placeholder="Account Name" name="account_name_2"
-                                id="">
-                            <input type="text" class="form-control mt-2" placeholder="Account Number" name="account_number_2"
-                                id="">
-                            <input type="text" class="form-control mt-2" placeholder="Rounting No" name="account_routing_no_2"
-                                id="">
-                            <input type="text" class="form-control mt-2" placeholder="Bank Name" name="bank_name_2"
-                                id="">
-                            <input type="text" class="form-control mt-2" placeholder="Branch Name" name="branch_name_2"
-                                id="">
+                            <input required type="text" class="form-control mt-2" placeholder="Account Name"
+                                name="account_name_2" id="">
+                            <input required type="text" class="form-control mt-2" placeholder="Account Number"
+                                name="account_number_2" id="">
+                            <input required type="text" class="form-control mt-2" placeholder="Rounting No"
+                                name="account_routing_no_2" id="">
+                            <input required type="text" class="form-control mt-2" placeholder="Bank Name"
+                                name="bank_name_2" id="">
+                            <input required type="text" class="form-control mt-2" placeholder="Branch Name"
+                                name="branch_name_2" id="">
                         </div>
                     </div>
                 </div>
@@ -144,13 +147,14 @@
                 {{-- footer --}}
                 <div class="row my-3">
                     <div class="col-sm-12 col-md-4 col-lg-4">
-                        <textarea class="form-control" placeholder="type here your information" name="footer_about" id=""
+                        <textarea required class="form-control" placeholder="type here your information" name="footer_about" id=""
                             cols="10" rows="6"></textarea>
                     </div>
                 </div>
 
                 <div class="text-center">
-                    <input type="Submit" class="btn btn-success" value="Generate invoice" name="" id="">
+                    <input required type="Submit" class="btn btn-success" value="Generate invoice" name=""
+                        id="">
                 </div>
             </form>
         </div>
@@ -166,13 +170,13 @@
 
             function dynamic_field(number) {
                 html = '<tr>';
-                html += '<td><input type="text" name="description_service[]" class="form-control" /></td>';
-                html += '<td><input type="text" name="govt_fees[]" class="form-control" /></td>';
-                html += '<td><input type="text" name="others_expenses[]" class="form-control" /></td>';
-                html += '<td><input type="text" name="professional_fees[]" class="form-control" /></td>';
-                html += '<td><input type="text" name="tax[]" class="form-control" /></td>';
-                html += '<td><input type="text" name="vat[]" class="form-control" /></td>';
-                html += '<td><input type="text" name="grand_total[]" class="form-control" /></td>';
+                html += '<td><input required type="text" name="description_service[]" class="form-control" /></td>';
+                html += '<td><input required type="text" name="govt_fees[]" class="form-control" /></td>';
+                html += '<td><input required type="text" name="others_expenses[]" class="form-control" /></td>';
+                html += '<td><input required type="text" name="professional_fees[]" class="form-control" /></td>';
+                html += '<td><input required type="text" name="tax[]" class="form-control" /></td>';
+                html += '<td><input required type="text" name="vat[]" class="form-control" /></td>';
+                html += '<td><input required type="text" name="grand_total[]" class="form-control" /></td>';
                 if (number > 1) {
                     html +=
                         '<td><button type="button" name="remove" id="" class="btn btn-danger remove">Remove</button></td></tr>';

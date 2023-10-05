@@ -33,6 +33,6 @@ class Billing extends Model
         'account_routing_no_2',
         'bank_name_2',
         'branch_name_2',
-        'footer_aobut',
+        'footer_about',
     ];
 }

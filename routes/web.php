@@ -9,7 +9,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 /* Web Routes */
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('admin.dashboard');
 })->middleware('auth');
 
 /* User auth routes */
@@ -22,6 +22,9 @@ Route::group(["as" => 'admin.', "prefix" => 'admin', "middleware" => ['auth', 'a
     Route::get('/dashboard', [App\Http\Controllers\Admin\AdminDashboardController::class, 'index'])->name('dashboard');
 
     /* billing */
+    Route::get('/billing/list', [App\Http\Controllers\Admin\BillingController::class, 'index'])->name('billing.list');
+    Route::get('/billing/show/{id}', [App\Http\Controllers\Admin\BillingController::class, 'show'])->name('billing.show');
+    Route::get('/billing/pdf/{id}', [App\Http\Controllers\Admin\BillingController::class, 'pdfDownload'])->name('billing.pdf');
     Route::get('/billing/create', [App\Http\Controllers\Admin\BillingController::class, 'create'])->name('billing.create');
     Route::post('/billing/store', [App\Http\Controllers\Admin\BillingController::class, 'store'])->name('billing.store');
     
