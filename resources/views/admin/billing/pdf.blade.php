@@ -70,7 +70,7 @@
         </style>
 
 
-        <div style="margin-top: 18%;">
+        <div style="margin-top: 15%;">
 
             <div style="width: 100%;">
                 <h3 style="text-align: center; margin-bottom:1px">INVOICE</h3>
@@ -130,8 +130,8 @@
                 </tr>
 
                 <tr>
-                    <td colspan="8" style="font-weight: 600; font-size:13px">Total Amount:
-                        {{ App\Models\Service::numberToWordConvert(30) }}</td>
+                    <td colspan="8" style="font-weight: 600; font-size:13px">Amount in words:
+                        {{ App\Models\Service::numberToWordConvert($grand_total) }}</td>
                 </tr>
             </table>
         </div>
@@ -172,11 +172,11 @@
                 </div>
             </div>
         </div>
-
+ 
 
 
         <div style="display: flex;">
-            <div style=" margin-top: 30%;">
+            <div style=" margin-top: 22%;">
                 <p style="width: 250px; font-weight: normal;">
                    {{ $billings->footer_about }}
                 </p>

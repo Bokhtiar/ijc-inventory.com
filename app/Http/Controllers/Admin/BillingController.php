@@ -35,8 +35,9 @@ class BillingController extends Controller
     /* store resource */
     public function store(Request $request)
     {
+        $billingid = Billing::latest()->first();
         $billing = new Billing();
-        $billing->ref = "#Inv-".Billing::count() + 1;
+        $billing->ref = Billing::count() == 0 ? "#Inv-"."1" : "#Inv-".$billingid->billing_id + 1;
         $billing->company_name_location = $request->company_name_location;
         $billing->att = $request->att;
         $billing->date = $request->date;
@@ -137,7 +138,7 @@ class BillingController extends Controller
 
 
         $pdf = PDF::loadView('admin\billing\pdf', $data);
-
+        // return $pdf->stream('info.pdf', $data, array("Attachment" => false));
         return $pdf->download($billings->ref.'.pdf');
     }
 

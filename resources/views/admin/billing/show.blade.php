@@ -84,7 +84,7 @@
                 </style>
 
 
-                <div style="margin-top: 30%;">
+                <div style="margin-top: 25%;">
                     <div style="width: 100%;">
                         <h3 style="text-align: center; margin-bottom:1px; font-weight:600">INVOICE</h3>
                     </div>
@@ -145,8 +145,8 @@
                         </tr>
 
                         <tr>
-                            <td colspan="8" style="font-weight: 600; font-size:13px">Total Amount:
-                                {{ App\Models\Service::numberToWordConvert(30) }}</td>
+                            <td colspan="8" style="font-weight: 600; font-size:13px">Amount in words:
+                                {{ App\Models\Service::numberToWordConvert($grand_total) }}</td>
                         </tr>
                     </table>
                 </div>
@@ -191,7 +191,7 @@
 
 
                 <div style="">
-                    <div style=" margin-top: 30%;">
+                    <div style=" margin-top: 20%;">
                         <p style="width: 250px; font-weight: normal;">
                             {{ $billings->footer_about }}
                         </p>
