@@ -34,7 +34,8 @@ return new class extends Migration
             $table->string('bank_name_2');
             $table->string('branch_name_2');
 
-            $table->longText('footer_about');
+            $table->text('bill_creator');
+            $table->text('biller_designation');
             $table->timestamps();
         });
     }

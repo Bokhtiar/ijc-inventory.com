@@ -44,6 +44,7 @@
                            
 
                             <a class="btn btn-sm btn-success" href="@route('admin.billing.show', $billing->billing_id)"><i class="bi bi-eye"></i></a>
+                            <a class="btn btn-sm btn-success" href="@route('admin.billing.print', $billing->billing_id)"><i class="bi bi-printer"></i></a>
                            
 
                             <form action="@route('admin.billing.destroy', $billing->billing_id)" method="POST">

@@ -35,6 +35,8 @@ class Billing extends Model
         'bank_name_2',
         'swift_code_2',
         'branch_name_2',
-        'footer_about',
+
+        'bill_creator',
+        'biller_designation',
     ];
 }

@@ -185,16 +185,22 @@
 
         <div style="display: flex;">
             <div style=" margin-top: 22%;">
-                <p style="width: 550px; font-weight: normal;">
-                    <strong>{{ $billings->bill_creator }}</strong> <br>
-                    <span>{{ $billings->biller_designation }}</span> <br>
-                    <strong> Islam Jahid & Co.</strong> <br>
-                    <span> Chartered Accountants</span>
+                <p style="width: 250px; font-weight: normal;">
+                    {{ $billings->footer_about }}
                 </p>
             </div>
         </div>
 
     </section>
+
+    <button id="btnPrint" class="hidden-print">Print</button>
+    <script src="script.js"></script>
+    <script>
+        const $btnPrint = document.querySelector("#btnPrint");
+        $btnPrint.addEventListener("click", () => {
+            window.print();
+        });
+    </script>
 </body>
 
 

@@ -59,7 +59,9 @@ class BillingController extends Controller
         $billing->bank_name_2 = $request->bank_name_2;
         $billing->branch_name_2 = $request->branch_name_2;
         $billing->swift_code_2 = $request->swift_code_2;
-        $billing->footer_about = $request->footer_about;
+
+        $billing->bill_creator = $request->bill_creator;
+        $billing->biller_designation = $request->biller_designation;
         $billing->save();
 
 
@@ -137,8 +139,8 @@ class BillingController extends Controller
         ];
 
 
-        $pdf = PDF::loadView('admin\billing\pdf', $data);
-        // return $pdf->stream('info.pdf', $data, array("Attachment" => false));
+        $pdf = PDF::loadView('admin.billing.pdf', $data);
+        //return $pdf->stream('info.pdf', $data, array("Attachment" => false));
         return $pdf->download($billings->ref.'.pdf');
     }
 
@@ -156,4 +158,24 @@ class BillingController extends Controller
             throw $th;
         }
     }
+
+    /* print */
+    public function print($id)
+    {
+        try {
+            $billings = Billing::find($id);
+            $services = Service::where('billing_id', $id)->get();
+
+            $data = [
+                'billings' => $billings,
+                'services' => $services
+            ];
+            // return view('admin.billing.print', $data);
+            $pdf = PDF::loadView('admin.billing.pdf', $data);
+            return $pdf->stream('info.pdf', $data, array("Attachment" => false));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 }
+ 

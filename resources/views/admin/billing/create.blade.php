@@ -23,7 +23,8 @@
                 {{-- refence --}}
                 <div class="d-flex ">
                     <div class="my-auto fw-bold">Ref.....</div>
-                    <input disabled required type="text" class="form-control ml-3" value="#Inv-{{ App\Models\Billing::count() + 1 }}" name="ref" id="">
+                    <input disabled required type="text" class="form-control ml-3"
+                        value="#Inv-{{ App\Models\Billing::count() + 1 }}" name="ref" id="">
                 </div>
 
                 {{-- heading --}}
@@ -118,7 +119,7 @@
                                 name="account_routing_no_1" id="">
                             <input required type="text" class="form-control mt-2" placeholder="Bank Name"
                                 name="bank_name_1" id="">
-                                <input required type="text" class="form-control mt-2" placeholder="Swift Code"
+                            <input required type="text" class="form-control mt-2" placeholder="Swift Code"
                                 name="swift_code_1" id="">
                             <input required type="text" class="form-control mt-2" placeholder="Branch Name"
                                 name="branch_name_1" id="">
@@ -129,17 +130,17 @@
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="float-end">
                             <strong>02.</strong>
-                            <input  required type="text" class="form-control mt-2" placeholder="Account Name"
+                            <input required type="text" class="form-control mt-2" placeholder="Account Name"
                                 name="account_name_2" id="">
-                            <input  required type="text" class="form-control mt-2" placeholder="Account Number"
+                            <input required type="text" class="form-control mt-2" placeholder="Account Number"
                                 name="account_number_2" id="">
-                            <input  required type="text" class="form-control mt-2" placeholder="Rounting No"
+                            <input required type="text" class="form-control mt-2" placeholder="Rounting No"
                                 name="account_routing_no_2" id="">
-                            <input  required type="text" class="form-control mt-2" placeholder="Bank Name"
+                            <input required type="text" class="form-control mt-2" placeholder="Bank Name"
                                 name="bank_name_2" id="">
-                                <input  required type="text" class="form-control mt-2" placeholder="Swift Code"
+                            <input required type="text" class="form-control mt-2" placeholder="Swift Code"
                                 name="swift_code_2" id="">
-                            <input  required type="text" class="form-control mt-2" placeholder="Branch Name"
+                            <input required type="text" class="form-control mt-2" placeholder="Branch Name"
                                 name="branch_name_2" id="">
                         </div>
                     </div>
@@ -147,9 +148,16 @@
 
                 {{-- footer --}}
                 <div class="row my-3">
-                    <div class="col-sm-12 col-md-4 col-lg-4">
-                        <textarea required class="form-control" placeholder="type here your information" name="footer_about" id=""
-                            cols="10" rows="6"></textarea>
+                    <div class="col-sm-12 col-lg-6 col-md-6">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <input required type="text" class="form-control mt-2" placeholder="Bill create name"
+                                name="bill_creator" id="">
+                        </div>
+
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <input required type="text" class="form-control mt-2"
+                                placeholder="Bill creator designation" name="biller_designation" id="">
+                        </div>
                     </div>
                 </div>
 
