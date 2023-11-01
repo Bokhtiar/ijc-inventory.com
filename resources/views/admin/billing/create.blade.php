@@ -72,7 +72,7 @@
                             {{-- website --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Website.</div>
-                                <input required type="text" class="form-control ml-3" name="website" id="">
+                                <input type="text" class="form-control ml-3" name="website" id="">
                             </div>
 
                         </div>
@@ -93,7 +93,6 @@
                                 <th width="10%" style="font-size: 12px">Professional Fees</th>
                                 <th width="10%" style="font-size: 12px">Tax</th>
                                 <th width="10%" style="font-size: 12px">Vat</th>
-                                <th width="10%" style="font-size: 12px">Grand Total</th>
                                 <th width="10%" style="font-size: 12px">Action</th>
                             </tr>
                         </thead>
@@ -185,7 +184,6 @@
                 html += '<td><input required type="number" name="professional_fees[]" class="form-control" /></td>';
                 html += '<td><input required type="number" name="tax[]" class="form-control" /></td>';
                 html += '<td><input required type="number" name="vat[]" class="form-control" /></td>';
-                html += '<td><input required type="number" name="grand_total[]" class="form-control" /></td>';
                 if (number > 1) {
                     html +=
                         '<td><button type="button" name="remove" id="" class="btn btn-danger remove">Remove</button></td></tr>';

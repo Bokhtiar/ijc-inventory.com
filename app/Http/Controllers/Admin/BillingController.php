@@ -71,8 +71,6 @@ class BillingController extends Controller
         $professional_fees = $request->professional_fees;
         $tax = $request->tax;
         $vat = $request->vat;
-        $grand_total = $request->grand_total;
-
 
         for ($count = 0; $count < count($description_service); $count++) {
             $data = array(
@@ -83,8 +81,7 @@ class BillingController extends Controller
                 'professional_fees'  => $professional_fees[$count],
                 'tax'  => $tax[$count],
                 'vat'  => $vat[$count],
-                'grand_total'  => $grand_total[$count],
-
+                'grand_total'  => $govt_fees[$count] + $others_expenses[$count] + $professional_fees[$count] + $tax[$count]  + $vat[$count],
             );
             $insert_data[] = $data;
         }
@@ -140,8 +137,8 @@ class BillingController extends Controller
 
 
         $pdf = PDF::loadView('admin.billing.pdf', $data);
-        //return $pdf->stream('info.pdf', $data, array("Attachment" => false));
-        return $pdf->download($billings->ref.'.pdf');
+        return $pdf->stream('info.pdf', $data, array("Attachment" => false));
+        //return $pdf->download($billings->ref.'.pdf');
     }
 
     /* resource destory */

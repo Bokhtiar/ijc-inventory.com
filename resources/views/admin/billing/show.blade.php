@@ -62,7 +62,9 @@
                                 </span>
                                 <br>
                                 <span style="font-weight: 600;">
-                                    Website: {{ $billings->website }}
+                                    @if ($billings->website)
+                                        Website: {{ $billings->website }}
+                                    @endif
                                 </span>
                             </div>
                         </div>
@@ -117,7 +119,8 @@
                             @foreach ($services as $item)
                                 <tr>
                                     <td style="font-size: 13px; height:25px; width: 5% ">{{ $loop->index + 1 }}</td>
-                                    <td style="font-size: 13px; height:25px; width: 35%; text-align: left;">{{ $item->description_service }}
+                                    <td style="font-size: 13px; height:25px; width: 35%; text-align: left;">
+                                        {{ $item->description_service }}
                                     </td>
                                     <td style="font-size: 13px; height:25px; width: 10% ">{{ $item->govt_fees }}</td>
                                     <td style="font-size: 13px; height:25px; width: 10% ">{{ $item->others_expenses }}</td>
@@ -140,18 +143,21 @@
                             @endforeach
 
                             <tr>
-                                <td colspan="2" style="text-align: left; font-weight: 600; font-size: 13px; height:25px; width: 40% ">Total
+                                <td colspan="2"
+                                    style="text-align: left; font-weight: 900; font-size: 14px; height:25px; width: 40% ">
+                                    Total
                                     Amount</td>
-                                <td style="font-size: 13px; height:25px; width: 10% ">{{ $govt_fees }}</td>
-                                <td style="font-size: 13px; height:25px; width: 10% ">{{ $others_expenses }}</td>
-                                <td style="font-size: 13px; height:25px; width: 10% ">{{ $professional_fees }}</td>
-                                <td style="font-size: 13px; height:25px; width: 10% ">{{ $tax }}</td>
-                                <td style="font-size: 13px; height:25px; width: 10% ">{{ $vat }}</td>
-                                <td style="font-size: 13px; height:25px; width: 10% ">{{ $grand_total }}</td>
+                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $govt_fees }}</td>
+                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $others_expenses }}</td>
+                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $professional_fees }}</td>
+                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $tax }}</td>
+                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $vat }}</td>
+                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $grand_total }}</td>
                             </tr>
 
                             <tr>
-                                <td colspan="8" style="text-align: left;font-weight: 600; font-size: 13px; height:25px;">Amount in words:
+                                <td colspan="8" style="text-align: left;font-weight: 900; font-size: 14px; height:25px;">
+                                    Amount in words:
                                     {{ App\Models\Service::numberToWordConvert($grand_total) }}</td>
                             </tr>
                         </table>
@@ -169,26 +175,32 @@
 
                         <div class="">
                             <div style="float: left;">
-                                <div style=" font-weight: normal;">
-                                    <span> <strong>01. </strong> {{ $billings->account_name_1 }}</span><br>
-                                    <span>A/C No: {{ $billings->account_number_1 }}</span><br>
-                                    <span>Swift Code: {{ $billings->swift_code_1 }}</span> <br>
-                                    <span>Routing No: {{ $billings->account_routing_no_1 }}</span><br>
-                                    <span style="font-weight: 600;">{{ $billings->bank_name_1 }}</span><br>
-                                    <span>{{ $billings->branch_name_1 }}</span>
+                                <div style=" font-weight: normal; display:flex">
+                                    <div style="width: 25px"><strong>01. </strong></div>
+                                    <div>
+                                        <span> {{ $billings->account_name_1 }}</span><br>
+                                        <span>A/C No: {{ $billings->account_number_1 }}</span><br>
+                                        <span>Swift Code: {{ $billings->swift_code_1 }}</span> <br>
+                                        <span>Routing No: {{ $billings->account_routing_no_1 }}</span><br>
+                                        <span style="font-weight: 600;">{{ $billings->bank_name_1 }}</span><br>
+                                        <span>{{ $billings->branch_name_1 }}</span>
+                                    </div>
                                 </div>
                             </div>
 
 
                             <div style="float: right;">
                                 <div style="float: right;">
-                                    <div style="margin-left: 10px; font-weight: normal;">
-                                        <span> <strong>02. </strong> {{ $billings->account_name_2 }}</span><br>
-                                        <span>A/C No: {{ $billings->account_number_2 }}</span><br>
-                                        <span>Swift Code: {{ $billings->swift_code_2 }}</span> <br>
-                                        <span>Routing No: {{ $billings->account_routing_no_2 }}</span><br>
-                                        <span style="font-weight: 600;">{{ $billings->bank_name_2 }}</span><br>
-                                        <span>{{ $billings->branch_name_2 }}</span>
+                                    <div style="font-weight: normal; display:flex">
+                                        <div style="width: 25px"><strong>02. </strong></div>
+                                        <div>
+                                            <span> {{ $billings->account_name_2 }}</span><br>
+                                            <span>A/C No: {{ $billings->account_number_2 }}</span><br>
+                                            <span>Swift Code: {{ $billings->swift_code_2 }}</span> <br>
+                                            <span>Routing No: {{ $billings->account_routing_no_2 }}</span><br>
+                                            <span style="font-weight: 600;">{{ $billings->bank_name_2 }}</span><br>
+                                            <span>{{ $billings->branch_name_2 }}</span>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -200,10 +212,12 @@
 
                     <div style="">
                         <div style=" margin-top: 20%;">
-                            <p style="width: 250px; font-weight: normal;">
+                            <p style="width: 250px; font-weight: normal; margin-bottom: 11px;">
                                 <strong>{{ $billings->bill_creator }}</strong> <br>
-                                <span>{{ $billings->biller_designation }}</span> <br>
-                                <strong> Islam Jahid & Co.</strong> <br> <span> Chartered Accountants</span>
+                                <span>{{ $billings->biller_designation }}</span> 
+                                <p>
+                                    <strong> Islam Jahid & Co.</strong> <br> <span> Chartered Accountants</span>
+                                </p>
                             </p>
                         </div>
                     </div>

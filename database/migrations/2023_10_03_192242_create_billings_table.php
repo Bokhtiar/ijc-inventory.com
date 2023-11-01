@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('cell_no');
             $table->integer('telephone');
             $table->string('email');
-            $table->text('website');
+            $table->text('website')->nullable();
 
             $table->string('account_name_1');
             $table->string('account_number_1');
