@@ -118,7 +118,7 @@
                                 name="account_number_1" id="">
                             <input required type="text" class="form-control mt-2" placeholder="Rounting No"
                                 name="account_routing_no_1" id="">
-                            <input required type="text" class="form-control mt-2" placeholder="Bank Name"
+                            <input disabled required type="text" class="form-control mt-2" placeholder="Bank Name" value="Trust Bank Ltd."
                                 name="bank_name_1" id="">
                             <input required type="text" class="form-control mt-2" placeholder="Swift Code"
                                 name="swift_code_1" id="">
@@ -137,7 +137,7 @@
                                 name="account_number_2" id="">
                             <input required type="text" class="form-control mt-2" placeholder="Rounting No"
                                 name="account_routing_no_2" id="">
-                            <input required type="text" class="form-control mt-2" placeholder="Bank Name"
+                            <input disabled required type="text" class="form-control mt-2" placeholder="Bank Name" value="Uttara Bank Ltd."
                                 name="bank_name_2" id="">
                             <input required type="text" class="form-control mt-2" placeholder="Swift Code"
                                 name="swift_code_2" id="">

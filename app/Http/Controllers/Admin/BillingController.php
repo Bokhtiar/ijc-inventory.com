@@ -15,23 +15,24 @@ class BillingController extends Controller
     public function index()
     {
         try {
-            $billings = Billing::where('delete_at', 0)->latest()->get(['billing_id', 'delete_at', 'date', 'ref', 'telephone', 'email', 'cell_no']);
+            $billings = Billing::where('status', 0)->latest()->get(['billing_id', 'status', 'date', 'ref', 'telephone', 'email', 'cell_no']);
             return view('admin.billing.index', ['title' => "Billing List", 'billings' => $billings]);
         } catch (\Throwable $th) {
             throw $th;
         }
     }
 
-    /* trash_list */
+
     public function trash_list()
     {
         try {
-            $billings = Billing::latest()->get(['billing_id', 'date', 'ref', 'telephone', 'email', 'cell_no']);
-            return view('admin.billing.index', ['title' => "Billing List", 'billings' => $billings]);
+            $billings = Billing::where('status', 1)->latest()->get(['billing_id', 'status', 'date', 'ref', 'telephone', 'email', 'cell_no']);
+            return view('admin.billing.trash', ['title' => "Billing List", 'billings' => $billings]);
         } catch (\Throwable $th) {
             throw $th;
         }
     }
+ 
 
     /* create page  */
     public function create()
@@ -64,14 +65,14 @@ class BillingController extends Controller
         $billing->account_name_1 = $request->account_name_1;
         $billing->account_number_1 = $request->account_number_1;
         $billing->account_routing_no_1 = $request->account_routing_no_1;
-        $billing->bank_name_1 = $request->bank_name_1;
+        $billing->bank_name_1 = "Trust Bank Ltd.";
         $billing->swift_code_1 = $request->swift_code_1;
         $billing->branch_name_1 = $request->branch_name_1;
 
         $billing->account_name_2 = $request->account_name_2;
         $billing->account_number_2 = $request->account_number_2;
         $billing->account_routing_no_2 = $request->account_routing_no_2;
-        $billing->bank_name_2 = $request->bank_name_2;
+        $billing->bank_name_2 = "Uttara Bank Ltd.";
         $billing->branch_name_2 = $request->branch_name_2;
         $billing->swift_code_2 = $request->swift_code_2;
 
@@ -172,12 +173,15 @@ class BillingController extends Controller
     }
 
     /* trash */
-    public function trash_bin($id)
+    public function status($id)
     {
         try {
             $bill = Billing::find($id);
-            $bill->delete_at = 1;
-            $bill->save();
+        
+            if ($bill->status == 0) {
+                $bill->status = 1;
+                $bill->save();
+            }
             return back();
         } catch (\Throwable $th) {
             throw $th;

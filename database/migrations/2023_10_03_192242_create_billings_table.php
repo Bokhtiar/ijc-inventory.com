@@ -28,17 +28,19 @@ return new class extends Migration
             $table->string('account_number_1');
             $table->string('account_routing_no_1');
             $table->string('bank_name_1');
+            $table->string('swift_code_1');
             $table->string('branch_name_1');
-
+            
             $table->string('account_name_2');
             $table->string('account_number_2');
             $table->string('account_routing_no_2');
             $table->string('bank_name_2');
+            $table->string('swift_code_2');
             $table->string('branch_name_2');
 
             $table->text('bill_creator');
             $table->text('biller_designation');
-            $table->tinyInteger('delete_at')->default(0);
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }

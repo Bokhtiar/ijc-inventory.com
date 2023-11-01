@@ -24,14 +24,16 @@ Route::group(["as" => 'admin.', "prefix" => 'admin', "middleware" => ['auth', 'a
 
     /* billing */
     Route::get('/billing/list', [App\Http\Controllers\Admin\BillingController::class, 'index'])->name('billing.list');
+    Route::get('/billing/trash/list', [App\Http\Controllers\Admin\BillingController::class, 'trash_list'])->name('billing.trash.list');
+    
     Route::get('/billing/show/{id}', [App\Http\Controllers\Admin\BillingController::class, 'show'])->name('billing.show');
     Route::get('/billing/pdf/{id}', [App\Http\Controllers\Admin\BillingController::class, 'pdfDownload'])->name('billing.pdf');
     Route::get('/billing/create', [App\Http\Controllers\Admin\BillingController::class, 'create'])->name('billing.create');
     Route::post('/billing/store', [App\Http\Controllers\Admin\BillingController::class, 'store'])->name('billing.store');
     Route::delete('/billing/destroy/{id}', [App\Http\Controllers\Admin\BillingController::class, 'destroy'])->name('billing.destroy');
     Route::get('/billing/print/{id}', [App\Http\Controllers\Admin\BillingController::class, 'print'])->name('billing.print');
-    Route::get('/billing/trash/{id}', [App\Http\Controllers\Admin\BillingController::class, 'trash_bin'])->name('billing.trash');
-    Route::get('/billing/trash/list', [App\Http\Controllers\Admin\BillingController::class, 'trash_list'])->name('billing.trash.list');
+    Route::get('/billing/trash/{id}', [App\Http\Controllers\Admin\BillingController::class, 'status'])->name('billing.trash');
+
     
     Route::get('/logout', [App\Http\Controllers\Admin\AdminDashboardController::class, 'logout'])->name('logout');
 });

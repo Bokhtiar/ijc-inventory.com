@@ -40,5 +40,6 @@ class Billing extends Model
 
         'bill_creator',
         'biller_designation',
+    
     ];
 }
