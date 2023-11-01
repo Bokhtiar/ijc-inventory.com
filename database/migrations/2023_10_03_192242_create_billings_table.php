@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('billings', function (Blueprint $table) {
             $table->id('billing_id');
             $table->string('ref');
-            $table->longText('company_name_location');
+            $table->string('designation');
+            $table->string('company_name');
+            $table->longText('company_location');
             $table->string('att');
             $table->string('date');
-            $table->integer('cell_no');
-            $table->integer('telephone');
+            $table->string('cell_no');
+            $table->string('telephone');
             $table->string('email');
             $table->text('website')->nullable();
 

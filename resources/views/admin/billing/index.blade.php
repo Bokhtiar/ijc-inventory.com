@@ -35,7 +35,7 @@
                 @foreach ($billings as $billing)
                     <tr>
                         <th scope="row">{{ $loop->index + 1 }} </th>
-                        <td>{{ $billing->date }} </td>
+                        <td>{{ Carbon\Carbon::createFromFormat('Y-m-d', $billing->date)->format('d/m/Y') }} </td>
                         <td>{{ $billing->ref }} </td>
                         <td>{{ $billing->telephone }} </td>
                         <td>{{ $billing->email }} </td>

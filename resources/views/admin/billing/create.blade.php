@@ -31,8 +31,10 @@
                 <div class="row mt-3">
                     {{-- address --}}
                     <div class="col-12 col-sm-12 col-md-5 col-lg-5">
-                        <textarea required class="form-control" placeholder="type here company name with location" name="company_name_location"
-                            id="" cols="10" rows="6"></textarea>
+                        <input type="text" class="form-control mt-2" placeholder="type here designation" name="designation" id="">
+                        <input type="text" class="form-control mt-2" placeholder="type here company name" name="company_name" id="">
+                        <textarea required class="form-control mt-2" placeholder="type here company location" name="company_location"
+                            id="" cols="3" rows="2"></textarea>
 
                         {{-- att --}}
                         <div class="d-flex mt-3">
@@ -54,13 +56,13 @@
                             {{-- cell_no --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Cell_No.</div>
-                                <input required type="number" class="form-control ml-3" name="cell_no" id="">
+                                <input required type="text" class="form-control ml-3" name="cell_no" id="">
                             </div>
 
                             {{-- telephone --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Telephone.</div>
-                                <input required type="number" class="form-control ml-3" name="telephone" id="">
+                                <input required type="text" class="form-control ml-3" name="telephone" id="">
                             </div>
 
                             {{-- email --}}

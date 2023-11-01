@@ -38,7 +38,11 @@ class BillingController extends Controller
         $billingid = Billing::latest()->first();
         $billing = new Billing();
         $billing->ref = Billing::count() == 0 ? "#Inv-"."1" : "#Inv-".$billingid->billing_id + 1;
-        $billing->company_name_location = $request->company_name_location;
+
+
+        $billing->designation =$request->designation;
+        $billing->company_name = $request->company_name;
+        $billing->company_location = $request->company_location;
         $billing->att = $request->att;
         $billing->date = $request->date;
         $billing->cell_no = $request->cell_no;

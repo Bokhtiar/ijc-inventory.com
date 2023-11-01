@@ -34,8 +34,10 @@
 
                     <section style=" margin-top: 30px; margin-bottom: 80px;">
                         <div style="float: left;">
-                            <p style="width: 300px;">
-                                {{ $billings->company_name_location }}
+                            <p style="width: 400px;">
+                                <span>{{ $billings->designation }}</span> <br>
+                                <strong>{{ $billings->company_name }}</strong> <br>
+                                <span style="">{{ $billings->company_location }}</span>
                             </p>
                             <!-- att -->
                             <div style="font-weight: 600; margin-top: 15px;">
@@ -147,12 +149,18 @@
                                     style="text-align: left; font-weight: 900; font-size: 14px; height:25px; width: 40% ">
                                     Total
                                     Amount</td>
-                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $govt_fees }}</td>
-                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $others_expenses }}</td>
-                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $professional_fees }}</td>
-                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $tax }}</td>
-                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $vat }}</td>
-                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $grand_total }}</td>
+                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $govt_fees }}
+                                </td>
+                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
+                                    {{ $others_expenses }}</td>
+                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
+                                    {{ $professional_fees }}</td>
+                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $tax }}
+                                </td>
+                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $vat }}
+                                </td>
+                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $grand_total }}
+                                </td>
                             </tr>
 
                             <tr>
@@ -175,34 +183,27 @@
 
                         <div class="">
                             <div style="float: left;">
-                                <div style=" font-weight: normal; display:flex">
-                                    <div style="width: 25px"><strong>01. </strong></div>
-                                    <div>
-                                        <span> {{ $billings->account_name_1 }}</span><br>
-                                        <span>A/C No: {{ $billings->account_number_1 }}</span><br>
-                                        <span>Swift Code: {{ $billings->swift_code_1 }}</span> <br>
-                                        <span>Routing No: {{ $billings->account_routing_no_1 }}</span><br>
-                                        <span style="font-weight: 600;">{{ $billings->bank_name_1 }}</span><br>
-                                        <span>{{ $billings->branch_name_1 }}</span>
-                                    </div>
+                                <div style=" font-weight: normal;">
+
+                                    <span><strong>01. </strong> {{ $billings->account_name_1 }}</span><br>
+                                    <span>A/C No: {{ $billings->account_number_1 }}</span><br>
+                                    <span>Swift Code: {{ $billings->swift_code_1 }}</span> <br>
+                                    <span>Routing No: {{ $billings->account_routing_no_1 }}</span><br>
+                                    <span style="font-weight: 600;">{{ $billings->bank_name_1 }}</span><br>
+                                    <span>{{ $billings->branch_name_1 }}</span>
+
                                 </div>
                             </div>
 
 
                             <div style="float: right;">
-                                <div style="float: right;">
-                                    <div style="font-weight: normal; display:flex">
-                                        <div style="width: 25px"><strong>02. </strong></div>
-                                        <div>
-                                            <span> {{ $billings->account_name_2 }}</span><br>
-                                            <span>A/C No: {{ $billings->account_number_2 }}</span><br>
-                                            <span>Swift Code: {{ $billings->swift_code_2 }}</span> <br>
-                                            <span>Routing No: {{ $billings->account_routing_no_2 }}</span><br>
-                                            <span style="font-weight: 600;">{{ $billings->bank_name_2 }}</span><br>
-                                            <span>{{ $billings->branch_name_2 }}</span>
-                                        </div>
-                                    </div>
-
+                                <div style="font-weight: normal;">
+                                    <span>{{ $billings->account_name_2 }}</span><br>
+                                    <span>A/C No: {{ $billings->account_number_2 }}</span><br>
+                                    <span>Swift Code: {{ $billings->swift_code_2 }}</span> <br>
+                                    <span>Routing No: {{ $billings->account_routing_no_2 }}</span><br>
+                                    <span style="font-weight: 600;">{{ $billings->bank_name_2 }}</span><br>
+                                    <span>{{ $billings->branch_name_2 }}</span>
                                 </div>
                             </div>
                         </div>
@@ -214,10 +215,10 @@
                         <div style=" margin-top: 20%;">
                             <p style="width: 250px; font-weight: normal; margin-bottom: 11px;">
                                 <strong>{{ $billings->bill_creator }}</strong> <br>
-                                <span>{{ $billings->biller_designation }}</span> 
-                                <p>
-                                    <strong> Islam Jahid & Co.</strong> <br> <span> Chartered Accountants</span>
-                                </p>
+                                <span>{{ $billings->biller_designation }}</span>
+                            <p>
+                                <strong> Islam Jahid & Co.</strong> <br> <span> Chartered Accountants</span>
+                            </p>
                             </p>
                         </div>
                     </div>

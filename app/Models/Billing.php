@@ -14,7 +14,9 @@ class Billing extends Model
 
     protected $fillable = [
         'ref',
-        'company_name_location',
+        'designation',
+        'company_name',
+        'company_location',
         'att',
         'date',
         'cell_no',
