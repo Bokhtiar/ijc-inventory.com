@@ -38,6 +38,7 @@ return new class extends Migration
 
             $table->text('bill_creator');
             $table->text('biller_designation');
+            $table->tinyInteger('delete_at')->default(0);
             $table->timestamps();
         });
     }

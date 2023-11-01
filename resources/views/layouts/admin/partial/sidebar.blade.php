@@ -16,6 +16,13 @@
         </li><!-- End billing Nav -->
 
         <li class="nav-item">
+            <a class="nav-link" href="@route('admin.billing.trash.list')">
+                <i class="bi bi-grid"></i>
+                <span>Trash Billing List</span>
+            </a>
+        </li><!-- End billing Nav -->
+
+        <li class="nav-item">
             <a class="nav-link" href="@route('admin.billing.create')">
                 <i class="bi bi-grid"></i>
                 <span>Billing Create</span>

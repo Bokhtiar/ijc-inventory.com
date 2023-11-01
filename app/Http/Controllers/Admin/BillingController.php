@@ -15,6 +15,17 @@ class BillingController extends Controller
     public function index()
     {
         try {
+            $billings = Billing::where('delete_at', 0)->latest()->get(['billing_id', 'delete_at', 'date', 'ref', 'telephone', 'email', 'cell_no']);
+            return view('admin.billing.index', ['title' => "Billing List", 'billings' => $billings]);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    /* trash_list */
+    public function trash_list()
+    {
+        try {
             $billings = Billing::latest()->get(['billing_id', 'date', 'ref', 'telephone', 'email', 'cell_no']);
             return view('admin.billing.index', ['title' => "Billing List", 'billings' => $billings]);
         } catch (\Throwable $th) {
@@ -155,6 +166,19 @@ class BillingController extends Controller
                 $item->delete();
             }
             return redirect()->back()->with('success', "Deleted Successfully Done.");
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    /* trash */
+    public function trash_bin($id)
+    {
+        try {
+            $bill = Billing::find($id);
+            $bill->delete_at = 1;
+            $bill->save();
+            return back();
         } catch (\Throwable $th) {
             throw $th;
         }

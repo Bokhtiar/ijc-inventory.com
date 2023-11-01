@@ -30,6 +30,8 @@ Route::group(["as" => 'admin.', "prefix" => 'admin', "middleware" => ['auth', 'a
     Route::post('/billing/store', [App\Http\Controllers\Admin\BillingController::class, 'store'])->name('billing.store');
     Route::delete('/billing/destroy/{id}', [App\Http\Controllers\Admin\BillingController::class, 'destroy'])->name('billing.destroy');
     Route::get('/billing/print/{id}', [App\Http\Controllers\Admin\BillingController::class, 'print'])->name('billing.print');
-
+    Route::get('/billing/trash/{id}', [App\Http\Controllers\Admin\BillingController::class, 'trash_bin'])->name('billing.trash');
+    Route::get('/billing/trash/list', [App\Http\Controllers\Admin\BillingController::class, 'trash_list'])->name('billing.trash.list');
+    
     Route::get('/logout', [App\Http\Controllers\Admin\AdminDashboardController::class, 'logout'])->name('logout');
 });
