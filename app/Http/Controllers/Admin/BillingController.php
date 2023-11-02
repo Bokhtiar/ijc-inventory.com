@@ -61,21 +61,6 @@ class BillingController extends Controller
         $billing->telephone = $request->telephone;
         $billing->email = $request->email;
         $billing->website = $request->website;
-
-        $billing->account_name_1 = $request->account_name_1;
-        $billing->account_number_1 = $request->account_number_1;
-        $billing->account_routing_no_1 = $request->account_routing_no_1;
-        $billing->bank_name_1 = "Trust Bank Ltd.";
-        $billing->swift_code_1 = $request->swift_code_1;
-        $billing->branch_name_1 = $request->branch_name_1;
-
-        $billing->account_name_2 = $request->account_name_2;
-        $billing->account_number_2 = $request->account_number_2;
-        $billing->account_routing_no_2 = $request->account_routing_no_2;
-        $billing->bank_name_2 = "Uttara Bank Ltd.";
-        $billing->branch_name_2 = $request->branch_name_2;
-        $billing->swift_code_2 = $request->swift_code_2;
-
         $billing->bill_creator = $request->bill_creator;
         $billing->biller_designation = $request->biller_designation;
         $billing->save();
@@ -153,8 +138,8 @@ class BillingController extends Controller
 
 
         $pdf = PDF::loadView('admin.billing.pdf', $data);
-        return $pdf->stream('info.pdf', $data, array("Attachment" => false));
-        //return $pdf->download($billings->ref.'.pdf');
+        // return $pdf->stream('info.pdf', $data, array("Attachment" => false));
+        return $pdf->download($billings->ref.'.pdf');
     }
 
     /* resource destory */

@@ -81,7 +81,6 @@
             </div>
 
             <table style="width:100%; ">
-
                 <tr>
                     <th style="font-size: 14px; height:20px; width: 5%">SL.No.</th>
                     <th style="font-size: 14px; height:20px; width: 35%;">Description of Services</th>
@@ -164,12 +163,12 @@
                     <table style="border: none">
                         <td style="border: none"><strong>01. </strong></td>
                         <td style="border: none; text-align: left;">
-                            <span> {{ $billings->account_name_1 }}</span><br>
-                            <span>A/C No: {{ $billings->account_number_1 }}</span><br>
-                            <span>Swift Code: {{ $billings->swift_code_1 }}</span> <br>
-                            <span>Routing No: {{ $billings->account_routing_no_1 }}</span><br>
-                            <span style="font-weight: 600;">{{ $billings->bank_name_1 }}</span><br>
-                            <span>{{ $billings->branch_name_1 }}</span>
+                            <span>Islam Jahid & Co</span><br>
+                            <span>A/C No: 00300210009359</span><br>
+                            <span>Swift Code: TTBLBDDH030</span> <br>
+                            <span>Routing No: 240262532</span><br>
+                            <span style="font-weight: 600;">Trust Bank Ltd.</span><br>
+                            <span>Karwan Bazar Branch, Dhaka-1215</span>
                         </td>
                     </table>
                 </div>
@@ -181,12 +180,12 @@
                     <table style="border: none">
                         <td style="border: none"><strong>02. </strong></td>
                         <td style="border: none; text-align: left;">
-                            <span> {{ $billings->account_name_2 }}</span><br>
-                            <span>A/C No: {{ $billings->account_number_2 }}</span><br>
-                            <span>Swift Code: {{ $billings->swift_code_2 }}</span> <br>
-                            <span>Routing No: {{ $billings->account_routing_no_2 }}</span><br>
-                            <span style="font-weight: 600;">{{ $billings->bank_name_2 }}</span><br>
-                            <span>{{ $billings->branch_name_2 }}</span>
+                            <span> Islam Jahid & Co.</span><br>
+                            <span>A/C No: 116412200213729</span><br>
+                            <span>Swift Code: UTBLBDDH</span> <br>
+                            <span>Routing No: 250261699</span><br>
+                            <span style="font-weight: 600;">Uttara Bank Ltd.</span><br>
+                            <span>Green Road. Branch, Dhaka</span>
                         </td>
                     </table>
 
@@ -201,7 +200,7 @@
                 <p style="width: 550px; font-weight: normal;">
                     <strong>{{ $billings->bill_creator }}</strong> <br>
                     <span>{{ $billings->biller_designation }}</span>
-                <div style="margin-top: -7px">
+                <div style="margin-top: -12px">
                     <strong> Islam Jahid & Co.</strong> <br>
                     <span> Chartered Accountants</span>
                 </div>

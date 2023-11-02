@@ -105,47 +105,7 @@
                     </table>
                 </div>
 
-                {{-- bank details --}}
-                <h5 class="fw-bolder">Bank Details:</h5>
-                <div class="row">
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-
-                        <div class="float-start">
-                            <strong>01.</strong>
-                            <input required type="text" class="form-control mt-2" placeholder="Account Name"
-                                name="account_name_1" id="">
-                            <input required type="text" class="form-control mt-2" placeholder="Account Number"
-                                name="account_number_1" id="">
-                            <input required type="text" class="form-control mt-2" placeholder="Rounting No"
-                                name="account_routing_no_1" id="">
-                            <input disabled required type="text" class="form-control mt-2" placeholder="Bank Name" value="Trust Bank Ltd."
-                                name="bank_name_1" id="">
-                            <input required type="text" class="form-control mt-2" placeholder="Swift Code"
-                                name="swift_code_1" id="">
-                            <input required type="text" class="form-control mt-2" placeholder="Branch Name"
-                                name="branch_name_1" id="">
-                        </div>
-
-                    </div>
-
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                        <div class="float-end">
-                            <strong>02.</strong>
-                            <input required type="text" class="form-control mt-2" placeholder="Account Name"
-                                name="account_name_2" id="">
-                            <input required type="text" class="form-control mt-2" placeholder="Account Number"
-                                name="account_number_2" id="">
-                            <input required type="text" class="form-control mt-2" placeholder="Rounting No"
-                                name="account_routing_no_2" id="">
-                            <input disabled required type="text" class="form-control mt-2" placeholder="Bank Name" value="Uttara Bank Ltd."
-                                name="bank_name_2" id="">
-                            <input required type="text" class="form-control mt-2" placeholder="Swift Code"
-                                name="swift_code_2" id="">
-                            <input required type="text" class="form-control mt-2" placeholder="Branch Name"
-                                name="branch_name_2" id="">
-                        </div>
-                    </div>
-                </div>
+            
 
                 {{-- footer --}}
                 <div class="row my-3">

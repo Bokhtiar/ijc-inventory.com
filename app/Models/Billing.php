@@ -23,21 +23,6 @@ class Billing extends Model
         'telephone',
         'email',
         'website',
-
-        'account_name_1',
-        'account_number_1',
-        'account_routing_no_1',
-        'bank_name_1',
-        'swift_code_1',
-        'branch_name_1',
-
-        'account_name_2',
-        'account_number_2',
-        'account_routing_no_2',
-        'bank_name_2',
-        'swift_code_2',
-        'branch_name_2',
-
         'bill_creator',
         'biller_designation',
     

@@ -37,7 +37,7 @@
                             <p style="width: 400px;">
                                 <span>{{ $billings->designation }}</span> <br>
                                 <strong>{{ $billings->company_name }}</strong> <br>
-                                <span style="">{{ $billings->company_location }}</span>
+                                <span style="font-size: 13px">{{ $billings->company_location }}</span>
                             </p>
                             <!-- att -->
                             <div style="font-weight: 600; margin-top: 15px;">
@@ -183,27 +183,34 @@
 
                         <div class="">
                             <div style="float: left;">
-                                <div style=" font-weight: normal;">
-
-                                    <span><strong>01. </strong> {{ $billings->account_name_1 }}</span><br>
-                                    <span>A/C No: {{ $billings->account_number_1 }}</span><br>
-                                    <span>Swift Code: {{ $billings->swift_code_1 }}</span> <br>
-                                    <span>Routing No: {{ $billings->account_routing_no_1 }}</span><br>
-                                    <span style="font-weight: 600;">{{ $billings->bank_name_1 }}</span><br>
-                                    <span>{{ $billings->branch_name_1 }}</span>
-
+                                <div style=" font-weight: normal;   flex-wrap: wrap;">
+                                    <table style="border: none">
+                                        <td style="border: none; text-align: left;">
+                                            <span><strong>01.</strong> Islam Jahid & Co</span><br>
+                                            <span>A/C No: 00300210009359</span><br>
+                                            <span>Swift Code: TTBLBDDH030</span> <br>
+                                            <span>Routing No: 240262532</span><br>
+                                            <span style="font-weight: 600;">Trust Bank Ltd.</span><br>
+                                            <span>Karwan Bazar Branch, Dhaka-1215</span>
+                                        </td>
+                                    </table>
                                 </div>
                             </div>
 
 
                             <div style="float: right;">
                                 <div style="font-weight: normal;">
-                                    <span>{{ $billings->account_name_2 }}</span><br>
-                                    <span>A/C No: {{ $billings->account_number_2 }}</span><br>
-                                    <span>Swift Code: {{ $billings->swift_code_2 }}</span> <br>
-                                    <span>Routing No: {{ $billings->account_routing_no_2 }}</span><br>
-                                    <span style="font-weight: 600;">{{ $billings->bank_name_2 }}</span><br>
-                                    <span>{{ $billings->branch_name_2 }}</span>
+                                    <table style="border: none">
+                                        <td style="border: none; text-align: left;">
+                                            <span> <strong>02.</strong> Islam Jahid & Co.</span><br>
+                                            <span>A/C No: 116412200213729</span><br>
+                                            <span>Swift Code: UTBLBDDH</span> <br>
+                                            <span>Routing No: 250261699</span><br>
+                                            <span style="font-weight: 600;">Uttara Bank Ltd.</span><br>
+                                            <span>Green Road. Branch, Dhaka</span>
+                                        </td>
+                                    </table>
+
                                 </div>
                             </div>
                         </div>
