@@ -6,6 +6,7 @@
 @section('admin_content')
 
 
+
     {{-- breadcrumbs --}}
     @component('components.breadcrumbs', [
         'parent' => 'Home',
@@ -13,8 +14,6 @@
         'parent_url' => 'admin.dashboard',
     ])
     @endcomponent
-
-
 
     <section class="section dashboard">
         <div class="bg-white p-3 rounded shadow">
@@ -70,7 +69,7 @@
                                 </span>
                             </div>
                         </div>
-                    </section>
+                    </section> 
 
                     <!-- table -->
                     <!-- <h3 style="float: left; text-align: center; margin-bottom: -1px;">INVOICE</h3> -->
@@ -124,13 +123,23 @@
                                     <td style="font-size: 13px; height:25px; width: 35%; text-align: left;">
                                         {{ $item->description_service }}
                                     </td>
-                                    <td style="font-size: 13px; height:25px; width: 10% ">{{ $item->govt_fees }}</td>
-                                    <td style="font-size: 13px; height:25px; width: 10% ">{{ $item->others_expenses }}</td>
-                                    <td style="font-size: 13px; height:25px; width: 10% ">{{ $item->professional_fees }}
+                                    <td style="font-size: 13px; height:25px; width: 10% ">
+                                        {{ App\Models\Service::moneyCurrency($item->govt_fees) }}</td>
+                                    <td style="font-size: 13px; height:25px; width: 10% ">
+                                        {{ App\Models\Service::moneyCurrency($item->others_expenses) }}</td>
+                                    <td style="font-size: 13px; height:25px; width: 10% ">
+                                        {{ App\Models\Service::moneyCurrency($item->professional_fees) }}
                                     </td>
-                                    <td style="font-size: 13px; height:25px; width: 10% ">{{ $item->tax }}</td>
-                                    <td style="font-size: 13px; height:25px; width: 10% ">{{ $item->vat }}</td>
-                                    <td style="font-size: 13px; height:25px; width: 10% ">{{ $item->grand_total }}</td>
+                                    <td style="font-size: 13px; height:25px; width: 10% ">{{ App\Models\Service::moneyCurrency($item->tax) }}
+                                    </td>
+                                    <td style="font-size: 13px; height:25px; width: 10% ">{{ App\Models\Service::moneyCurrency($item->vat) }}
+                                    </td>
+
+                                    @php
+
+                                    @endphp
+                                    <td style="font-size: 13px; height:25px; width: 10% ">
+                                        {{ App\Models\Service::moneyCurrency($item->grand_total) }}</td>
 
 
                                     <td style="display: none">
@@ -149,17 +158,21 @@
                                     style="text-align: left; font-weight: 900; font-size: 14px; height:25px; width: 40% ">
                                     Total
                                     Amount</td>
-                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $govt_fees }}
+                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
+                                    {{ App\Models\Service::moneyCurrency($govt_fees) }}
                                 </td>
                                 <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
-                                    {{ $others_expenses }}</td>
+                                    {{ App\Models\Service::moneyCurrency($others_expenses) }}</td>
                                 <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
-                                    {{ $professional_fees }}</td>
-                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $tax }}
+                                    {{ App\Models\Service::moneyCurrency($professional_fees) }}</td>
+                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
+                                    {{ App\Models\Service::moneyCurrency($tax) }}
                                 </td>
-                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $vat }}
+                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
+                                    {{ App\Models\Service::moneyCurrency($vat) }}
                                 </td>
-                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ $grand_total }}
+                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
+                                    {{ App\Models\Service::moneyCurrency($grand_total) }}
                                 </td>
                             </tr>
 

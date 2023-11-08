@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id('service_id');
-            $table->integer('billing_id');
+            $table->string('billing_id');
             $table->string('description_service');
-            $table->integer('govt_fees');
-            $table->integer('others_expenses');
-            $table->integer('professional_fees');
-            $table->integer('tax');
-            $table->integer('vat');
-            $table->integer('grand_total');
+            $table->string('govt_fees');
+            $table->string('others_expenses');
+            $table->string('professional_fees');
+            $table->string('tax');
+            $table->string('vat');
+            $table->string('grand_total');
             $table->timestamps();
         });
     }

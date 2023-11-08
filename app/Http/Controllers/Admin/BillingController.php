@@ -51,7 +51,6 @@ class BillingController extends Controller
         $billing = new Billing();
         $billing->ref = Billing::count() == 0 ? "#Inv-"."1" : "#Inv-".$billingid->billing_id + 1;
 
-
         $billing->designation =$request->designation;
         $billing->company_name = $request->company_name;
         $billing->company_location = $request->company_location;
@@ -64,7 +63,6 @@ class BillingController extends Controller
         $billing->bill_creator = $request->bill_creator;
         $billing->biller_designation = $request->biller_designation;
         $billing->save();
-
 
         $description_service = $request->description_service;
         $govt_fees = $request->govt_fees;
@@ -138,8 +136,8 @@ class BillingController extends Controller
 
 
         $pdf = PDF::loadView('admin.billing.pdf', $data);
-        // return $pdf->stream('info.pdf', $data, array("Attachment" => false));
-        return $pdf->download($billings->ref.'.pdf');
+        return $pdf->stream('info.pdf', $data, array("Attachment" => false));
+        // return $pdf->download($billings->ref.'.pdf');
     }
 
     /* resource destory */

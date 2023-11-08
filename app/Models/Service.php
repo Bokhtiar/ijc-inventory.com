@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Rakibhstu\Banglanumber\NumberToBangla;
 
 class Service extends Model 
 {
@@ -21,6 +22,15 @@ class Service extends Model
         'vat',
         'grand_total'
     ];
+
+    public static function moneyCurrency($number){
+        $numto = new NumberToBangla();
+        $text = $numto->bnCommaLakh($number);
+        $search_array = ['১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯', '০'];
+        $replace_array = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+        $en_number = str_replace($search_array, $replace_array, $text);
+        return $en_number;
+    }
 
 
     public static function numberToWordConvert($num = '')
