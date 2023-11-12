@@ -55,14 +55,14 @@
 
                             {{-- cell_no --}}
                             <div class="d-flex mt-1">
-                                <div class="my-auto fw-bold">Cell_No.</div>
-                                <input required type="text" class="form-control ml-3" name="cell_no" id="">
+                                <div class="my-auto fw-bold">Cell.</div>
+                               <input required class="form-control" type="number" name="cell_no" ng-model="number" onKeyPress="if(this.value.length==11) return false;" min="0">
                             </div>
 
                             {{-- telephone --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Telephone.</div>
-                                <input required type="text" class="form-control ml-3" name="telephone" id="">
+                                <input class="form-control" type="number" name="telephone" ng-model="number">
                             </div>
 
                             {{-- email --}}
@@ -83,7 +83,7 @@
 
                 {{-- https://www.webslesson.info/2019/04/dynamically-add-remove-input-fields-in-laravel-58-using-jquery-ajax.html --}}
                 {{-- form --}}
-                <h3 class="fw-bolder text-center mt-5 mb-2">Invoice</h3>
+                <h3 class="fw-bolder text-center mt-5 mb-2">INVOICE</h3>
                 <div id="dynamic_form">
                     <span id="result"></span>
                     <table class="table table-bordered " id="user_table">
@@ -93,8 +93,8 @@
                                 <th width="10%" style="font-size: 12px">Govt. Fees</th>
                                 <th width="10%" style="font-size: 12px">Other Receptable Expenses</th>
                                 <th width="10%" style="font-size: 12px">Professional Fees</th>
+                                <th width="10%" style="font-size: 12px">VAT</th>
                                 <th width="10%" style="font-size: 12px">Tax</th>
-                                <th width="10%" style="font-size: 12px">Vat</th>
                                 <th width="10%" style="font-size: 12px">Action</th>
                             </tr>
                         </thead>
@@ -108,7 +108,7 @@
             
 
                 {{-- footer --}}
-                <div class="row my-3">
+                <div class="row mt-5 mb-2">
                     <div class="col-sm-12 col-lg-6 col-md-6">
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             <input required type="text" class="form-control mt-2" placeholder="Bill create name"
@@ -144,8 +144,8 @@
                 html += '<td><input required type="number" name="govt_fees[]" class="form-control" /></td>';
                 html += '<td><input required type="number" name="others_expenses[]" class="form-control" /></td>';
                 html += '<td><input required type="number" name="professional_fees[]" class="form-control" /></td>';
-                html += '<td><input required type="number" name="tax[]" class="form-control" /></td>';
                 html += '<td><input required type="number" name="vat[]" class="form-control" /></td>';
+                html += '<td><input required type="number" name="tax[]" class="form-control" /></td>';
                 if (number > 1) {
                     html +=
                         '<td><button type="button" name="remove" id="" class="btn btn-danger remove">Remove</button></td></tr>';

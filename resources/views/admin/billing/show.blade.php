@@ -51,13 +51,16 @@
                                     Date:{{ Carbon\Carbon::createFromFormat('Y-m-d', $billings->date)->format('d/m/Y') }}
                                 </span> <br>
                                 <span style="font-weight: 600;">
-                                    Cell_no: {{ $billings->cell_no }}
+                                    Cell: {{ $billings->cell_no }}
                                 </span>
                                 <br>
                                 <span style="font-weight: 600;">
-                                    Telephone: {{ $billings->telephone }}
+                                    @if ($billings->telephone)
+                                        Telephone: {{ $billings->telephone }}
+                                        <br>
+                                    @endif
                                 </span>
-                                <br>
+
                                 <span style="font-weight: 600;">
                                     Email: {{ $billings->email }}
                                 </span>
@@ -69,7 +72,7 @@
                                 </span>
                             </div>
                         </div>
-                    </section> 
+                    </section>
 
                     <!-- table -->
                     <!-- <h3 style="float: left; text-align: center; margin-bottom: -1px;">INVOICE</h3> -->
@@ -112,8 +115,8 @@
                                 $govt_fees = 0;
                                 $others_expenses = 0;
                                 $professional_fees = 0;
-                                $tax = 0;
                                 $vat = 0;
+                                $tax = 0;
                                 $grand_total = 0;
                             @endphp
 
@@ -130,11 +133,12 @@
                                     <td style="font-size: 13px; height:25px; width: 10% ">
                                         {{ App\Models\Service::moneyCurrency($item->professional_fees) }}
                                     </td>
-                                    <td style="font-size: 13px; height:25px; width: 10% ">{{ App\Models\Service::moneyCurrency($item->tax) }}
+                                    <td style="font-size: 13px; height:25px; width: 10% ">
+                                        {{ App\Models\Service::moneyCurrency($item->vat) }}
                                     </td>
-                                    <td style="font-size: 13px; height:25px; width: 10% ">{{ App\Models\Service::moneyCurrency($item->vat) }}
+                                    <td style="font-size: 13px; height:25px; width: 10% ">
+                                        {{ App\Models\Service::moneyCurrency($item->tax) }}
                                     </td>
-
                                     @php
 
                                     @endphp
@@ -146,8 +150,8 @@
                                         {{ $govt_fees += $item->govt_fees }}
                                         {{ $others_expenses += $item->others_expenses }}
                                         {{ $professional_fees += $item->professional_fees }}
-                                        {{ $tax += $item->tax }}
                                         {{ $vat += $item->vat }}
+                                        {{ $tax += $item->tax }}
                                         {{ $grand_total += $item->grand_total }}
                                     </td>
                                 </tr>
@@ -166,11 +170,12 @@
                                 <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
                                     {{ App\Models\Service::moneyCurrency($professional_fees) }}</td>
                                 <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
-                                    {{ App\Models\Service::moneyCurrency($tax) }}
-                                </td>
-                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
                                     {{ App\Models\Service::moneyCurrency($vat) }}
                                 </td>
+                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
+                                    {{ App\Models\Service::moneyCurrency($tax) }}
+                                </td>
+
                                 <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
                                     {{ App\Models\Service::moneyCurrency($grand_total) }}
                                 </td>
@@ -236,7 +241,7 @@
                             <p style="width: 250px; font-weight: normal; margin-bottom: 11px;">
                                 <strong>{{ $billings->bill_creator }}</strong> <br>
                                 <span>{{ $billings->biller_designation }}</span>
-                            <p>
+                            <p style="margin-top: 25px">
                                 <strong> Islam Jahid & Co.</strong> <br> <span> Chartered Accountants</span>
                             </p>
                             </p>

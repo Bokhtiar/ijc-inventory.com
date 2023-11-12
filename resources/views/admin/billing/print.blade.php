@@ -26,34 +26,35 @@
                 <div style="font-weight: 600; margin-top: 15px;">
                     Att: {{ $billings->att }}
                 </div>
-
             </div>
-
             <div style="float: right;">
-                <div style="float: right;">
-                    <span style="font-weight: 600;">
-                        Date: {{ Carbon\Carbon::createFromFormat('Y-m-d', $billings->date)->format('d/m/Y') }}
-                    </span> <br>
-                    <span style="font-weight: 600;">
-                        Cell_no: {{ $billings->cell_no }}
-                    </span>
-                    <br>
+                <span style="font-weight: 600;">
+                    Date: {{ Carbon\Carbon::createFromFormat('Y-m-d', $billings->date)->format('d/m/Y') }}
+                </span> <br>
+                <span style="font-weight: 600;">
+                    Cell: {{ $billings->cell_no }}
+                </span>
+                <br>
+                @if ($billings->telephone)
                     <span style="font-weight: 600;">
                         Telephone: {{ $billings->telephone }}
                     </span>
                     <br>
-                    <span style="font-weight: 600;">
-                        Email: {{ $billings->email }}
-                    </span>
-                    <br>
-                    <span style="font-weight: 600;">
-                        @if ($billings->website)
-                            Website: {{ $billings->website }}
-                        @endif
-                    </span>
-                </div>
+                @endif
+                <span style="font-weight: 600;">
+                    Email: {{ $billings->email }}
+                </span>
+                <br>
+                <span style="font-weight: 600;">
+                    @if ($billings->website)
+                        Website: {{ $billings->website }}
+                    @endif
+                </span>
             </div>
+
         </section>
+
+
 
         <!-- table -->
         <!-- <h3 style="float: left; text-align: center; margin-bottom: -1px;">INVOICE</h3> -->
@@ -96,8 +97,8 @@
                     $govt_fees = 0;
                     $others_expenses = 0;
                     $professional_fees = 0;
-                    $tax = 0;
                     $vat = 0;
+                    $tax = 0;
                     $grand_total = 0;
                 @endphp
 
@@ -107,21 +108,28 @@
                         <td style="font-size: 14px; height:20px; width: 25%; text-align: left;">
                             {{ $item->description_service }}
                         </td>
-                        <td style="font-size: 14px; height:20px; width: 10% ">{{ App\Models\Service::moneyCurrency($item->govt_fees) }}</td>
-                        <td style="font-size: 14px; height:20px; width: 10% ">{{ App\Models\Service::moneyCurrency($item->others_expenses) }}</td>
-                        <td style="font-size: 14px; height:20px; width: 10% ">{{ App\Models\Service::moneyCurrency($item->professional_fees) }}
+                        <td style="font-size: 14px; height:20px; width: 10% ">
+                            {{ App\Models\Service::moneyCurrency($item->govt_fees) }}</td>
+                        <td style="font-size: 14px; height:20px; width: 10% ">
+                            {{ App\Models\Service::moneyCurrency($item->others_expenses) }}</td>
+                        <td style="font-size: 14px; height:20px; width: 10% ">
+                            {{ App\Models\Service::moneyCurrency($item->professional_fees) }}
                         </td>
-                        <td style="font-size: 14px; height:20px; width: 10% ">{{ App\Models\Service::moneyCurrency($item->tax) }}</td>
-                        <td style="font-size: 14px; height:20px; width: 10% ">{{ App\Models\Service::moneyCurrency($item->vat) }}</td>
-                        <td style="font-size: 14px; height:20px; width: 20% ">{{ App\Models\Service::moneyCurrency($item->grand_total) }}</td>
+                        <td style="font-size: 14px; height:20px; width: 10% ">
+                            {{ App\Models\Service::moneyCurrency($item->vat) }}</td>
+                        <td style="font-size: 14px; height:20px; width: 10% ">
+                            {{ App\Models\Service::moneyCurrency($item->tax) }}</td>
+
+                        <td style="font-size: 14px; height:20px; width: 20% ">
+                            {{ App\Models\Service::moneyCurrency($item->grand_total) }}</td>
 
 
                         <td style="display: none">
                             {{ $govt_fees += $item->govt_fees }}
                             {{ $others_expenses += $item->others_expenses }}
                             {{ $professional_fees += $item->professional_fees }}
-                            {{ $tax += $item->tax }}
                             {{ $vat += $item->vat }}
+                            {{ $tax += $item->tax }}
                             {{ $grand_total += $item->grand_total }}
                         </td>
                     </tr>
@@ -131,13 +139,20 @@
                     <td colspan="2"
                         style="text-align: left; font-weight: 900; font-size: 15px; height:20px; width: 40% ">Total
                         Amount</td>
-                    <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">{{ App\Models\Service::moneyCurrency($govt_fees) }}</td>
-                    <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">{{ App\Models\Service::moneyCurrency($others_expenses) }}</td>
-                    <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">{{ App\Models\Service::moneyCurrency($professional_fees) }}
+                    <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">
+                        {{ App\Models\Service::moneyCurrency($govt_fees) }}</td>
+                    <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">
+                        {{ App\Models\Service::moneyCurrency($others_expenses) }}</td>
+                    <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">
+                        {{ App\Models\Service::moneyCurrency($professional_fees) }}
                     </td>
-                    <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">{{ App\Models\Service::moneyCurrency($tax) }}</td>
-                    <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">{{ App\Models\Service::moneyCurrency($vat) }}</td>
-                    <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">{{ App\Models\Service::moneyCurrency($grand_total) }}</td>
+                    <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">
+                        {{ App\Models\Service::moneyCurrency($vat) }}</td>
+                    <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">
+                        {{ App\Models\Service::moneyCurrency($tax) }}</td>
+
+                    <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">
+                        {{ App\Models\Service::moneyCurrency($grand_total) }}</td>
                 </tr>
 
                 <tr>
@@ -200,7 +215,7 @@
                 <p style="width: 550px; font-weight: normal;">
                     <strong>{{ $billings->bill_creator }}</strong> <br>
                     <span>{{ $billings->biller_designation }}</span>
-                <div style="margin-top: -12px">
+                <div style="margin-top: 26px">
                     <strong> Islam Jahid & Co.</strong> <br>
                     <span> Chartered Accountants</span>
                 </div>
