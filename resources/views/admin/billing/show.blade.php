@@ -237,11 +237,11 @@
 
 
                     <div style="">
-                        <div style=" margin-top: 20%;">
+                        <div style=" margin-top: 26%;">
                             <p style="width: 250px; font-weight: normal; margin-bottom: 11px;">
                                 <strong>{{ $billings->bill_creator }}</strong> <br>
                                 <span>{{ $billings->biller_designation }}</span>
-                            <p style="margin-top: 25px">
+                            <p style="margin-top: -11px">
                                 <strong> Islam Jahid & Co.</strong> <br> <span> Chartered Accountants</span>
                             </p>
                             </p>

@@ -14,10 +14,10 @@
         <div style="font-weight: 600; margin-top: 80px;">
             Ref: {{ $billings->ref }}
         </div>
-
-        <section style=" margin-top: 30px; margin-bottom: 80px;">
-            <div style="float: left;">
-                <p style="width: 350px;">
+        
+         <section style=" margin-top: 30px; margin-bottom: 80px;">
+        <div style="float: left;">
+             <p style="width: 350px;">
                     <span>{{ $billings->designation }}</span> <br>
                     <strong>{{ $billings->company_name }}</strong> <br>
                     <span style="font-size: 14px">{{ $billings->company_location }}</span>
@@ -26,34 +26,34 @@
                 <div style="font-weight: 600; margin-top: 15px;">
                     Att: {{ $billings->att }}
                 </div>
-            </div>
-            <div style="float: right;">
-                <span style="font-weight: 600;">
-                    Date: {{ Carbon\Carbon::createFromFormat('Y-m-d', $billings->date)->format('d/m/Y') }}
-                </span> <br>
-                <span style="font-weight: 600;">
-                    Cell: {{ $billings->cell_no }}
-                </span>
-                <br>
-                @if ($billings->telephone)
+        </div>
+        <div style="float: right;">
+            <span style="font-weight: 600;">
+                        Date: {{ Carbon\Carbon::createFromFormat('Y-m-d', $billings->date)->format('d/m/Y') }}
+                    </span> <br>
+                    <span style="font-weight: 600;">
+                        Cell: {{ $billings->cell_no }}
+                    </span>
+                    <br>
+                    @if ($billings->telephone)
                     <span style="font-weight: 600;">
                         Telephone: {{ $billings->telephone }}
                     </span>
                     <br>
-                @endif
-                <span style="font-weight: 600;">
-                    Email: {{ $billings->email }}
-                </span>
-                <br>
-                <span style="font-weight: 600;">
-                    @if ($billings->website)
-                        Website: {{ $billings->website }}
-                    @endif
-                </span>
-            </div>
-
-        </section>
-
+                     @endif
+                    <span style="font-weight: 600;">
+                        Email: {{ $billings->email }}
+                    </span>
+                    <br>
+                    <span style="font-weight: 600;">
+                        @if ($billings->website)
+                            Website: {{ $billings->website }}
+                        @endif
+                    </span>
+        </div>
+        
+         </section>
+        
 
 
         <!-- table -->
@@ -150,7 +150,7 @@
                         {{ App\Models\Service::moneyCurrency($vat) }}</td>
                     <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">
                         {{ App\Models\Service::moneyCurrency($tax) }}</td>
-
+                    
                     <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">
                         {{ App\Models\Service::moneyCurrency($grand_total) }}</td>
                 </tr>
@@ -211,11 +211,11 @@
 
 
         <div style="display: flex;">
-            <div style=" margin-top: 22%;">
-                <p style="width: 550px; font-weight: normal;">
+            <div style=" margin-top: 26%;">
+                <p style="width: 550px; font-weight: normal; margint-top: 35px">
                     <strong>{{ $billings->bill_creator }}</strong> <br>
                     <span>{{ $billings->biller_designation }}</span>
-                <div style="margin-top: 26px">
+                <div style="margin-top: -11px">
                     <strong> Islam Jahid & Co.</strong> <br>
                     <span> Chartered Accountants</span>
                 </div>
