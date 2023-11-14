@@ -62,7 +62,7 @@
                             {{-- telephone --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Telephone.</div>
-                                <input class="form-control" type="number" name="telephone" ng-model="number">
+                                <input class="form-control" type="text" name="telephone" ng-model="number">
                             </div>
 
                             {{-- email --}}
