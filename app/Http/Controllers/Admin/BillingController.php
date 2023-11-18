@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use PDF;
 use App\Models\Billing;
 use App\Models\Service;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
-use PDF;
+use App\Exports\ExportBilling;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BillingController extends Controller
 {
@@ -188,6 +189,14 @@ class BillingController extends Controller
         } catch (\Throwable $th) {
             throw $th;
         }
+    }
+
+    /** export bill */
+    public function exportBills(Request $request)
+    {
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+        return Excel::download(new ExportBilling($start_date, $end_date), 'bill.xlsx');
     }
 }
  

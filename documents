@@ -1,1 +1,7 @@
+<!-- money currenty example : 10,00,000 -->
 money currency use formate : https://rakibdevs.github.io/number-to-bangla/
+
+<!-- excel file export import install work -->
+composer remove maatwebsite/excel
+composer require psr/simple-cache:^1.0 maatwebsite/excel --ignore-platform-reqs --with-all-dependencies
+ php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider"

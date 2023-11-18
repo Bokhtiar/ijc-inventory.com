@@ -14,7 +14,17 @@
     ])
     @endcomponent
 
-
+    <div class="shadow mb-3 py-3 pt-4 px-4 bg-white rounded">
+        <div class="d-flex justify-content-between">
+            <p>Download Excel Date filter</p>
+            <form action="@route('admin.export-bill')" method="POST">
+                @csrf
+                <input type="date" name="start_date" id="">
+                <input type="date" name="end_date" id="">
+                <input type="submit" value="Submit" name="" id="">
+            </form>
+        </div>
+    </div>
 
     <section class="section dashboard">
         <div class="bg-white p-3 rounded shadow">

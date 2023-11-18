@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BillingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,6 @@ Route::group(["as" => 'admin.', "prefix" => 'admin', "middleware" => ['auth', 'a
     Route::get('/billing/print/{id}', [App\Http\Controllers\Admin\BillingController::class, 'print'])->name('billing.print');
     Route::get('/billing/trash/{id}', [App\Http\Controllers\Admin\BillingController::class, 'status'])->name('billing.trash');
 
-    
+    Route::post('/export-bill', [BillingController::class,'exportBills'])->name('export-bill');
     Route::get('/logout', [App\Http\Controllers\Admin\AdminDashboardController::class, 'logout'])->name('logout');
 });
