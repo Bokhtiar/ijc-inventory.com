@@ -8,6 +8,7 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Exports\ExportBilling;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 
 class BillingController extends Controller
@@ -33,7 +34,7 @@ class BillingController extends Controller
             throw $th;
         }
     }
- 
+
 
     /* create page  */
     public function create()
@@ -48,16 +49,23 @@ class BillingController extends Controller
     /* store resource */
     public function store(Request $request)
     {
+        
+        $today = Carbon::now();
+        $currentYear = $today->year;
+        $lastTowDigit = str_split($currentYear);
+
         $billingid = Billing::latest()->first();
         $billing = new Billing();
-        $billing->ref = Billing::count() == 0 ? "#Inv-"."1" : "#Inv-".$billingid->billing_id + 1;
+        $billing->ref = Billing::count() == 0 ? "#Inv-" . "1" : "IJC"."/". $lastTowDigit[2] . '' . $lastTowDigit[3] . "/Inv-" . $billingid->billing_id + 1;
 
-        $billing->designation =$request->designation;
+        $billing->designation = $request->designation;
         $billing->company_name = $request->company_name;
         $billing->company_location = $request->company_location;
         $billing->att = $request->att;
         $billing->date = $request->date;
         $billing->cell_no = $request->cell_no;
+        $billing->less_advance = $request->less_advance;
+        $billing->foreign_company = $request->foreign_company;
         $billing->telephone = $request->telephone;
         $billing->email = $request->email;
         $billing->website = $request->website;
@@ -161,7 +169,7 @@ class BillingController extends Controller
     {
         try {
             $bill = Billing::find($id);
-        
+
             if ($bill->status == 0) {
                 $bill->status = 1;
                 $bill->save();
@@ -199,4 +207,3 @@ class BillingController extends Controller
         return Excel::download(new ExportBilling($start_date, $end_date), 'bill.xlsx');
     }
 }
- 

@@ -19,20 +19,27 @@
         <div class="shadow px-4 py-4 bg-white">
             <form action="@route('admin.billing.store')" method="POST">
                 @csrf
-
+                @php
+                    $today = Carbon\Carbon::now();
+                    $currentYear = $today->year;
+                    $lastTowDigit = str_split($currentYear);
+                @endphp
                 {{-- refence --}}
                 <div class="d-flex ">
                     <div class="my-auto fw-bold">Ref.....</div>
                     <input disabled required type="text" class="form-control ml-3"
-                        value="#Inv-{{ App\Models\Billing::count() + 1 }}" name="ref" id="">
+                        value="IJC/{{ $lastTowDigit[2] . '' . $lastTowDigit[3] }} /Inv-{{ App\Models\Billing::count() + 1 }}"
+                        name="ref" id="">
                 </div>
 
                 {{-- heading --}}
                 <div class="row mt-3">
                     {{-- address --}}
                     <div class="col-12 col-sm-12 col-md-5 col-lg-5">
-                        <input type="text" class="form-control mt-2" placeholder="type here designation" name="designation" id="">
-                        <input type="text" class="form-control mt-2" placeholder="type here company name" name="company_name" id="">
+                        <input type="text" class="form-control mt-2" placeholder="type here designation"
+                            name="designation" id="">
+                        <input type="text" class="form-control mt-2" placeholder="type here company name"
+                            name="company_name" id="">
                         <textarea required class="form-control mt-2" placeholder="type here company location" name="company_location"
                             id="" cols="3" rows="2"></textarea>
 
@@ -56,7 +63,8 @@
                             {{-- cell_no --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Cell.</div>
-                               <input required class="form-control" type="number" name="cell_no" ng-model="number" onKeyPress="if(this.value.length==11) return false;" min="0">
+                                <input required class="form-control" type="number" name="cell_no" ng-model="number"
+                                    onKeyPress="if(this.value.length==11) return false;" min="0">
                             </div>
 
                             {{-- telephone --}}
@@ -105,13 +113,30 @@
                     </table>
                 </div>
 
-            
+
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                        <input type="text" class="form-control" placeholder="Less advance" name="less_advance"
+                            id="">
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                        <input type="text" class="form-control" placeholder="Foreign company" name="foreign_company"
+                            id="">
+                    </div>
+                </div>
+
+
+
+
 
                 {{-- footer --}}
                 <div class="row mt-5 mb-2">
+
+
                     <div class="col-sm-12 col-lg-6 col-md-6">
                         <div class="col-sm-12 col-md-12 col-lg-12">
-                            <input required type="text" class="form-control mt-2" placeholder="Bill create name"
+                            <input required type="text" class="form-control mt-2" placeholder="Bill creator name"
                                 name="bill_creator" id="">
                         </div>
 

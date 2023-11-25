@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('email');
             $table->text('website')->nullable();
 
+            $table->longText('less_advance')->nullable();
+            $table->longText('foreign_company')->nullable();
             $table->text('bill_creator');
             $table->text('biller_designation');
             $table->tinyInteger('status')->default(0);

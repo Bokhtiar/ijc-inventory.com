@@ -23,6 +23,8 @@ class Billing extends Model
         'telephone',
         'email',
         'website',
+        'less_advance',
+        'foreign_company',
         'bill_creator',
         'biller_designation',
     

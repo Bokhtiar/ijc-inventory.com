@@ -34,6 +34,7 @@
                     <section style=" margin-top: 30px; margin-bottom: 80px;">
                         <div style="float: left;">
                             <p style="width: 400px;">
+                                <strong>To.</strong> <br>
                                 <span>{{ $billings->designation }}</span> <br>
                                 <strong>{{ $billings->company_name }}</strong> <br>
                                 <span style="font-size: 13px">{{ $billings->company_location }}</span>
@@ -47,25 +48,25 @@
 
                         <div style="float: right;">
                             <div style="float: right;">
-                                <span style="font-weight: 600;">
+                                <span style="">
                                     Date:{{ Carbon\Carbon::createFromFormat('Y-m-d', $billings->date)->format('d/m/Y') }}
                                 </span> <br>
-                                <span style="font-weight: 600;">
+                                <span style="">
                                     Cell: {{ $billings->cell_no }}
                                 </span>
                                 <br>
-                                <span style="font-weight: 600;">
+                                <span style="">
                                     @if ($billings->telephone)
                                         Telephone: {{ $billings->telephone }}
                                         <br>
                                     @endif
                                 </span>
 
-                                <span style="font-weight: 600;">
+                                <span style="">
                                     Email: {{ $billings->email }}
                                 </span>
                                 <br>
-                                <span style="font-weight: 600;">
+                                <span style="">
                                     @if ($billings->website)
                                         Website: {{ $billings->website }}
                                     @endif
@@ -183,8 +184,20 @@
 
                             <tr>
                                 <td colspan="8" style="text-align: left;font-weight: 900; font-size: 14px; height:25px;">
+                                    Less Advence:
+                                    {{$billings->less_advance }}</td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="8" style="text-align: left;font-weight: 900; font-size: 14px; height:25px;">
+                                   Due amount:
+                                    {{$grand_total -$billings->less_advance }}</td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="8" style="text-align: left;font-weight: 900; font-size: 14px; height:25px;">
                                     Amount in words:
-                                    {{ App\Models\Service::numberToWordConvert($grand_total) }}</td>
+                                    {{ App\Models\Service::numberToWordConvert($grand_total - $billings->less_advance) }}</td>
                             </tr>
                         </table>
                     </div>
@@ -194,7 +207,11 @@
 
                     {{-- bank detais --}}
                     <div style="width: 100%">
-
+                        <div class="forign compnay">
+                            @if ($billings->foreign_company)
+                                <strong>foreign compnay :</strong> {{ $billings->foreign_company }}
+                            @endif
+                        </div>
                         <div style="width: 100%; margin-top:20px">
                             <h3 style=" margin-bottom:6px; font-weight:600">Bank Details:</h3>
                         </div>
