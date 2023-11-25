@@ -182,32 +182,42 @@
                                 </td>
                             </tr>
 
+                            {{-- less advence --}}
                             <tr>
-                                <td colspan="8" style="text-align: left;font-weight: 900; font-size: 14px; height:25px;">
+                                <td colspan="2" style="text-align: left;font-weight: 900; font-size: 14px; height:25px;">
                                     Less Advence:
-                                    {{$billings->less_advance }}</td>
+                                </td>
+                                <td colspan="5">
+                                      
+                                </td>
+                                <td>
+                                    <strong style="font-size: 13px; height:25px; width: 10%;font-weight: 900; "> {{ App\Models\Service::moneyCurrency($billings->less_advance) }}</strong>
+                                </td> 
                             </tr>
 
+                            {{--  Due amount: --}}
                             <tr>
-                                <td colspan="8" style="text-align: left;font-weight: 900; font-size: 14px; height:25px;">
+                                <td colspan="2" style="text-align: left;font-weight: 900; font-size: 14px; height:25px;">
                                    Due amount:
-                                    {{$grand_total -$billings->less_advance }}</td>
+                                </td>
+                                <td colspan="5">
+                                      
+                                </td>
+                                <td>
+                                    <strong style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ App\Models\Service::moneyCurrency($grand_total - $billings->less_advance) }}</strong>
+                                </td> 
                             </tr>
-
                             <tr>
                                 <td colspan="8" style="text-align: left;font-weight: 900; font-size: 14px; height:25px;">
                                     Amount in words:
-                                    {{ App\Models\Service::numberToWordConvert($grand_total - $billings->less_advance) }}</td>
+                                    {{ App\Models\Service::numberToWordConvert($grand_total - $billings->less_advance) }} Taka Only</td>
                             </tr>
                         </table>
                     </div>
 
-                    <!-- bank details -->
-
-
                     {{-- bank detais --}}
                     <div style="width: 100%">
-                        <div class="forign compnay">
+                        <div class="forign compnay mt-3">
                             @if ($billings->foreign_company)
                                 <strong>foreign compnay :</strong> {{ $billings->foreign_company }}
                             @endif

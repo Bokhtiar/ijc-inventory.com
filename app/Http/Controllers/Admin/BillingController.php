@@ -142,11 +142,11 @@ class BillingController extends Controller
             'billings' => $billings,
             'services' => $services
         ];
-
+ 
 
         $pdf = PDF::loadView('admin.billing.pdf', $data);
         return $pdf->stream('info.pdf', $data, array("Attachment" => false));
-        // return $pdf->download($billings->ref.'.pdf');
+        //return $pdf->download($billings->ref.'.pdf');
     }
 
     /* resource destory */
@@ -204,6 +204,6 @@ class BillingController extends Controller
     {
         $start_date = $request->start_date;
         $end_date = $request->end_date;
-        return Excel::download(new ExportBilling($start_date, $end_date), 'bill.xlsx');
+        return Excel::download(new ExportBilling($start_date, $end_date), $start_date.'-to-'.$end_date.'.xlsx');
     }
 }

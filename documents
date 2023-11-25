@@ -5,3 +5,7 @@ money currency use formate : https://rakibdevs.github.io/number-to-bangla/
 composer remove maatwebsite/excel
 composer require psr/simple-cache:^1.0 maatwebsite/excel --ignore-platform-reqs --with-all-dependencies
  php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider"
+
+
+<!-- excel file column size with controll -->
+ https://laraveldaily.com/post/laravel-excel-export-formatting-and-styling-cells
