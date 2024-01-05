@@ -37,6 +37,13 @@
         </li><!-- End billing Nav -->
 
         <li class="nav-item">
+            <a class="nav-link" href="@route('role.index')">
+                <i class="bi bi-grid"></i>
+                <span>Role</span>
+            </a>
+        </li><!-- End billing Nav -->
+
+        <li class="nav-item">
             <a class="nav-link" href="@route('admin.logout')">
                 <i class="bi bi-grid"></i>
                 <span>Logout</span>

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\BillingController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -44,3 +46,10 @@ Route::group(["as" => 'admin.', "prefix" => 'admin', "middleware" => ['auth', 'a
     
     Route::get('/logout', [App\Http\Controllers\Admin\AdminDashboardController::class, 'logout'])->name('logout');
 });
+
+
+Route::resource('role', RoleController::class);
+Route::get('role/status/{role_id}', [RoleController::class, 'status'])->name('role.status');
+
+/**role  */
+Route::resource('permission', PermissionController::class);

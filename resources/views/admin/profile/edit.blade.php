@@ -26,7 +26,11 @@
             <div class="bg-white p-3 rounded shadow">
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-
+                        <div class="form-group">
+                            <label for="Name" class=" col-form-label text-md-right">{{ __('Name') }}</label>
+                            <input id="Name" type="Name" class="form-control @error('Name') is-invalid @enderror"
+                                name="old_Name" required autocomplete="new-Name">
+                        </div>
                     </div>
 
                     {{-- password reset --}}
