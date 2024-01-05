@@ -10,11 +10,28 @@
     @component('components.breadcrumbs', [
         'parent' => 'Home',
         'page' => $title,
-        'parent_url' => 'admin.dashboard',
+        'parent_url' => 'dashboard',
     ])
     @endcomponent
 
+    @component('components.heading', [
+        'pageTitle' => $title,
+        'anotherPageIcon' => 'bi bi-plus',
+        'anotherPageUrl' => 'billing.create',
+    ])
+    @endcomponent
 
+    <div class="shadow mb-3 py-3 pt-4 px-4 bg-white rounded">
+        <div class="d-flex justify-content-between">
+            <p>Bill Download Excel Date filter</p>
+            <form action="@route('export-bill')" method="POST">
+                @csrf
+                <input type="date" name="start_date" id="">
+                <input type="date" name="end_date" id="">
+                <input type="submit" value="Submit" name="" id="">
+            </form>
+        </div>
+    </div>
 
     <section class="section dashboard">
         <div class="bg-white p-3 rounded shadow">
@@ -41,15 +58,16 @@
                             <td>{{ $billing->email }} </td>
                             <td>{{ $billing->cell_no }} </td>
                             <td>
-                                <a class="btn btn-sm btn-success" href="@route('admin.billing.show', $billing->billing_id)"><i class="bi bi-eye"></i></a>
-                                <a class="btn btn-sm btn-success" href="@route('admin.billing.print', $billing->billing_id)"><i class="bi bi-printer"></i></a>
-                                
-                                <form action="@route('admin.billing.destroy', $billing->billing_id)" method="POST">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button class="btn btn-sm btn-danger" type="submit"><i
-                                            class="bi bi-trash"></i></button>
-                                </form><!--delete-->
+                                <a class="btn btn-sm btn-success mt-1" href="@route('billing.show', $billing->billing_id)"><i class="bi bi-eye"></i></a>
+                                <a class="btn btn-sm btn-success mt-1" href="@route('billing.print', $billing->billing_id)"><i class="bi bi-printer"></i></a>
+                                <a class="btn btn-sm btn-info mt-1" href="@route('billing.edit', $billing->billing_id)"><i class="bi bi-pen"></i></a>
+                                <a class="btn btn-sm btn-danger mt-1" href="@route('billing.trash', $billing->billing_id)"><i class="bi bi-trash"></i></a>
+                                {{-- <form action="@route('admin.billing.trash', $billing->billing_id)" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-sm btn-danger" type="submit"><i
+                                        class="bi bi-trash"></i></button>
+                            </form><!--delete--> --}}
                             </td>
                         </tr>
                     @endforeach
@@ -58,8 +76,4 @@
             <!-- End Table with stripped rows -->
         </div>
     </section>
-
-
-
-
 @endsection

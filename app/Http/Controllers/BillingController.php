@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use PDF;
 use App\Models\Billing;
@@ -18,7 +18,7 @@ class BillingController extends Controller
     {
         try {
             $billings = Billing::where('status', 0)->latest()->get(['billing_id', 'status', 'date', 'ref', 'telephone', 'email', 'cell_no']);
-            return view('admin.billing.index', ['title' => "Billing List", 'billings' => $billings]);
+            return view('modules.billing.index', ['title' => "Billing List", 'billings' => $billings]);
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -29,7 +29,7 @@ class BillingController extends Controller
     {
         try {
             $billings = Billing::where('status', 1)->latest()->get(['billing_id', 'status', 'date', 'ref', 'telephone', 'email', 'cell_no']);
-            return view('admin.billing.trash', ['title' => "Billing List", 'billings' => $billings]);
+            return view('modules.billing.trash', ['title' => "Billing List", 'billings' => $billings]);
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -40,7 +40,7 @@ class BillingController extends Controller
     public function create()
     {
         try {
-            return view('admin.billing.create', ['title' => "Billing create"]);
+            return view('modules.billing.create', ['title' => "Billing create"]);
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -49,14 +49,13 @@ class BillingController extends Controller
     /* store resource */
     public function store(Request $request)
     {
-        
         $today = Carbon::now();
         $currentYear = $today->year;
         $lastTowDigit = str_split($currentYear);
 
         $billingid = Billing::latest()->first();
         $billing = new Billing();
-        $billing->ref = Billing::count() == 0 ? "#Inv-" . "1" : "IJC"."/". $lastTowDigit[2] . '' . $lastTowDigit[3] . "/Inv-" . $billingid->billing_id + 1;
+        $billing->ref = Billing::count() == 0 ? "#Inv-" . "1" : "IJC" . "/" . $lastTowDigit[2] . '' . $lastTowDigit[3] . "/Inv-" . $billingid->billing_id + 1;
 
         $billing->designation = $request->designation;
         $billing->company_name = $request->company_name;
@@ -95,23 +94,7 @@ class BillingController extends Controller
         }
 
         Service::insert($insert_data);
-
-        // $billings = Billing::find($billing->billing_id);
-        // $services = Service::where('billing_id', $billing->billing_id)->get();
-
-        // $data = [
-        //     'billings' => $billings,
-        //     'services' => $services
-        // ];
-
-
-        //     $pdf = PDF::loadView('admin\billing\pdf', $data);
-
-        //    return $pdf->download('itsolutionstuff.pdf');
-
-        // return $pdf->stream('info.pdf', array("Attachment" => false));
-
-        return redirect()->route('admin.billing.list')->with('message', 'Billing Successfully Done.');
+        return redirect()->route('billing.list')->with('message', 'Billing Successfully Done.');
     }
 
     /* specific resoruce show */
@@ -120,15 +103,9 @@ class BillingController extends Controller
         try {
             $billings = Billing::find($id);
             $services = Service::where('billing_id', $id)->get();
-
-            $data = [
-                'billings' => $billings,
-                'services' => $services
-            ];
-
-            return view('admin.billing.show', ['title' => "Billing Show", 'billings' => $billings, 'services' => $services]);
+            return view('modules.billing.show', ['title' => "Billing Show", 'billings' => $billings, 'services' => $services]);
         } catch (\Throwable $th) {
-            //throw $th;
+            throw $th;
         }
     }
 
@@ -142,11 +119,11 @@ class BillingController extends Controller
             'billings' => $billings,
             'services' => $services
         ];
- 
 
-        $pdf = PDF::loadView('admin.billing.pdf', $data);
+
+        $pdf = PDF::loadView('modules.billing.pdf', $data);
         //return $pdf->stream('info.pdf', $data, array("Attachment" => false));
-        return $pdf->download($billings->ref.'.pdf');
+        return $pdf->download($billings->ref . '.pdf');
     }
 
     /* resource destory */
@@ -174,7 +151,7 @@ class BillingController extends Controller
                 $bill->status = 1;
                 $bill->save();
             }
-            return back();
+            return back()->with('info', 'Data can view Super Admin');
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -191,8 +168,8 @@ class BillingController extends Controller
                 'billings' => $billings,
                 'services' => $services
             ];
-            // return view('admin.billing.print', $data);
-            $pdf = PDF::loadView('admin.billing.pdf', $data);
+            // return view('modules.billing.print', $data);
+            $pdf = PDF::loadView('modules.billing.pdf', $data);
             return $pdf->stream('info.pdf', $data, array("Attachment" => false));
         } catch (\Throwable $th) {
             throw $th;
@@ -204,18 +181,20 @@ class BillingController extends Controller
     {
         $start_date = $request->start_date;
         $end_date = $request->end_date;
-        return Excel::download(new ExportBilling($start_date, $end_date), $start_date.'-to-'.$end_date.'.xlsx');
+        return Excel::download(new ExportBilling($start_date, $end_date), $start_date . '-to-' . $end_date . '.xlsx');
     }
 
     /** edit */
-    public function edit($id){
+    public function edit($id)
+    {
         $edit = Billing::find($id);
         $services = Service::where('billing_id', $id)->get();
         $title = "Billing edit";
-        return view('admin.billing.edit', compact('edit', 'services', 'title'));
+        return view('modules.billing.edit', compact('edit', 'services', 'title'));
     }
 
-    public function bllling_ways_service($id){
+    public function bllling_ways_service($id)
+    {
         $services =  Service::where('billing_id', $id)->get();
         return response()->json([
             'services' => $services,
@@ -223,7 +202,7 @@ class BillingController extends Controller
     }
 
     /** update */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         // billing exist data delete
         $services = Service::where('billing_id', $id)->get();
@@ -232,7 +211,7 @@ class BillingController extends Controller
         }
 
         $billing = Billing::find($id);
-        $billing->ref = $billing->ref; 
+        $billing->ref = $billing->ref;
         $billing->designation = $request->designation;
         $billing->company_name = $request->company_name;
         $billing->company_location = $request->company_location;
@@ -256,6 +235,9 @@ class BillingController extends Controller
         $tax = $request->tax;
         $vat = $request->vat;
 
+        if ($description_service !== null) {
+            
+        
         for ($count = 0; $count < count($description_service); $count++) {
             $data = array(
                 'billing_id' => $billing->billing_id,
@@ -269,9 +251,8 @@ class BillingController extends Controller
             );
             $insert_data[] = $data;
         }
-
         Service::insert($insert_data);
-
+        }
         // $billings = Billing::find($billing->billing_id);
         // $services = Service::where('billing_id', $billing->billing_id)->get();
 
@@ -281,12 +262,12 @@ class BillingController extends Controller
         // ];
 
 
-        //     $pdf = PDF::loadView('admin\billing\pdf', $data);
+        //     $pdf = PDF::loadView('modules\billing\pdf', $data);
 
         //    return $pdf->download('itsolutionstuff.pdf');
 
         // return $pdf->stream('info.pdf', array("Attachment" => false));
 
-        return redirect()->route('admin.billing.list')->with('message', 'Billing Successfully Done.');
+        return redirect()->route('billing.list')->with('message', 'Billing Update Successfully Done.');
     }
 }

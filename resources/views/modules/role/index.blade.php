@@ -10,7 +10,7 @@
     @component('components.breadcrumbs', [
         'parent' => 'Role',
         'page' => $title,
-        'parent_url' => 'admin.dashboard',
+        'parent_url' => 'dashboard',
     ])
     @endcomponent
 
@@ -37,14 +37,9 @@
                                                 <th scope="row">{{ $loop->index + 1 }} </th>
                                                 <td>{{ $role->name }} </td>
                                                 <td>
-                                                    <a class="btn btn-sm btn-info" href="@route('role.edit', $role->id)"><i
+                                                    <a class="btn btn-sm btn-success" href="@route('role.edit', $role->id)"><i
                                                             class="bi bi-pen"></i></a>
-                                                    {{-- <form action="@route('role.destroy', $role->id)" method="POST">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <button class="btn btn-sm btn-danger" type="submit"><i
-                                                                class="bi bi-trash"></i></button>
-                                                    </form><!--delete--> --}}
+                                                    
                                                 </td>
                                             </tr>
                                         @endforeach
