@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('profile_pic')->nullable();
             $table->string('date_of_birth')->nullable();
             $table->string('gender')->nullable();
-            $table->string('Join_date')->nullable();
-            $table->string('Address')->nullable();
+            $table->string('join_date')->nullable();
+            $table->string('address')->nullable();
 
             $table->string('password');
             $table->rememberToken();

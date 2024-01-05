@@ -19,12 +19,13 @@ class User extends Authenticatable
         'email',
         'role_id',
         'password',
+
         'designation',
         'profile_pic',
         'date_of_birth',
         'gender',
-        'Join_date',
-        'Address',
+        'join_date',
+        'address',
     ];
 
 
