@@ -7,17 +7,17 @@
     @component('components.breadcrumbs',[
         'parent' => 'Home',
         'page' => $title,
-        'parent_url' => 'admin.dashboard'
+        'parent_url' => 'dashboard'
     ])
     @endcomponent 
 
     {{-- page heading --}}
-    @component('components.heading', [
+    {{-- @component('components.heading', [
         'pageTitle' => 'Dashboard',
         'anotherPageIcon' => 'bi bi-plus',
-        'anotherPageUrl' => 'admin.dashboard',
+        'anotherPageUrl' => 'dashboard',
     ])
-    @endcomponent
+    @endcomponent --}}
 
     <section class="section dashboard">
         <div class="row">

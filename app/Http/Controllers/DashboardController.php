@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class AdminDashboardController extends Controller
+class DashboardController extends Controller
 {
     /* display of desboard */
     public function index()
     {
         try {
-            return view('admin.dashboard', ['title' => "Dashboard"]);
+            return view('dashboard', ['title' => "Dashboard"]);
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -31,7 +31,7 @@ class AdminDashboardController extends Controller
     public function profile_edit() 
     {
         $edit = Auth::user();
-        return view('admin.profile.edit', ['title' => "Profile Edit", 'edit' => $edit]);
+        return view('modules.profile.edit', ['title' => "Profile Edit", 'edit' => $edit]);
     }
 
     /** password change */

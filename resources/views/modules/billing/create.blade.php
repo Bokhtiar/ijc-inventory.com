@@ -10,14 +10,21 @@
     @component('components.breadcrumbs', [
         'parent' => 'Home',
         'page' => $title,
-        'parent_url' => 'admin.dashboard',
+        'parent_url' => 'dashboard',
+    ])
+    @endcomponent
+
+    @component('components.heading', [
+        'pageTitle' => $title,
+        'anotherPageIcon' => 'bi bi-list',
+        'anotherPageUrl' => 'billing.list',
     ])
     @endcomponent
 
 
     <section class="">
         <div class="shadow px-4 py-4 bg-white">
-            <form action="@route('admin.billing.store')" method="POST">
+            <form action="@route('billing.store')" method="POST">
                 @csrf
                 @php
                     $today = Carbon\Carbon::now();
@@ -36,11 +43,11 @@
                 <div class="row mt-3">
                     {{-- address --}}
                     <div class="col-12 col-sm-12 col-md-5 col-lg-5">
-                        <input type="text" class="form-control mt-2" placeholder="type here designation"
+                        <input type="text" class="form-control mt-2" placeholder="Type here designation"
                             name="designation" id="">
-                        <input type="text" class="form-control mt-2" placeholder="type here company name"
+                        <input type="text" class="form-control mt-2" placeholder="Type here company name"
                             name="company_name" id="">
-                        <textarea required class="form-control mt-2" placeholder="type here company location" name="company_location"
+                        <textarea required class="form-control mt-2" placeholder="Type here company location" name="company_location"
                             id="" cols="3" rows="2"></textarea>
 
                         {{-- att --}}
@@ -63,26 +70,26 @@
                             {{-- cell_no --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Cell.</div>
-                                <input required class="form-control" type="number" name="cell_no" ng-model="number"
+                                <input required class="form-control" type="number" placeholder="018XXXXXXXX" name="cell_no" ng-model="number"
                                     onKeyPress="if(this.value.length==11) return false;" min="0">
                             </div>
 
                             {{-- telephone --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Telephone.</div>
-                                <input class="form-control" type="text" name="telephone" ng-model="number">
+                                <input class="form-control" type="text" name="telephone" placeholder="XXXXXXXXXXXXXX" ng-model="number">
                             </div>
 
                             {{-- email --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Email.</div>
-                                <input type="email" class="form-control ml-3" name="email" id="">
+                                <input type="email" class="form-control ml-3" placeholder="devide@gmail.com" name="email" id="">
                             </div>
 
                             {{-- website --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Website.</div>
-                                <input type="text" class="form-control ml-3" name="website" id="">
+                                <input type="text" class="form-control ml-3" placeholder="xyz.com" name="website" id="">
                             </div>
 
                         </div>
@@ -146,7 +153,7 @@
                 </div>
 
                 <div class="text-center">
-                    <input required type="Submit" class="btn btn-success" value="Generate invoice" name=""
+                    <input required type="Submit" class="btn btn-success" value="Generate bill" name=""
                         id="">
                 </div>
             </form>
@@ -171,11 +178,11 @@
                 html += '<td><input required type="number" name="tax[]" class="form-control" /></td>';
                 if (number > 1) {
                     html +=
-                        '<td><button type="button" name="remove" id="" class="btn btn-danger remove">Remove</button></td></tr>';
+                        '<td><span type="button" name="remove" id="" class=" remove"><i class=" btn btn-outline-danger btn-sm text- ri-checkbox-indeterminate-fill"></i></span></td></tr>';
                     $('tbody').append(html);
                 } else {
                     html +=
-                        '<td><button type="button" name="add" id="add" class="btn btn-success">Add</button></td></tr>';
+                        '<td><span type="button" name="add" id="add" class=""><i class=" btn btn-outline-success btn-sm  ri-file-add-fill"></i></span></td></tr>';
                     $('tbody').html(html);
                 }
             }

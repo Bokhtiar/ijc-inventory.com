@@ -11,7 +11,7 @@
     @component('components.breadcrumbs', [
         'parent' => 'Home',
         'page' => $title,
-        'parent_url' => 'admin.dashboard',
+        'parent_url' => 'dashboard',
     ])
     @endcomponent
 
@@ -21,7 +21,7 @@
             <section class="">
                 <div class="d-flex justify-content-between">
                     <h3>{{ $title }}</h3>
-                    <a href="@route('admin.billing.pdf', $billings->billing_id)" class="btn btn-success">Dwonload</a>
+                    <a href="@route('billing.pdf', $billings->billing_id)" class="btn btn-success">Download Pdf</a>
                 </div>
 
 
@@ -75,8 +75,6 @@
                         </div>
                     </section>
 
-                    <!-- table -->
-                    <!-- <h3 style="float: left; text-align: center; margin-bottom: -1px;">INVOICE</h3> -->
                     <style>
                         th,
                         td {

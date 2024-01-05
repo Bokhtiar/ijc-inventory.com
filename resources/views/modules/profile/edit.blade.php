@@ -7,17 +7,10 @@
     @component('components.breadcrumbs', [
         'parent' => 'Home',
         'page' => $title,
-        'parent_url' => 'admin.dashboard',
+        'parent_url' => 'dashboard',
     ])
     @endcomponent
 
-    {{-- page heading --}}
-    @component('components.heading', [
-        'pageTitle' => 'Profile ',
-        'anotherPageIcon' => 'bi bi-plus',
-        'anotherPageUrl' => 'admin.dashboard',
-    ])
-    @endcomponent
 
     <section class="section dashboard">
 
@@ -35,7 +28,7 @@
 
                     {{-- password reset --}}
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                        <form method="POST" action="@route('admin.password-change')">
+                        <form method="POST" action="@route('password-change')">
                             @csrf
                             <div class="form-group">
                                 <label for="password" class=" col-form-label text-md-right">{{ __('Password') }}</label>
