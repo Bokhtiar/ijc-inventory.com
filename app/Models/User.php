@@ -19,8 +19,16 @@ class User extends Authenticatable
         'email',
         'role_id',
         'password',
-
+        'designation',
+        'profile_pic',
+        'date_of_birth',
+        'gender',
+        'Join_date',
+        'Address',
     ];
+
+
+
 
     /* The attributes that should be hidden for serialization. */
     protected $hidden = [
