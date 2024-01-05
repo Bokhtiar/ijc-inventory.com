@@ -100,119 +100,124 @@
                         </div>
 
                         <table style="width:100%; ">
+                <tr>
+                    <th style="font-size: 14px; height:20px; width: 5%">SL.No.</th>
+                    <th style="font-size: 14px; height:20px; width: 35%;">Description of Services</th>
+                    <th style="font-size: 14px; height:20px; width: 10%">Govt. Fees</th>
+                    <th style="font-size: 14px; height:20px; width: 10%">Other Receiptable Expenses</th>
+                    <th style="font-size: 14px; height:20px; width: 10%">Professional fees</th>
+                    <th style="font-size: 14px; height:20px; width: 10%">VAT</th>
+                    <th style="font-size: 14px; height:20px; width: 10%">Tax</th>
+                    <th style="font-size: 14px; height:20px; width: 10%">Grand Total</th>
+                </tr>
 
-                            <tr>
-                                <th style="font-size: 13px; height:25px; width: 5%">SL.No.</th>
-                                <th style="font-size: 13px; height:25px; width: 35%;">Description of Services</th>
-                                <th style="font-size: 13px; height:25px; width: 10%">Govt. Fees</th>
-                                <th style="font-size: 13px; height:25px; width: 10%">Other Receiptable Expenses</th>
-                                <th style="font-size: 13px; height:25px; width: 10%">Professional fees</th>
-                                <th style="font-size: 13px; height:25px; width: 10%">VAT</th>
-                                <th style="font-size: 13px; height:25px; width: 10%">Tax</th>
-                                <th style="font-size: 13px; height:25px; width: 10%">Grand Total</th>
-                            </tr>
+                @php
+                    $govt_fees = 0;
+                    $others_expenses = 0;
+                    $professional_fees = 0;
+                    $vat = 0;
+                    $tax = 0;
+                    $grand_total = 0;
+                @endphp
 
-                            @php
-                                $govt_fees = 0;
-                                $others_expenses = 0;
-                                $professional_fees = 0;
-                                $vat = 0;
-                                $tax = 0;
-                                $grand_total = 0;
-                            @endphp
+                @foreach ($services as $item)
+                    <tr>
+                        <td style="font-size: 14px; height:20px; width: 5% ">{{ $loop->index + 1 }}</td>
+                        <td style="font-size: 14px; height:20px; width: 25%; text-align: left;">
+                            {{ $item->description_service }}
+                        </td>
+                        <td style="font-size: 14px; height:20px; width: 10% ">
+                            {{ App\Models\Service::moneyCurrency($item->govt_fees) }}</td>
+                        <td style="font-size: 14px; height:20px; width: 10% ">
+                            {{ App\Models\Service::moneyCurrency($item->others_expenses) }}</td>
+                        <td style="font-size: 14px; height:20px; width: 10% ">
+                            {{ App\Models\Service::moneyCurrency($item->professional_fees) }}
+                        </td>
+                        <td style="font-size: 14px; height:20px; width: 10% ">
+                            {{ App\Models\Service::moneyCurrency($item->vat) }}</td>
+                        <td style="font-size: 14px; height:20px; width: 10% ">
+                            {{ App\Models\Service::moneyCurrency($item->tax) }}</td>
 
-                            @foreach ($services as $item)
-                                <tr>
-                                    <td style="font-size: 13px; height:25px; width: 5% ">{{ $loop->index + 1 }}</td>
-                                    <td style="font-size: 13px; height:25px; width: 35%; text-align: left;">
-                                        {{ $item->description_service }}
-                                    </td>
-                                    <td style="font-size: 13px; height:25px; width: 10% ">
-                                        {{ App\Models\Service::moneyCurrency($item->govt_fees) }}</td>
-                                    <td style="font-size: 13px; height:25px; width: 10% ">
-                                        {{ App\Models\Service::moneyCurrency($item->others_expenses) }}</td>
-                                    <td style="font-size: 13px; height:25px; width: 10% ">
-                                        {{ App\Models\Service::moneyCurrency($item->professional_fees) }}
-                                    </td>
-                                    <td style="font-size: 13px; height:25px; width: 10% ">
-                                        {{ App\Models\Service::moneyCurrency($item->vat) }}
-                                    </td>
-                                    <td style="font-size: 13px; height:25px; width: 10% ">
-                                        {{ App\Models\Service::moneyCurrency($item->tax) }}
-                                    </td>
-                                    @php
-
-                                    @endphp
-                                    <td style="font-size: 13px; height:25px; width: 10% ">
-                                        {{ App\Models\Service::moneyCurrency($item->grand_total) }}</td>
+                        <td style="font-size: 14px; height:20px; width: 20% ">
+                            {{ App\Models\Service::moneyCurrency($item->grand_total) }}</td>
 
 
-                                    <td style="display: none">
-                                        {{ $govt_fees += $item->govt_fees }}
-                                        {{ $others_expenses += $item->others_expenses }}
-                                        {{ $professional_fees += $item->professional_fees }}
-                                        {{ $vat += $item->vat }}
-                                        {{ $tax += $item->tax }}
-                                        {{ $grand_total += $item->grand_total }}
-                                    </td>
-                                </tr>
-                            @endforeach
+                        <td style="display: none">
+                            {{ $govt_fees += $item->govt_fees }}
+                            {{ $others_expenses += $item->others_expenses }}
+                            {{ $professional_fees += $item->professional_fees }}
+                            {{ $vat += $item->vat }}
+                            {{ $tax += $item->tax }}
+                            {{ $grand_total += $item->grand_total }}
+                        </td>
+                    </tr>
+                @endforeach
 
-                            <tr>
-                                <td colspan="2"
-                                    style="text-align: left; font-weight: 900; font-size: 14px; height:25px; width: 40% ">
-                                    Total
-                                    Amount</td>
-                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
-                                    {{ App\Models\Service::moneyCurrency($govt_fees) }}
-                                </td>
-                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
-                                    {{ App\Models\Service::moneyCurrency($others_expenses) }}</td>
-                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
-                                    {{ App\Models\Service::moneyCurrency($professional_fees) }}</td>
-                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
-                                    {{ App\Models\Service::moneyCurrency($vat) }}
-                                </td>
-                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
-                                    {{ App\Models\Service::moneyCurrency($tax) }}
-                                </td>
+                <tr>
+                    <td colspan="2"
+                        style="text-align: left; font-weight: 900; font-size: 15px; height:20px; width: 40% ">Total
+                        Amount</td>
+                    <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">
+                        {{ App\Models\Service::moneyCurrency($govt_fees) }}</td>
+                    <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">
+                        {{ App\Models\Service::moneyCurrency($others_expenses) }}</td>
+                    <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">
+                        {{ App\Models\Service::moneyCurrency($professional_fees) }}
+                    </td>
+                    <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">
+                        {{ App\Models\Service::moneyCurrency($vat) }}</td>
+                    <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">
+                        {{ App\Models\Service::moneyCurrency($tax) }}</td>
 
-                                <td style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
-                                    {{ App\Models\Service::moneyCurrency($grand_total) }}
-                                </td>
-                            </tr>
+                    <td style="font-size: 14px; height:20px; width: 10%;font-weight: 900; ">
+                        {{ App\Models\Service::moneyCurrency($grand_total) }}</td>
+                </tr>
+                @if ($billings->less_advance)
+                    {{-- less advence --}}
+                    <tr>
+                        <td colspan="2" style="text-align: left;font-weight: 900; font-size: 14px; height:25px;">
+                            Less Advence:
+                        </td>
+                        <td colspan="5">
 
-                            {{-- less advence --}}
-                            <tr>
-                                <td colspan="2" style="text-align: left;font-weight: 900; font-size: 14px; height:25px;">
-                                    Less Advence:
-                                </td>
-                                <td colspan="5">
-                                      
-                                </td>
-                                <td>
-                                    <strong style="font-size: 13px; height:25px; width: 10%;font-weight: 900; "> {{ App\Models\Service::moneyCurrency($billings->less_advance) }}</strong>
-                                </td> 
-                            </tr>
+                        </td>
+                        <td>
+                            <strong style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">
+                                {{ App\Models\Service::moneyCurrency($billings->less_advance) }}</strong>
+                        </td>
+                    </tr>
 
-                            {{--  Due amount: --}}
-                            <tr>
-                                <td colspan="2" style="text-align: left;font-weight: 900; font-size: 14px; height:25px;">
-                                   Due amount:
-                                </td>
-                                <td colspan="5">
-                                      
-                                </td>
-                                <td>
-                                    <strong style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ App\Models\Service::moneyCurrency($grand_total - $billings->less_advance) }}</strong>
-                                </td> 
-                            </tr>
-                            <tr>
-                                <td colspan="8" style="text-align: left;font-weight: 900; font-size: 14px; height:25px;">
-                                    Amount in words:
-                                    {{ App\Models\Service::numberToWordConvert($grand_total - $billings->less_advance) }} Taka Only</td>
-                            </tr>
-                        </table>
+                    {{--  Due amount: --}}
+                    <tr>
+                        <td colspan="2" style="text-align: left;font-weight: 900; font-size: 14px; height:25px;">
+                            Due Amount:
+                        </td>
+                        <td colspan="5">
+
+                        </td>
+                        <td>
+                            <strong
+                                style="font-size: 13px; height:25px; width: 10%;font-weight: 900; ">{{ App\Models\Service::moneyCurrency($grand_total - $billings->less_advance) }}</strong>
+                        </td>
+                    </tr>
+                    {{-- amount in word --}}
+                    <tr>
+                        <td colspan="8" style="text-align: left;font-weight: 900; font-size: 14px; height:25px;">
+                            Amount In Words:
+                            {{ App\Models\Service::numberToWordConvert($grand_total - $billings->less_advance) }} Taka
+                            Only
+                        </td>
+                    </tr>
+                @else
+                    <tr>
+                        <td colspan="8" style="text-align: left;font-weight: 900; font-size: 14px; height:25px;">
+                            Amount In Words:
+                            {{ App\Models\Service::numberToWordConvert($grand_total) }} Taka Only
+                        </td>
+                    </tr>
+                @endif
+
+            </table>
                     </div>
 
                     {{-- bank detais --}}

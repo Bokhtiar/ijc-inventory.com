@@ -30,6 +30,13 @@
         </li><!-- End billing Nav -->
 
         <li class="nav-item">
+            <a class="nav-link" href="@route('admin.profile.edit')">
+                <i class="bi bi-grid"></i>
+                <span>Profile</span>
+            </a>
+        </li><!-- End billing Nav -->
+
+        <li class="nav-item">
             <a class="nav-link" href="@route('admin.logout')">
                 <i class="bi bi-grid"></i>
                 <span>Logout</span>

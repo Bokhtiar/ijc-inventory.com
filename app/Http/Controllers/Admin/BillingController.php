@@ -145,8 +145,8 @@ class BillingController extends Controller
  
 
         $pdf = PDF::loadView('admin.billing.pdf', $data);
-        return $pdf->stream('info.pdf', $data, array("Attachment" => false));
-        //return $pdf->download($billings->ref.'.pdf');
+        //return $pdf->stream('info.pdf', $data, array("Attachment" => false));
+        return $pdf->download($billings->ref.'.pdf');
     }
 
     /* resource destory */
@@ -205,5 +205,88 @@ class BillingController extends Controller
         $start_date = $request->start_date;
         $end_date = $request->end_date;
         return Excel::download(new ExportBilling($start_date, $end_date), $start_date.'-to-'.$end_date.'.xlsx');
+    }
+
+    /** edit */
+    public function edit($id){
+        $edit = Billing::find($id);
+        $services = Service::where('billing_id', $id)->get();
+        $title = "Billing edit";
+        return view('admin.billing.edit', compact('edit', 'services', 'title'));
+    }
+
+    public function bllling_ways_service($id){
+        $services =  Service::where('billing_id', $id)->get();
+        return response()->json([
+            'services' => $services,
+        ]);
+    }
+
+    /** update */
+    public function update(Request $request,$id)
+    {
+        // billing exist data delete
+        $services = Service::where('billing_id', $id)->get();
+        foreach ($services as $key => $item) {
+            Service::find($item->service_id)->delete();
+        }
+
+        $billing = Billing::find($id);
+        $billing->ref = $billing->ref; 
+        $billing->designation = $request->designation;
+        $billing->company_name = $request->company_name;
+        $billing->company_location = $request->company_location;
+        $billing->att = $request->att;
+        $billing->date = $request->date;
+        $billing->cell_no = $request->cell_no;
+        $billing->less_advance = $request->less_advance;
+        $billing->foreign_company = $request->foreign_company;
+        $billing->telephone = $request->telephone;
+        $billing->email = $request->email;
+        $billing->website = $request->website;
+        $billing->bill_creator = $request->bill_creator;
+        $billing->biller_designation = $request->biller_designation;
+        $billing->save();
+
+        /** daynamic form */
+        $description_service = $request->description_service;
+        $govt_fees = $request->govt_fees;
+        $others_expenses = $request->others_expenses;
+        $professional_fees = $request->professional_fees;
+        $tax = $request->tax;
+        $vat = $request->vat;
+
+        for ($count = 0; $count < count($description_service); $count++) {
+            $data = array(
+                'billing_id' => $billing->billing_id,
+                'description_service' => $description_service[$count],
+                'govt_fees'  => $govt_fees[$count],
+                'others_expenses'  => $others_expenses[$count],
+                'professional_fees'  => $professional_fees[$count],
+                'tax'  => $tax[$count],
+                'vat'  => $vat[$count],
+                'grand_total'  => $govt_fees[$count] + $others_expenses[$count] + $professional_fees[$count] + $tax[$count]  + $vat[$count],
+            );
+            $insert_data[] = $data;
+        }
+
+        Service::insert($insert_data);
+
+        // $billings = Billing::find($billing->billing_id);
+        // $services = Service::where('billing_id', $billing->billing_id)->get();
+
+        // $data = [
+        //     'billings' => $billings,
+        //     'services' => $services
+        // ];
+
+
+        //     $pdf = PDF::loadView('admin\billing\pdf', $data);
+
+        //    return $pdf->download('itsolutionstuff.pdf');
+
+        // return $pdf->stream('info.pdf', array("Attachment" => false));
+
+        return redirect()->route('admin.billing.list')->with('message', 'Billing Successfully Done.');
     }
 }

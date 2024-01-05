@@ -53,9 +53,8 @@
                             <td>
                                 <a class="btn btn-sm btn-success" href="@route('admin.billing.show', $billing->billing_id)"><i class="bi bi-eye"></i></a>
                                 <a class="btn btn-sm btn-success" href="@route('admin.billing.print', $billing->billing_id)"><i class="bi bi-printer"></i></a>
+                                <a class="btn btn-sm btn-info" href="@route('admin.billing.edit', $billing->billing_id)"><i class="bi bi-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href="@route('admin.billing.trash', $billing->billing_id)"><i class="bi bi-trash"></i></a>
-
-
                                 {{-- <form action="@route('admin.billing.trash', $billing->billing_id)" method="POST">
                                 @method('DELETE')
                                 @csrf
@@ -70,8 +69,4 @@
             <!-- End Table with stripped rows -->
         </div>
     </section>
-
-
-
-
 @endsection
