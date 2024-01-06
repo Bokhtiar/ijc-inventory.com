@@ -40,14 +40,12 @@
                             <td>{{ $employee->phone }} </td>
                             <td>{{ $employee->phone }} </td>
                             <td>
-                                <a class="btn btn-sm btn-success mt-1" href="@route('employee.show', $employee->employee_id)"><i class="bi bi-eye"></i></a>
-                                <a class="btn btn-sm btn-success mt-1" href="@route('employee.print', $employee->employee_id)"><i
-                                        class="bi bi-printer"></i></a>
-                                <a class="btn btn-sm btn-info mt-1" href="@route('employee.edit', $employee->employee_id)"><i class="bi bi-pen"></i></a>
-                                <form action="@route('employee.destroy', $employee->employee_id)" method="POST">
+                                <a class="btn btn-sm btn-success mt-1" href="@route('employee.show', $employee->id)"><i class="bi bi-eye"></i></a>
+                                <a class="btn btn-sm btn-info mt-1" href="@route('employee.edit', $employee->id)"><i class="bi bi-pen"></i></a>
+                                <form action="@route('employee.destroy', $employee->id)" method="POST">
                                     @method('DELETE')
                                     @csrf
-                                    <button class="btn btn-sm btn-danger" type="submit"><i
+                                    <button class="btn btn-sm btn-danger mt-1" type="submit"><i
                                             class="bi bi-trash"></i></button>
                                 </form>
                             </td>
