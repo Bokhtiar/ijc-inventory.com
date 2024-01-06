@@ -31,7 +31,7 @@ class EmployeeController extends Controller
 
 
     /* store resoruce documents */
-    public static function storeDocument($request, $image = null)
+    public static function storeDocument($request, $image = null, $password = null)
     {
         if ($request->hasFile('profile_pic')) {
             $path = 'images/user/';
@@ -46,8 +46,7 @@ class EmployeeController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
             'role_id' => 3,
-            'password' => $request->password,
-
+            'password' => $request->password ? $request->password : $password,
             'designation' => $request->designation,
             'profile_pic' => @$uploadImage,
             'date_of_birth' => $request->date_of_birth,
@@ -88,7 +87,12 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $edit = User::find($id);
+            return view('modules.employee.createUpdate', ['title' => 'Employee edit', 'edit' => $edit]);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
@@ -96,7 +100,13 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $update = User::find($id);
+            $update->update($this->storeDocument($request, $update->profile_pic, $update->password));
+            return redirect()->route('employee.index')->with('message', 'Employee update Successfully Done');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
@@ -104,6 +114,11 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+       try {
+            User::find($id)->delete();
+            return redirect()->back()->with('info', 'Employee Deleted Successfully');
+       } catch (\Throwable $th) {
+        throw $th;
+       }
     }
 }

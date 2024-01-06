@@ -13,7 +13,7 @@
     @endcomponent
 
     @component('components.heading', [
-        'pageTitle' => 'Dashboard',
+        'pageTitle' => $title,
         'anotherPageIcon' => 'bi bi-plus',
         'anotherPageUrl' => 'employee.create',
     ])
@@ -25,6 +25,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Index</th>
+                        <th scope="col">Image</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Phone</th>
@@ -35,6 +36,8 @@
                     @foreach ($employees as $employee)
                         <tr>
                             <th scope="row">{{ $loop->index + 1 }} </th>
+                            <th>  <img src="{{ asset($employee->profile_pic ? $employee->profile_pic : 'admin/assets/img/avater.jpg') }}"
+                                    alt="image" height="40" width="40" class="rounded-circle"></th>
                             <td>{{ $employee->name }} </td>
                             <td>{{ $employee->email }} </td>
                             <td>{{ $employee->phone }} </td>
