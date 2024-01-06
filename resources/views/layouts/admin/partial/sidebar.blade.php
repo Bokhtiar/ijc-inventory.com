@@ -57,7 +57,15 @@
                 <i class="bi bi-grid"></i>
                 <span>Employee</span>
             </a>
-        </li><!-- End permission Nav -->
+        </li><!-- End employee Nav -->
+
+
+        <li class="nav-item">
+            <a class="nav-link" href="@route('customer.index')">
+                <i class="bi bi-grid"></i>
+                <span>Customer</span>
+            </a>
+        </li><!-- End employee Nav -->
 
 
         {{-- @isset(auth()->user()->role->permission['permission']['permission']['list'])

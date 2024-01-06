@@ -1,19 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
- 
-use App\Models\User;
-use Illuminate\Http\Request;
-use App\Traits\ImageUpload;
 
-class EmployeeController extends Controller
+use App\Models\User;
+use App\Traits\ImageUpload;
+use Illuminate\Http\Request;
+
+class CustomerController extends Controller
 {
     /** Display a listing of the resource. */
     public function index()
     {
         try {
-            $employee = User::latest()->where('role_id', 3)->get();
-            return view('modules.employee.index', ['title'=> 'Employee List', 'employees' => $employee]);
+            $customer = User::latest()->where('role_id', 4)->get();
+            return view('modules.customer.index', ['title' => 'Customer List', 'customers' => $customer]);
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -23,7 +23,7 @@ class EmployeeController extends Controller
     public function create()
     {
         try {
-            return view('modules.employee.createUpdate', ['title' => 'Employee Create']);
+            return view('modules.customer.createUpdate', ['title' => 'Customer Create']);
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -37,20 +37,18 @@ class EmployeeController extends Controller
             $path = 'images/user/';
             $db_field_name = 'profile_pic';
             $uploadImage =  ImageUpload::Image($request, $path, $db_field_name);
-        }else{
-            $uploadImage = $image;   
+        } else {
+            $uploadImage = $image;
         }
 
         return array(
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
-            'role_id' => 3,
+            'role_id' => 4,
             'password' => $request->password ? $request->password : $password,
             'designation' => $request->designation,
             'profile_pic' => @$uploadImage,
-            'date_of_birth' => $request->date_of_birth,
-            'gender' => $request->gender,
             'join_date' => $request->join_date,
             'address' => $request->address,
         );
@@ -63,7 +61,7 @@ class EmployeeController extends Controller
     {
         try {
             User::create($this->storeDocument($request));
-            return redirect()->route('employee.index')->with('message', 'Employee Created Successfully Done');
+            return redirect()->route('customer.index')->with('message', 'Customer Created Successfully Done');
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -76,7 +74,7 @@ class EmployeeController extends Controller
     {
         try {
             $show = User::find($id);
-            return view('modules.employee.show', ['title' => "Emloyee Details", 'show' => $show]);
+            return view('modules.customer.show', ['title' => "Customer Details", 'show' => $show]);
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -89,7 +87,7 @@ class EmployeeController extends Controller
     {
         try {
             $edit = User::find($id);
-            return view('modules.employee.createUpdate', ['title' => 'Employee edit', 'edit' => $edit]);
+            return view('modules.customer.createUpdate', ['title' => 'Customer edit', 'edit' => $edit]);
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -103,7 +101,7 @@ class EmployeeController extends Controller
         try {
             $update = User::find($id);
             $update->update($this->storeDocument($request, $update->profile_pic, $update->password));
-            return redirect()->route('employee.index')->with('message', 'Employee update Successfully Done');
+            return redirect()->route('customer.index')->with('message', 'Customer update Successfully Done');
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -114,11 +112,11 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-       try {
+        try {
             User::find($id)->delete();
-            return redirect()->back()->with('info', 'Employee Deleted Successfully');
-       } catch (\Throwable $th) {
-        throw $th;
-       }
+            return redirect()->back()->with('info', 'Customer Deleted Successfully');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }
