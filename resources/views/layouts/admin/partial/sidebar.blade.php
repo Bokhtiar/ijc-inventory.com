@@ -34,7 +34,7 @@
                 <i class="bi bi-grid"></i>
                 <span>Profile</span>
             </a>
-        </li><!-- End billing Nav -->
+        </li><!-- End profile Nav -->
 
         <li class="nav-item">
             <a class="nav-link" href="@route('role.index')">
@@ -48,6 +48,14 @@
             <a class="nav-link" href="@route('permission.index')">
                 <i class="bi bi-grid"></i>
                 <span>Permission</span>
+            </a>
+        </li><!-- End permission Nav -->
+
+
+        <li class="nav-item">
+            <a class="nav-link" href="@route('employee.index')">
+                <i class="bi bi-grid"></i>
+                <span>Employee</span>
             </a>
         </li><!-- End permission Nav -->
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BillingController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +42,7 @@ Route::get('/', function () {
 
 
 
+Route::resource('employee', EmployeeController::class);
 Route::resource('role', RoleController::class);
 Route::get('role/status/{role_id}', [RoleController::class, 'status'])->name('role.status');
 
