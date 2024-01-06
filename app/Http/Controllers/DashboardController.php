@@ -50,12 +50,14 @@ class DashboardController extends Controller
                 Auth::logout();
                 return redirect()->route('login')->with('message', "Password change Successfully Done.");;
             } else {
-                return redirect()->back()->with('info', "Already exist this password.");;
+                return redirect()->back()->with('info', "Your old password & new password same.");;
             }
         } else {
             return redirect()->back()->with('error', "Something went wrong.");;
         }
     }
+
+    
 
     public function logout()
     {
