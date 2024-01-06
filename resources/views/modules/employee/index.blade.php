@@ -49,7 +49,6 @@
                                             class="bi bi-trash"></i></button>
                                 </form>
                             </td>
-
                         </tr>
                     @endforeach
                 </tbody>

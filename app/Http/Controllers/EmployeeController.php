@@ -12,7 +12,7 @@ class EmployeeController extends Controller
     public function index()
     {
         try {
-            $employee = User::where('role_id', 3)->get();
+            $employee = User::latest()->where('role_id', 3)->get();
             return view('modules.employee.index', ['title'=> 'Employee List', 'employees' => $employee]);
         } catch (\Throwable $th) {
             throw $th;
@@ -75,7 +75,12 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $show = User::find($id);
+            return view('modules.employee.show', ['title' => "Emloyee Details", 'show' => $show]);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
