@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -85,7 +83,7 @@
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
-                                               
+
                                             </div>
                                         </div>
 
@@ -100,7 +98,7 @@
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
-                                           
+
                                         </div>
 
                                         <div class="col-12">
@@ -113,7 +111,13 @@
                                         <div class="col-12">
                                             <button class="btn btn-primary w-100" type="submit">Login</button>
                                         </div>
-                                  
+
+                                        @if (Route::has('password.request'))
+                                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                {{ __('Forgot Your Password?') }}
+                                            </a>
+                                        @endif
+
                                     </form>
                                 </div>
                             </div>
