@@ -2,6 +2,10 @@
 @section('title', $title)
 @section('css')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 @endsection
 @section('admin_content')
 
@@ -70,26 +74,34 @@
                             {{-- cell_no --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Cell.</div>
-                                <input required class="form-control" type="number" placeholder="018XXXXXXXX" name="cell_no" ng-model="number"
-                                    onKeyPress="if(this.value.length==11) return false;" min="0">
+                                <input required class="form-control" type="number" placeholder="018XXXXXXXX" name="cell_no"
+                                    ng-model="number" onKeyPress="if(this.value.length==11) return false;" min="0">
                             </div>
 
                             {{-- telephone --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Telephone.</div>
-                                <input class="form-control" type="text" name="telephone" placeholder="XXXXXXXXXXXXXX" ng-model="number">
+                                <input class="form-control" type="text" name="telephone" placeholder="XXXXXXXXXXXXXX"
+                                    ng-model="number">
                             </div>
 
                             {{-- email --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Email.</div>
-                                <input type="email" class="form-control ml-3" placeholder="devide@gmail.com" name="email" id="">
+                                {{-- <input type="email" class="form-control ml-3" placeholder="devide@gmail.com"
+                                    name="email" id=""> --}}
+                                <select required class="form-control" id="search" style="width:500px;" name="user_id">
+                                    {{-- <option value="7">asdads@gmail.com</option> defoult values --}} 
+                                </select>
                             </div>
+
+
 
                             {{-- website --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Website.</div>
-                                <input type="text" class="form-control ml-3" placeholder="xyz.com" name="website" id="">
+                                <input type="text" class="form-control ml-3" placeholder="xyz.com" name="website"
+                                    id="">
                             </div>
 
                         </div>
@@ -118,7 +130,6 @@
                     </table>
                 </div>
 
-
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                         <input type="text" class="form-control" placeholder="Less advance" name="less_advance"
@@ -131,14 +142,8 @@
                     </div>
                 </div>
 
-
-
-
-
                 {{-- footer --}}
                 <div class="row mt-5 mb-2">
-
-
                     <div class="col-sm-12 col-lg-6 col-md-6">
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             <input required type="text" class="form-control mt-2" placeholder="Bill creator name"
@@ -164,8 +169,9 @@
     <script>
         $(document).ready(function() {
 
-            var count = 1;
 
+            // dynamic form
+            var count = 1;
             dynamic_field(count);
 
             function dynamic_field(number) {
@@ -225,6 +231,30 @@
                 })
             });
 
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $('#search').select2({
+            placeholder: 'Select an user',
+            ajax: {
+                url: '/autocomplete/customer/search',
+                dataType: 'json',
+                delay: 250,
+                processResults: function(data) {
+                    console.log("data", data);
+                    return {
+                        results: $.map(data, function(item) {
+                            return {
+                                text: item.email,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
         });
     </script>
 

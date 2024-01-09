@@ -8,7 +8,9 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Exports\ExportBilling;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class BillingController extends Controller
@@ -17,7 +19,7 @@ class BillingController extends Controller
     public function index()
     {
         try {
-            $billings = Billing::where('status', 0)->latest()->get(['billing_id', 'status', 'date', 'ref', 'telephone', 'email', 'cell_no']);
+            $billings = Billing::latest()->get(['billing_id', 'status', 'date', 'ref', 'telephone', 'user_id', 'cell_no']);
             return view('modules.billing.index', ['title' => "Billing List", 'billings' => $billings]);
         } catch (\Throwable $th) {
             throw $th;
@@ -40,7 +42,8 @@ class BillingController extends Controller
     public function create()
     {
         try {
-            return view('modules.billing.create', ['title' => "Billing create"]);
+            $customers = User::where('role_id', 4)->get();
+            return view('modules.billing.create', ['title' => "Billing create", 'customers' => $customers]);
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -66,10 +69,11 @@ class BillingController extends Controller
         $billing->less_advance = $request->less_advance;
         $billing->foreign_company = $request->foreign_company;
         $billing->telephone = $request->telephone;
-        $billing->email = $request->email;
+        $billing->user_id = $request->user_id;
         $billing->website = $request->website;
         $billing->bill_creator = $request->bill_creator;
         $billing->biller_designation = $request->biller_designation;
+        $billing->created_by = Auth::user()->id;
         $billing->save();
 
         $description_service = $request->description_service;
@@ -221,7 +225,7 @@ class BillingController extends Controller
         $billing->less_advance = $request->less_advance;
         $billing->foreign_company = $request->foreign_company;
         $billing->telephone = $request->telephone;
-        $billing->email = $request->email;
+        $billing->user_id = $request->user_id;
         $billing->website = $request->website;
         $billing->bill_creator = $request->bill_creator;
         $billing->biller_designation = $request->biller_designation;

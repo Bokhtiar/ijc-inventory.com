@@ -44,8 +44,10 @@ Route::get('/logout', [App\Http\Controllers\DashboardController::class, 'logout'
 
 Route::resource('employee', EmployeeController::class);
 Route::resource('customer', CustomerController::class);
+Route::get('autocomplete/customer/search', [CustomerController::class, 'customerSearch']);
+
 Route::resource('role', RoleController::class);
 Route::get('role/status/{role_id}', [RoleController::class, 'status'])->name('role.status');
 
-/**role  */
+/**role  */ 
 Route::resource('permission', PermissionController::class);

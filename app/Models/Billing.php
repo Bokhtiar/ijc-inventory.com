@@ -21,7 +21,7 @@ class Billing extends Model
         'date',
         'cell_no',
         'telephone',
-        'email',
+        'user_id',
         'website',
         'less_advance',
         'foreign_company',
@@ -29,4 +29,9 @@ class Billing extends Model
         'biller_designation',
     
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

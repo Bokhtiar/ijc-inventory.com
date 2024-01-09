@@ -55,7 +55,7 @@
                             <td>{{ Carbon\Carbon::createFromFormat('Y-m-d', $billing->date)->format('d/m/Y') }} </td>
                             <td>{{ $billing->ref }} </td>
                             <td>{{ $billing->telephone }} </td>
-                            <td>{{ $billing->email }} </td>
+                            <td>{{ $billing->user ? $billing->user->email : "" }} </td>
                             <td>{{ $billing->cell_no }} </td>
                             <td>
                                 <a class="btn btn-sm btn-success mt-1" href="@route('billing.show', $billing->billing_id)"><i class="bi bi-eye"></i></a>

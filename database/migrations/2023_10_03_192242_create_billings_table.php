@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('date');
             $table->string('cell_no');
             $table->string('telephone');
-            $table->string('email');
+            $table->string('user_id');
             $table->text('website')->nullable();
 
             $table->longText('less_advance')->nullable();

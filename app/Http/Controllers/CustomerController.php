@@ -119,4 +119,15 @@ class CustomerController extends Controller
             throw $th;
         }
     }
+
+    /** customer sarch */
+    public function customerSearch(Request $request)
+    {
+        $data = [];
+        $data = User::where('role_id',4)->select("id", "email",)
+            ->where('email', 'LIKE', '%' . $request->get('q') . '%')
+            ->latest()
+            ->get();
+        return response()->json($data);
+    }
 }
