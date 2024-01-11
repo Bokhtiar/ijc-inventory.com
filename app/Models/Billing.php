@@ -30,8 +30,11 @@ class Billing extends Model
     
     ];
 
+    // Billing model
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
+    
 }

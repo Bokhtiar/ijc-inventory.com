@@ -10,6 +10,7 @@ use App\Exports\ExportBilling;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -183,9 +184,26 @@ class BillingController extends Controller
     /** export bill */
     public function exportBills(Request $request)
     {
-        $start_date = $request->start_date;
-        $end_date = $request->end_date;
-        return Excel::download(new ExportBilling($start_date, $end_date), $start_date . '-to-' . $end_date . '.xlsx');
+        //dd($request->start_date);
+       
+        $data = [
+            "daterange" => $request->daterange
+        ];
+//"12/05/2023-to-12/29/2023" 
+        $dateRange = explode(" - ", $data['daterange']);
+        $start_date = trim($dateRange[0]);
+        $end_date = trim($dateRange[1]);
+
+        $carbonStartDate = Carbon::createFromFormat('m/d/Y', $start_date);
+        $formattedStartDate = $carbonStartDate->format("Y-m-d");
+
+        $carbonEndDate = Carbon::createFromFormat('m/d/Y', $end_date);
+        $formattedEndDate = $carbonEndDate->format("Y-m-d");
+
+        $filename = $formattedStartDate . '-to-' . $formattedEndDate;
+
+        $filename = str_replace(['/', '\\'], '_', $filename . '.xlsx') ;
+        return Excel::download(new ExportBilling($formattedStartDate, $formattedEndDate), $filename);
     }
 
     /** edit */

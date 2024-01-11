@@ -25,27 +25,28 @@ class ExportBilling implements FromCollection, WithHeadings, ShouldAutoSize, Wit
     * @return \Illuminate\Support\Collection
     */
     public function collection()
-    {  
-        // $data = DB::table('users_info')
-        // ->whereBetween('pdate', [$this->from_date, $this->to_date])
-        return Billing::whereBetween('date', [$this->start_date, $this->end_date])->get([
-            'ref',
-            'designation',
-            'company_name',
-            'company_location',
-            'att',
-            'date',
-            'cell_no',
-            'telephone',
-            'email',
-            'website',
-            'less_advance',
-            'foreign_company',
-            'bill_creator',
-            'biller_designation',
-        ]);
-    
-        // return User::select('name', 'email')->get(); custome 
+    {
+        return Billing::query()
+            ->whereBetween('date', [$this->start_date, $this->end_date])
+        ->select(
+            'billings.ref',
+            'billings.designation',
+            'billings.company_name',
+            'billings.company_location',
+            'billings.att',
+            'billings.date',
+            'billings.cell_no',
+            'billings.telephone',
+            'users.email',
+            'billings.website',
+            'billings.less_advance',
+            'billings.foreign_company',
+            'billings.bill_creator',
+            'billings.biller_designation',
+        )
+        ->join('users', 'users.id', '=', 'billings.user_id')
+            ->get();
+
     }
 
     public function headings(): array
