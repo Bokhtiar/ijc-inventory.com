@@ -35,21 +35,31 @@
                 <span>Permission</span>
             </a>
         </li><!-- End permission Nav -->
+        @isset(auth()->user()->role->permission['permission']['employee']['list'])
+            <li class="nav-item">
+                <a class="nav-link" href="@route('employee.index')">
+                    <i class="bi bi-grid"></i>
+                    <span>Employee</span>
+                </a>
+            </li><!-- End employee Nav -->
+         @endisset
+     
+        @isset(auth()->user()->role->permission['permission']['customer']['list'])
+            <li class="nav-item">
+                <a class="nav-link" href="@route('customer.index')">
+                    <i class="bi bi-grid"></i>
+                    <span>Customer</span>
+                </a>
+            </li><!-- End customer Nav -->
+        @endisset
 
-        <li class="nav-item">
-            <a class="nav-link" href="@route('employee.index')">
-                <i class="bi bi-grid"></i>
-                <span>Employee</span>
-            </a>
-        </li><!-- End employee Nav -->
-
-         @isset(auth()->user()->role->permission['permission']['report']['list'])
-        <li class="nav-item">
-            <a class="nav-link" href="@route('report.index', 'today')">
-                <i class="bi bi-grid"></i>
-                <span>Report</span>
-            </a>
-        </li><!-- End employee Nav -->
+        @isset(auth()->user()->role->permission['permission']['report']['list'])
+            <li class="nav-item">
+                <a class="nav-link" href="@route('report.index', 'today')">
+                    <i class="bi bi-grid"></i>
+                    <span>Report</span>
+                </a>
+            </li><!-- End employee Nav -->
         @endisset
 
         <li class="nav-item">

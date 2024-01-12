@@ -42,14 +42,20 @@
                             <td>{{ $employee->email }} </td>
                             <td>{{ $employee->phone }} </td>
                             <td>
+                                @isset(auth()->user()->role->permission['permission']['employee']['view'])
                                 <a class="btn btn-sm btn-success mt-1" href="@route('employee.show', $employee->id)"><i class="bi bi-eye"></i></a>
+                                @endisset
+                                @isset(auth()->user()->role->permission['permission']['employee']['edit'])
                                 <a class="btn btn-sm btn-info mt-1" href="@route('employee.edit', $employee->id)"><i class="bi bi-pen"></i></a>
+                                @endisset
+                                @isset(auth()->user()->role->permission['permission']['employee']['delete'])
                                 <form action="@route('employee.destroy', $employee->id)" method="POST">
                                     @method('DELETE')
                                     @csrf
                                     <button class="btn btn-sm btn-danger mt-1" type="submit"><i
                                             class="bi bi-trash"></i></button>
                                 </form>
+                                @endisset
                             </td>
                         </tr>
                     @endforeach

@@ -125,25 +125,63 @@
                                 <tr>
                                     <td>Report</td>
                                     <td>
-                                        <input type="checkbox" name="permission[report][add]"
-                                            @isset($permission['permission']['report']['add']) checked @endisset value="1">
+                                        <input type="checkbox" name="permission[report][list]"
+                                            @isset($permission['permission']['report']['list']) checked @endisset value="1">
+                                    </td>
+
+                                </tr>
+
+
+                                {{-- employee --}}
+                                  <tr>
+                                    <td>Employee</td>
+                                    <td>
+                                        <input type="checkbox" name="permission[employee][add]"
+                                            @isset($permission['permission']['employee']['add']) checked @endisset value="1">
                                     </td>
                                     <td>
-                                        <input type="checkbox" name="permission[report][edit]"
-                                            @isset($permission['permission']['report']['edit']) checked @endisset value="1">
+                                        <input type="checkbox" name="permission[employee][edit]"
+                                            @isset($permission['permission']['employee']['edit']) checked @endisset value="1">
                                     </td>
                                     <td>
-                                        <input type="checkbox" name="permission[report][view]"
-                                            @isset($permission['permission']['report']['view']) checked @endisset value="1">
+                                        <input type="checkbox" name="permission[employee][view]"
+                                            @isset($permission['permission']['employee']['view']) checked @endisset value="1">
 
                                     </td>
                                     <td>
-                                        <input type="checkbox" name="permission[report][delete]"
-                                            @isset($permission['permission']['report']['delete']) checked @endisset value="1">
+                                        <input type="checkbox" name="permission[employee][delete]"
+                                            @isset($permission['permission']['employee']['delete']) checked @endisset value="1">
                                     </td>
                                     <td>
-                                        <input type="checkbox" name="permission[report][list]"
-                                            @isset($permission['permission']['report']['list']) checked @endisset value="1">
+                                        <input type="checkbox" name="permission[employee][list]"
+                                            @isset($permission['permission']['employee']['list']) checked @endisset value="1">
+                                    </td>
+
+                                </tr>
+
+                                   {{-- customer --}}
+                                  <tr>
+                                    <td>Customer</td>
+                                    <td>
+                                        <input type="checkbox" name="permission[customer][add]"
+                                            @isset($permission['permission']['customer']['add']) checked @endisset value="1">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="permission[customer][edit]"
+                                            @isset($permission['permission']['customer']['edit']) checked @endisset value="1">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="permission[customer][view]"
+                                            @isset($permission['permission']['customer']['view']) checked @endisset value="1">
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="permission[customer][delete]"
+                                            @isset($permission['permission']['customer']['delete']) checked @endisset value="1">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="permission[customer][list]"
+                                            @isset($permission['permission']['customer']['list']) checked @endisset value="1">
                                     </td>
 
                                 </tr>

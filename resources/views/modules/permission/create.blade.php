@@ -76,11 +76,25 @@
                                 </tr>
 
                                 <tr>
+                                    <td>Employee</td>
+                                    <td><input type="checkbox" name="permission[employee][add]" value="1"></td>
+                                    <td><input type="checkbox" name="permission[employee][edit]" value="1"></td>
+                                    <td><input type="checkbox" name="permission[employee][view]" value="1"></td>
+                                    <td><input type="checkbox" name="permission[employee][delete]" value="1"></td>
+                                    <td><input type="checkbox" name="permission[employee][list]" value="1"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Customer</td>
+                                    <td><input type="checkbox" name="permission[customer][add]" value="1"></td>
+                                    <td><input type="checkbox" name="permission[customer][edit]" value="1"></td>
+                                    <td><input type="checkbox" name="permission[customer][view]" value="1"></td>
+                                    <td><input type="checkbox" name="permission[customer][delete]" value="1"></td>
+                                    <td><input type="checkbox" name="permission[customer][list]" value="1"></td>
+                                </tr>
+
+                                <tr>
                                     <td>Report</td>
-                                    <td><input type="checkbox" name="permission[report][add]" value="1"></td>
-                                    <td><input type="checkbox" name="permission[report][edit]" value="1"></td>
-                                    <td><input type="checkbox" name="permission[report][view]" value="1"></td>
-                                    <td><input type="checkbox" name="permission[report][delete]" value="1"></td>
                                     <td><input type="checkbox" name="permission[report][list]" value="1"></td>
                                 </tr>
  
