@@ -69,6 +69,9 @@
                             <td>
                                 <a class="btn btn-sm btn-success mt-1" href="@route('billing.show', $billing->billing_id)"><i
                                         class="bi bi-eye"></i></a>
+
+                                         <a class="btn btn-sm btn-warning mt-1" href="@route('billing.pdf', $billing->billing_id)"><i class="bi bi-file-earmark-pdf-fill"></i></a>
+
                                 <a class="btn btn-sm btn-success mt-1" href="@route('billing.print', $billing->billing_id)"><i
                                         class="bi bi-printer"></i></a>
                                 <a class="btn btn-sm btn-info mt-1" href="@route('billing.edit', $billing->billing_id)"><i class="bi bi-pen"></i></a>
