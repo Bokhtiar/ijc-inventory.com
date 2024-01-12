@@ -19,7 +19,11 @@ class BillingController extends Controller
     public function index()
     {
         try {
-            $billings = Billing::latest()->get(['billing_id', 'status', 'date', 'ref', 'telephone', 'user_id', 'cell_no']);
+            if (Auth::user()->role_id == 4) {
+                $billings = Billing::where('user_id', Auth::id())->latest()->get(['billing_id', 'status', 'date', 'ref', 'telephone', 'user_id', 'cell_no']);                
+            }else{
+                $billings = Billing::latest()->get(['billing_id', 'status', 'date', 'ref', 'telephone', 'user_id', 'cell_no']);
+            }
             return view('modules.billing.index', ['title' => "Billing List", 'billings' => $billings]);
         } catch (\Throwable $th) {
             throw $th;

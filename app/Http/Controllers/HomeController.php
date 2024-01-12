@@ -18,4 +18,13 @@ class HomeController extends Controller
     {
         return redirect()->route('dashboard');   
     }
+
+    public function dashboard()
+    {
+        if (Auth::user()->role_id == 4) {
+            return redirect()->route('profile.edit', Auth::id());
+        }else{
+            return redirect()->route('dashboard');
+        }
+    }
 }

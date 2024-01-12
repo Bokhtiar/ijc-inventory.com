@@ -2,7 +2,11 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
-            <a class="nav-link" href="@route('dashboard')">
+            <a class="nav-link" @if (Auth::user()->role_id == 4)
+                href="@route('profile.edit', Auth::id())"
+                @else 
+                href="@route('dashboard')"
+            @endif >
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>

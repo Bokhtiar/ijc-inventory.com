@@ -19,6 +19,9 @@
     ])
     @endcomponent
 
+    @if (Auth::user()->role_id != 4)
+        
+    
     @component('components.heading', [
         'pageTitle' => $title,
         'anotherPageIcon' => 'bi bi-plus',
@@ -42,6 +45,7 @@
             </form>
         </div>
     </div>
+    @endif
 
     <section class="section dashboard">
         <div class="bg-white p-3 rounded shadow">
