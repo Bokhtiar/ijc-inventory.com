@@ -42,7 +42,7 @@
                 <span>Employee</span>
             </a>
         </li><!-- End employee Nav -->
-
+ 
         <li class="nav-item">
             <a class="nav-link" href="@route('report.index', 'today')">
                 <i class="bi bi-grid"></i>

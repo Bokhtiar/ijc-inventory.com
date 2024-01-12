@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
- 
+
+use App\Models\Role;
 use App\Models\User;
-use Illuminate\Http\Request;
 use App\Traits\ImageUpload;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class EmployeeController extends Controller
 {
@@ -23,7 +25,8 @@ class EmployeeController extends Controller
     public function create()
     {
         try {
-            return view('modules.employee.createUpdate', ['title' => 'Employee Create']);
+            $roles = Role::where('id', '!=', 4)->get();
+            return view('modules.employee.createUpdate', ['title' => 'Employee Create', 'roles' => $roles]);
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -45,7 +48,7 @@ class EmployeeController extends Controller
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
-            'role_id' => 3,
+            'role_id' => $request->role_id,
             'password' => $request->password ? $request->password : $password,
             'designation' => $request->designation,
             'profile_pic' => @$uploadImage,
@@ -62,6 +65,18 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         try {
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email|unique:users,email',
+                'phone' => 'required',
+            ]);
+
+            if ($validator->fails()) {
+                // return redirect()->route('employee.create')->with('info', $validator);
+                $messages = $validator->messages();
+                dd($messages);
+
+            }
+
             User::create($this->storeDocument($request));
             return redirect()->route('employee.index')->with('message', 'Employee Created Successfully Done');
         } catch (\Throwable $th) {

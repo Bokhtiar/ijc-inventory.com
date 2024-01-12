@@ -87,12 +87,21 @@
                             placeholder="New Eskaton, banglamotor, dhaka, bangladesh" id="">
                     </div>
 
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 my-1">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-1">
                         <label for="" class="text-muted">Employee Profile Pic </label>
                         <input type="file" name="profile_pic" class="form-control" placeholder="" id="">
                         @if (@$edit->profile_pic)
                             <img src="{{ asset($edit->profile_pic) }}" height="100" width="100" alt="">
                         @endif
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <label for="">Select Role</label>
+                        <select name="role_id" class="form-control" id="">
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="text-center mt-1">
