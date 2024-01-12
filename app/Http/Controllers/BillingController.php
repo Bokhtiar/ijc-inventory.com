@@ -59,7 +59,7 @@ class BillingController extends Controller
 
         $billingid = Billing::latest()->first();
         $billing = new Billing();
-        $billing->ref = Billing::count() == 0 ? "#Inv-" . "1" : "IJC" . "/" . $lastTowDigit[2] . '' . $lastTowDigit[3] . "/Inv-" . $billingid->billing_id + 1;
+        $billing->ref = Billing::count() == 0 ? "#Inv-" . "1" : "IJC" . "/" . $lastTowDigit[2] . '' . $lastTowDigit[3] . "/Inv-" .  Billing::count() + 1;
 
         $billing->designation = $request->designation;
         $billing->company_name = $request->company_name;
