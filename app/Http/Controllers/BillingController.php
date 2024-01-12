@@ -8,7 +8,10 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Exports\ExportBilling;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Carbon\Carbon;
+use DateTime;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class BillingController extends Controller
@@ -17,7 +20,7 @@ class BillingController extends Controller
     public function index()
     {
         try {
-            $billings = Billing::where('status', 0)->latest()->get(['billing_id', 'status', 'date', 'ref', 'telephone', 'email', 'cell_no']);
+            $billings = Billing::latest()->get(['billing_id', 'status', 'date', 'ref', 'telephone', 'user_id', 'cell_no']);
             return view('modules.billing.index', ['title' => "Billing List", 'billings' => $billings]);
         } catch (\Throwable $th) {
             throw $th;
@@ -40,7 +43,8 @@ class BillingController extends Controller
     public function create()
     {
         try {
-            return view('modules.billing.create', ['title' => "Billing create"]);
+            $customers = User::where('role_id', 4)->get();
+            return view('modules.billing.create', ['title' => "Billing create", 'customers' => $customers]);
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -55,7 +59,7 @@ class BillingController extends Controller
 
         $billingid = Billing::latest()->first();
         $billing = new Billing();
-        $billing->ref = Billing::count() == 0 ? "#Inv-" . "1" : "IJC" . "/" . $lastTowDigit[2] . '' . $lastTowDigit[3] . "/Inv-" . $billingid->billing_id + 1;
+        $billing->ref = Billing::count() == 0 ? "#Inv-" . "1" : "IJC" . "/" . $lastTowDigit[2] . '' . $lastTowDigit[3] . "/Inv-" .  Billing::count() + 1;
 
         $billing->designation = $request->designation;
         $billing->company_name = $request->company_name;
@@ -66,10 +70,11 @@ class BillingController extends Controller
         $billing->less_advance = $request->less_advance;
         $billing->foreign_company = $request->foreign_company;
         $billing->telephone = $request->telephone;
-        $billing->email = $request->email;
+        $billing->user_id = $request->user_id;
         $billing->website = $request->website;
         $billing->bill_creator = $request->bill_creator;
         $billing->biller_designation = $request->biller_designation;
+        $billing->created_by = Auth::user()->id;
         $billing->save();
 
         $description_service = $request->description_service;
@@ -92,7 +97,6 @@ class BillingController extends Controller
             );
             $insert_data[] = $data;
         }
-
         Service::insert($insert_data);
         return redirect()->route('billing.list')->with('message', 'Billing Successfully Done.');
     }
@@ -179,9 +183,23 @@ class BillingController extends Controller
     /** export bill */
     public function exportBills(Request $request)
     {
-        $start_date = $request->start_date;
-        $end_date = $request->end_date;
-        return Excel::download(new ExportBilling($start_date, $end_date), $start_date . '-to-' . $end_date . '.xlsx');
+        $type = 'filter';
+        $data = [
+            "daterange" => $request->daterange
+        ];
+        $dateRange = explode(" - ", $data['daterange']);
+        $start_date = trim($dateRange[0]);
+        $end_date = trim($dateRange[1]);
+
+        $carbonStartDate = Carbon::createFromFormat('m/d/Y', $start_date);
+        $formattedStartDate = $carbonStartDate->format("Y-m-d");
+
+        $carbonEndDate = Carbon::createFromFormat('m/d/Y', $end_date);
+        $formattedEndDate = $carbonEndDate->format("Y-m-d");
+
+        $filename = $formattedStartDate . '-to-' . $formattedEndDate;
+        $filename = str_replace(['/', '\\'], '_', $filename . '.xlsx');
+        return Excel::download(new ExportBilling($formattedStartDate, $formattedEndDate, $type), $filename);
     }
 
     /** edit */
@@ -221,7 +239,7 @@ class BillingController extends Controller
         $billing->less_advance = $request->less_advance;
         $billing->foreign_company = $request->foreign_company;
         $billing->telephone = $request->telephone;
-        $billing->email = $request->email;
+        $billing->user_id = $request->user_id;
         $billing->website = $request->website;
         $billing->bill_creator = $request->bill_creator;
         $billing->biller_designation = $request->biller_designation;

@@ -16,25 +16,11 @@
         </li><!-- End billing Nav -->
 
         <li class="nav-item">
-            <a class="nav-link" href="@route('billing.trash.list')">
-                <i class="bi bi-grid"></i>
-                <span>Trash Billing List</span>
-            </a>
-        </li><!-- End billing Nav -->
-
-        <li class="nav-item">
             <a class="nav-link" href="@route('billing.create')">
                 <i class="bi bi-grid"></i>
                 <span>Billing Create</span>
             </a>
         </li><!-- End billing Nav -->
-
-        <li class="nav-item">
-            <a class="nav-link" href="@route('profile.edit')">
-                <i class="bi bi-grid"></i>
-                <span>Profile</span>
-            </a>
-        </li><!-- End profile Nav -->
 
         <li class="nav-item">
             <a class="nav-link" href="@route('role.index')">
@@ -43,7 +29,6 @@
             </a>
         </li><!-- End role Nav -->
 
-
         <li class="nav-item">
             <a class="nav-link" href="@route('permission.index')">
                 <i class="bi bi-grid"></i>
@@ -51,28 +36,19 @@
             </a>
         </li><!-- End permission Nav -->
 
-
         <li class="nav-item">
             <a class="nav-link" href="@route('employee.index')">
                 <i class="bi bi-grid"></i>
                 <span>Employee</span>
             </a>
-        </li><!-- End permission Nav -->
+        </li><!-- End employee Nav -->
 
-
-        {{-- @isset(auth()->user()->role->permission['permission']['permission']['list'])
-                <li>
-                    <a href="@route('permission.index')">
-                        <i class="bi bi-circle"></i><span>List of permission</span>
-                    </a>
-                </li>
-                @endisset
-                @isset(auth()->user()->role->permission['permission']['permission']['add'])
-                <li>
-                    <a href="@route('permission.create')">
-                        <i class="bi bi-circle"></i><span>Permission Create</span>
-                    </a>
-                </li> --}}
+        <li class="nav-item">
+            <a class="nav-link" href="@route('report.index', 'today')">
+                <i class="bi bi-grid"></i>
+                <span>Report</span>
+            </a>
+        </li><!-- End employee Nav -->
 
         <li class="nav-item">
             <a class="nav-link" href="@route('logout')">
@@ -80,9 +56,5 @@
                 <span>Logout</span>
             </a>
         </li><!-- End billing Nav -->
-
-
-
-
     </ul>
 </aside>

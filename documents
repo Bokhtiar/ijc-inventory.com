@@ -14,3 +14,6 @@ composer require psr/simple-cache:^1.0 maatwebsite/excel --ignore-platform-reqs 
  
  <!-- dynamic form -->
 https://www.mywebtuts.com/blog/laravel-addremove-and-update-multiple-input-fields-dynamically-with-jquery
+
+<!-- autoserach -->
+https://www.itsolutionstuff.com/post/laravel-9-autocomplete-search-with-select2-js-exampleexample.html

@@ -48,4 +48,11 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+    public static function customerEmail($email)
+    {
+        if ($email) {
+            # code...
+        }
+    }
 }

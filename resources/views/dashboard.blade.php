@@ -4,20 +4,12 @@
 
 
     {{-- breadcrumbs --}}
-    @component('components.breadcrumbs',[
+    @component('components.breadcrumbs', [
         'parent' => 'Home',
         'page' => $title,
-        'parent_url' => 'dashboard'
+        'parent_url' => 'dashboard',
     ])
-    @endcomponent 
-
-    {{-- page heading --}}
-    {{-- @component('components.heading', [
-        'pageTitle' => 'Dashboard',
-        'anotherPageIcon' => 'bi bi-plus',
-        'anotherPageUrl' => 'dashboard',
-    ])
-    @endcomponent --}}
+    @endcomponent
 
     <section class="section dashboard">
         <div class="row">
@@ -25,13 +17,9 @@
             <!-- Left side columns -->
             <div class="col-lg-12">
                 <div class="row">
-
                     <!-- total course Card -->
                     <div class="col-xxl-3 col-md-6">
                         <div class="card info-card sales-card">
-
-
-
                             <div class="card-body">
                                 <h5 class="card-title">Total Billing <span></span></h5>
 
@@ -40,11 +28,10 @@
                                         <i class="bi bi-book-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>{{ App\Models\Billing::count(); }}</h6>
+                                        <h6>{{ App\Models\Billing::count() }}</h6>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div><!-- End Sales Card -->
 
@@ -59,13 +46,13 @@
                                         <i class="bi bi-bar-chart-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>{{ App\Models\Service::count(); }}</h6>
+                                        <h6>{{ App\Models\Service::count() }}</h6>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
-                    </div><!-- End registration Card -->                   
+                    </div><!-- End registration Card -->
                 </div>
             </div><!-- End Left side columns -->
         </div>
