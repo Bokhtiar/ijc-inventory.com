@@ -35,8 +35,10 @@
                             <th scope="row">{{ $loop->index + 1 }}</th>
                             <td>{{ $permission->role ? $permission->role->name : 'Data not found' }}</td>
                             <td>
+                                 @isset(auth()->user()->role->permission['permission']['permission']['edit'])
                                 <a class="btn btn-success" href="@route('permission.edit', $permission->id)"><i
                                                             class="bi bi-pen"></i></a>
+                                    @endisset
                             </td>
                         </tr>
                     @endforeach

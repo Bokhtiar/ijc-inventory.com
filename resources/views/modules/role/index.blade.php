@@ -37,9 +37,10 @@
                                                 <th scope="row">{{ $loop->index + 1 }} </th>
                                                 <td>{{ $role->name }} </td>
                                                 <td>
-                                                    <a class="btn btn-sm btn-success" href="@route('role.edit', $role->id)"><i
-                                                            class="bi bi-pen"></i></a>
-                                                    
+                                                    @isset(auth()->user()->role->permission['permission']['role']['edit'])
+                                                        <a class="btn btn-sm btn-success" href="@route('role.edit', $role->id)"><i
+                                                                class="bi bi-pen"></i></a>
+                                                    @endisset
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -55,26 +56,28 @@
                 <div class="col-md-4 col-lg-4 col-sm-12">
                     <div class="card">
                         <div class="card-body">
+                            @isset(auth()->user()->role->permission['permission']['role']['create'])
                             <h5 class="card-title">Role {{ @$edit ? 'Update' : 'Create' }}</h5>
+                                <!--Role Form-->
+                                @if (@$edit)
+                                    <form class="row g-3" method="POST" action="@route('role.update', $edit->id)">
+                                        @method('put')
+                                    @else
+                                        <form class="row g-3" method="POST" action="@route('role.store')">
+                                @endif
+                                @csrf
+                                <div class="form-group">
+                                    <label for="">Role Name</label>
+                                    <input class="form-control" value="{{ @$edit->name }}" type="text" name="name"
+                                        id="">
+                                </div>
 
-                            <!--Role Form-->
-                            @if (@$edit)
-                                <form class="row g-3" method="POST" action="@route('role.update', $edit->id)">
-                                    @method('put')
-                                @else
-                                    <form class="row g-3" method="POST" action="@route('role.store')">
-                            @endif
-                            @csrf
-                        <div class="form-group">
-                            <label for="">Role Name</label>
-                            <input class="form-control" value="{{ @$edit->name }}" type="text" name="name" id="">
-                        </div>
-
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                                <button type="reset" class="btn btn-secondary">Reset</button>
-                            </div>
-                            </form><!-- category Form -->
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="reset" class="btn btn-secondary">Reset</button>
+                                </div>
+                                </form><!-- category Form -->
+                            @endisset
                         </div>
                     </div>
                 </div>

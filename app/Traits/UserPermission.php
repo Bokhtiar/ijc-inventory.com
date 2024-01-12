@@ -7,6 +7,20 @@ trait UserPermission
     public function checkRequestPermission()
     {
         if (
+            /**role */
+            empty(auth()->user()->role->permission['permission']['role']['list']) && \Route::is('role.index') ||
+            empty(auth()->user()->role->permission['permission']['role']['add']) && \Route::is('role.create') ||
+            empty(auth()->user()->role->permission['permission']['role']['edit']) && \Route::is('role.edit') ||
+            empty(auth()->user()->role->permission['permission']['role']['view']) && \Route::is('role.show') ||
+            empty(auth()->user()->role->permission['permission']['role']['delete']) && \Route::is('role.destroy') ||
+
+            /**permission */
+            empty(auth()->user()->role->permission['permission']['permission']['list']) && \Route::is('permission.index') ||
+            empty(auth()->user()->role->permission['permission']['permission']['add']) && \Route::is('permission.create') ||
+            empty(auth()->user()->role->permission['permission']['permission']['edit']) && \Route::is('permission.edit') ||
+            empty(auth()->user()->role->permission['permission']['permission']['view']) && \Route::is('permission.show') ||
+            empty(auth()->user()->role->permission['permission']['permission']['delete']) && \Route::is('permission.destroy') ||
+
             /**employee */
             empty(auth()->user()->role->permission['permission']['employee']['list']) && \Route::is('employee.index') ||
             empty(auth()->user()->role->permission['permission']['employee']['add']) && \Route::is('employee.create') ||
