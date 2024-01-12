@@ -50,4 +50,4 @@ Route::get('role/status/{role_id}', [RoleController::class, 'status'])->name('ro
 Route::resource('permission', PermissionController::class);
 
 /** report */
-Route::get('report', [ReportController::class, 'report'])->name('report.index');
+Route::get('report/{type}', [ReportController::class, 'report'])->name('report.index');

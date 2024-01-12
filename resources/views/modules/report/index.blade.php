@@ -19,14 +19,9 @@
      ])
      @endcomponent
 
-     @component('components.heading', [
-         'pageTitle' => $title,
-         'anotherPageIcon' => 'bi bi-plus',
-         'anotherPageUrl' => 'billing.create',
-     ])
-     @endcomponent
 
-     {{-- <div class="shadow mb-3 py-3 pt-4 px-4 bg-white rounded">
+     @if ($type == "filter")
+     <div class="shadow mb-3 py-3 pt-4 px-4 bg-white rounded">
         <div class="d-flex justify-content-between">
             <p>Bill Download Excel Date filter</p>
             <form action="@route('export-bill')" method="POST">
@@ -35,17 +30,18 @@
                 <input type="submit" value="Submit" class=" " style="background-color: green; color: white; border-color:green; border-radius: 5px" name="">
             </form>
         </div>
-    </div> --}}
+    </div>
+    @endif
 
      <div class="shadow mb-3 py-3 pt-4 px-4 bg-white rounded">
          <div class="d-flex justify-content-between">
-             <p>Today Billing Report</p>
+             <p class=" text-uppercase">{{ $type }} Billing Report</p>
              <div class="d-flex">
-                 <a href="" class="px-1"><span class="badge bg-secondary px-4"><i class="ri-arrow-right-up-fill"></i> Today</span></a>
-                 <a href="" class="px-1"><span class="badge bg-secondary px-4"><i class="ri-arrow-right-up-fill"></i>Week</span></a>
-                 <a href="" class="px-1"><span class="badge bg-secondary px-4"><i class="ri-arrow-right-up-fill"></i> Month</span></a>
-                 <a href="" class="px-1"><span class="badge bg-secondary px-4"><i class="ri-arrow-right-up-fill"></i> Year</span></a>
-                 <a href="" class="px-1 "><span class="badge bg-success px-4"><i class="ri-arrow-right-up-fill"></i> Filter</span></a>
+                 <a href="@route('report.index', 'today')" class="px-1"><span class="{{ $type == "today" ? 'badge bg-success px-4' : 'badge bg-secondary px-4' }}"><i class="ri-arrow-right-up-fill"></i> Today</span></a>
+                 <a href="@route('report.index', 'week')" class="px-1"><span class="{{ $type == "week" ? 'badge bg-success px-4' : 'badge bg-secondary px-4' }}"><i class="ri-arrow-right-up-fill"></i>Week</span></a>
+                 <a href="@route('report.index', 'month')" class="px-1"><span class="{{ $type == "month" ? 'badge bg-success px-4' : 'badge bg-secondary px-4' }}"><i class="ri-arrow-right-up-fill"></i> Month</span></a>
+                 <a href="@route('report.index', 'year')" class="px-1"><span class="{{ $type == "year" ? 'badge bg-success px-4' : 'badge bg-secondary px-4' }}"><i class="ri-arrow-right-up-fill"></i> Year</span></a>
+                 <a href="@route('report.index', 'filter')" class="px-1 "><span class="{{ $type == "filter" ? 'badge bg-success px-4' : 'badge bg-secondary px-4' }}"><i class="ri-arrow-right-up-fill"></i> Filter</span></a>
              </div>
          </div>
      </div>
