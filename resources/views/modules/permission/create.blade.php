@@ -76,6 +76,22 @@
                                 </tr>
 
                                 <tr>
+                                    <td>Billing</td>
+                                    <td><input type="checkbox" name="permission[billing][add]" value="1"></td>
+                                    <td><input type="checkbox" name="permission[billing][edit]" value="1"></td>
+                                    <td><input type="checkbox" name="permission[billing][view]" value="1"></td>
+                                    <td><input type="checkbox" name="permission[billing][delete]" value="1"></td>
+
+                                    
+
+                                    <td><input type="checkbox" name="permission[billing][list]" value="1"></td>
+
+                                    <td>PDF <input type="checkbox" name="permission[billing][pdf]" value="1"></td>
+                                    <td>Print <input type="checkbox" name="permission[billing][print]" value="1"></td>
+                                </tr>
+                                
+
+                                <tr>
                                     <td>Employee</td>
                                     <td><input type="checkbox" name="permission[employee][add]" value="1"></td>
                                     <td><input type="checkbox" name="permission[employee][edit]" value="1"></td>

@@ -36,7 +36,8 @@
                 <input type="submit" value="Submit" class="btn btn-sm btn-success" name=""> --}}
 
                 <input type="text" name="daterange" value="" class="" />
-                <input type="submit" value="Submit" class=" " style="background-color: green; color: white; border-color:green; border-radius: 5px" name="">
+                <input type="submit" value="Submit" class=" "
+                    style="background-color: green; color: white; border-color:green; border-radius: 5px" name="">
 
             </form>
         </div>
@@ -67,22 +68,34 @@
                             <td>{{ $billing->user ? $billing->user->email : '' }} </td>
                             <td>{{ $billing->cell_no }} </td>
                             <td>
-                                <a class="btn btn-sm btn-success mt-1" href="@route('billing.show', $billing->billing_id)"><i
-                                        class="bi bi-eye"></i></a>
+                                @isset(auth()->user()->role->permission['permission']['billing']['view'])
+                                    <a class="btn btn-sm btn-success mt-1" href="@route('billing.show', $billing->billing_id)"><i
+                                            class="bi bi-eye"></i></a>
+                                @endisset
+                                @isset(auth()->user()->role->permission['permission']['billing']['pdf'])
+                                    <a class="btn btn-sm btn-warning mt-1" href="@route('billing.pdf', $billing->billing_id)"><i
+                                            class="bi bi-file-earmark-pdf-fill"></i></a>
+                                @endisset
 
-                                         <a class="btn btn-sm btn-warning mt-1" href="@route('billing.pdf', $billing->billing_id)"><i class="bi bi-file-earmark-pdf-fill"></i></a>
+                                @isset(auth()->user()->role->permission['permission']['billing']['print'])
+                                    <a class="btn btn-sm btn-success mt-1" href="@route('billing.print', $billing->billing_id)"><i
+                                            class="bi bi-printer"></i></a>
+                                @endisset
 
-                                <a class="btn btn-sm btn-success mt-1" href="@route('billing.print', $billing->billing_id)"><i
-                                        class="bi bi-printer"></i></a>
-                                <a class="btn btn-sm btn-info mt-1" href="@route('billing.edit', $billing->billing_id)"><i class="bi bi-pen"></i></a>
-                                <a class="btn btn-sm btn-danger mt-1" href="@route('billing.trash', $billing->billing_id)"><i
-                                        class="bi bi-trash"></i></a>
-                                {{-- <form action="@route('admin.billing.trash', $billing->billing_id)" method="POST">
-                                @method('DELETE')
-                                @csrf
-                                <button class="btn btn-sm btn-danger" type="submit"><i
-                                        class="bi bi-trash"></i></button>
-                            </form><!--delete--> --}}
+                                @isset(auth()->user()->role->permission['permission']['billing']['edit'])
+                                    <a class="btn btn-sm btn-info mt-1" href="@route('billing.edit', $billing->billing_id)"><i class="bi bi-pen"></i></a>
+                                @endisset
+
+                                @isset(auth()->user()->role->permission['permission']['billing']['delete'])
+                                    {{-- <a class="btn btn-sm btn-danger mt-1" href="@route('billing.trash', $billing->billing_id)"><i
+                                        class="bi bi-trash"></i></a> --}}
+                                    <form action="@route('billing.destroy', $billing->billing_id)" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="btn btn-sm btn-danger" type="submit"><i
+                                                class="bi bi-trash"></i></button>
+                                    </form><!--delete-->
+                                @endisset
                             </td>
                         </tr>
                     @endforeach

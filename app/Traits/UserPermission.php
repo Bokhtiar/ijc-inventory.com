@@ -7,6 +7,16 @@ trait UserPermission
     public function checkRequestPermission()
     {
         if (
+            /**billing */
+            empty(auth()->user()->role->permission['permission']['billing']['list']) && \Route::is('billing.index') ||
+            empty(auth()->user()->role->permission['permission']['billing']['add']) && \Route::is('billing.create') ||
+            empty(auth()->user()->role->permission['permission']['billing']['edit']) && \Route::is('billing.edit') ||
+            empty(auth()->user()->role->permission['permission']['billing']['view']) && \Route::is('billing.show') ||
+            empty(auth()->user()->role->permission['permission']['billing']['delete']) && \Route::is('billing.destroy') ||
+
+            empty(auth()->user()->role->permission['permission']['billing']['pdf']) && \Route::is('billing.pdf','id') ||
+            empty(auth()->user()->role->permission['permission']['billing']['print']) && \Route::is('billing.print', 'id') ||
+           
             /**role */
             empty(auth()->user()->role->permission['permission']['role']['list']) && \Route::is('role.index') ||
             empty(auth()->user()->role->permission['permission']['role']['add']) && \Route::is('role.create') ||

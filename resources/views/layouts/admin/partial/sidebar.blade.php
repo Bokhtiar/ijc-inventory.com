@@ -8,20 +8,22 @@
             </a>
         </li><!-- End Dashboard Nav -->
 
+         @isset(auth()->user()->role->permission['permission']['billing']['list'])
         <li class="nav-item">
             <a class="nav-link" href="@route('billing.list')">
                 <i class="bi bi-grid"></i>
                 <span>Billing List</span>
             </a>
         </li><!-- End billing Nav -->
-
-        <li class="nav-item">
-            <a class="nav-link" href="@route('billing.create')">
-                <i class="bi bi-grid"></i>
-                <span>Billing Create</span>
-            </a>
-        </li><!-- End billing Nav -->
-
+        @endisset
+        @isset(auth()->user()->role->permission['permission']['billing']['add'])
+            <li class="nav-item">
+                <a class="nav-link" href="@route('billing.create')">
+                    <i class="bi bi-grid"></i>
+                    <span>Billing Create</span>
+                </a>
+            </li><!-- End billing Nav -->
+        @endisset
         @isset(auth()->user()->role->permission['permission']['role']['list'])
             <li class="nav-item">
                 <a class="nav-link" href="@route('role.index')">

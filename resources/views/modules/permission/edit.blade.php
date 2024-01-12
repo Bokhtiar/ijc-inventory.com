@@ -131,6 +131,49 @@
 
                                 </tr>
 
+                                {{-- billing --}}
+                                  <tr>
+                                    <td>Billing</td>
+                                    <td>
+                                        <input type="checkbox" name="permission[billing][add]"
+                                            @isset($permission['permission']['billing']['add']) checked @endisset value="1">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="permission[billing][edit]"
+                                            @isset($permission['permission']['billing']['edit']) checked @endisset value="1">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="permission[billing][view]"
+                                            @isset($permission['permission']['billing']['view']) checked @endisset value="1">
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="permission[billing][delete]"
+                                            @isset($permission['permission']['billing']['delete']) checked @endisset value="1">
+                                    </td>
+
+
+
+                                    
+
+
+                                    <td>
+                                        <input type="checkbox" name="permission[billing][list]"
+                                            @isset($permission['permission']['billing']['list']) checked @endisset value="1">
+                                    </td>
+
+                                    <td>
+                                       PDF <input type="checkbox" name="permission[billing][pdf]"
+                                            @isset($permission['permission']['billing']['pdf']) checked @endisset value="1">
+
+                                    </td>
+                                    <td>
+                                       Print <input type="checkbox" name="permission[billing][print]"
+                                            @isset($permission['permission']['billing']['print']) checked @endisset value="1">
+                                    </td>
+
+                                </tr>
+
 
                                 {{-- employee --}}
                                   <tr>
