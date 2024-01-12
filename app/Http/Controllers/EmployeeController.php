@@ -67,14 +67,13 @@ class EmployeeController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'email' => 'required|email|unique:users,email',
-                'phone' => 'required',
+                'phone' => 'required|numeric|unique:users,phone',
             ]);
 
             if ($validator->fails()) {
-                // return redirect()->route('employee.create')->with('info', $validator);
-                $messages = $validator->messages();
-                dd($messages);
-
+                return redirect()->route('employee.create')
+                ->withErrors($validator)
+                ->withInput();
             }
 
             User::create($this->storeDocument($request));
@@ -103,8 +102,9 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         try {
+            $roles = Role::where('id', '!=', 4)->get();
             $edit = User::find($id);
-            return view('modules.employee.createUpdate', ['title' => 'Employee edit', 'edit' => $edit]);
+            return view('modules.employee.createUpdate', ['title' => 'Employee edit', 'edit' => $edit, 'roles' => $roles]);
         } catch (\Throwable $th) {
             throw $th;
         }

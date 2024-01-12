@@ -41,7 +41,6 @@
                             <td>{{ $employee->name }} </td>
                             <td>{{ $employee->email }} </td>
                             <td>{{ $employee->phone }} </td>
-                            <td>{{ $employee->phone }} </td>
                             <td>
                                 <a class="btn btn-sm btn-success mt-1" href="@route('employee.show', $employee->id)"><i class="bi bi-eye"></i></a>
                                 <a class="btn btn-sm btn-info mt-1" href="@route('employee.edit', $employee->id)"><i class="bi bi-pen"></i></a>
