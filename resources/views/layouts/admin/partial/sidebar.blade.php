@@ -44,9 +44,9 @@
         </li><!-- End employee Nav -->
 
         <li class="nav-item">
-            <a class="nav-link" href="@route('customer.index')">
+            <a class="nav-link" href="@route('report.index')">
                 <i class="bi bi-grid"></i>
-                <span>Customer</span>
+                <span>Report</span>
             </a>
         </li><!-- End employee Nav -->
 

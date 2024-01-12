@@ -4,6 +4,7 @@ use App\Http\Controllers\BillingController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -40,14 +41,13 @@ Route::post('password-change', [App\Http\Controllers\UserController::class, 'pas
 Route::put('/user/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
 Route::get('/logout', [App\Http\Controllers\DashboardController::class, 'logout'])->name('logout');
 
-
-
+/** employe customer permission */
 Route::resource('employee', EmployeeController::class);
 Route::resource('customer', CustomerController::class);
 Route::get('autocomplete/customer/search', [CustomerController::class, 'customerSearch']);
-
 Route::resource('role', RoleController::class);
 Route::get('role/status/{role_id}', [RoleController::class, 'status'])->name('role.status');
-
-/**role  */ 
 Route::resource('permission', PermissionController::class);
+
+/** report */
+Route::get('report', [ReportController::class, 'report'])->name('report.index');
