@@ -10,7 +10,6 @@ use App\Exports\ExportBilling;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Carbon\Carbon;
-use DateTime;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -271,21 +270,6 @@ class BillingController extends Controller
         }
         Service::insert($insert_data);
         }
-        // $billings = Billing::find($billing->billing_id);
-        // $services = Service::where('billing_id', $billing->billing_id)->get();
-
-        // $data = [
-        //     'billings' => $billings,
-        //     'services' => $services
-        // ];
-
-
-        //     $pdf = PDF::loadView('modules\billing\pdf', $data);
-
-        //    return $pdf->download('itsolutionstuff.pdf');
-
-        // return $pdf->stream('info.pdf', array("Attachment" => false));
-
         return redirect()->route('billing.list')->with('message', 'Billing Update Successfully Done.');
     }
 }

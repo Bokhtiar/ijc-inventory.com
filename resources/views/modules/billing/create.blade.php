@@ -63,7 +63,7 @@
 
                     {{-- contact information --}}
                     <div class="col-12 col-sm-12 col-md-7 col-lg-7 ">
-                        <div class="float-end">
+                        <div class="">
 
                             {{-- date --}}
                             <div class="d-flex mt-1">
@@ -85,9 +85,9 @@
                                     ng-model="number">
                             </div>
 
-                            {{-- email --}}
+                            {{-- customer --}}
                             <div class="d-flex mt-1">
-                                <div class="my-auto fw-bold">Email.</div>
+                                <div class="my-auto fw-bold">Customer.</div>
                                 {{-- <input type="email" class="form-control ml-3" placeholder="devide@gmail.com"
                                     name="email" id=""> --}}
                                 <select required class="form-control" id="search" style="width:500px;" name="user_id">

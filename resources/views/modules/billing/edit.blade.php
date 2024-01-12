@@ -2,6 +2,9 @@
 @section('title', $title)
 @section('css')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" />
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 @endsection
 @section('admin_content')
 
@@ -52,7 +55,7 @@
 
                     {{-- contact information --}}
                     <div class="col-12 col-sm-12 col-md-7 col-lg-7 ">
-                        <div class="float-end">
+                        <div class="">
 
                             {{-- date --}}
                             <div class="d-flex mt-1">
@@ -75,11 +78,12 @@
                                 <input class="form-control" type="text" name="telephone" value="{!! $edit->telephone !!}">
                             </div>
 
-                            {{-- email --}}
+                            {{-- customer --}}
                             <div class="d-flex mt-1">
-                                <div class="my-auto fw-bold">Email.</div>
-                                <input type="email" class="form-control ml-3" name="email" value="{{ $edit->email }}"
-                                    id="">
+                                <div class="my-auto fw-bold">Customer.</div>
+                                <select required class="" id="search" style="width:500px;" name="user_id">
+                                    <option value="{{ $edit->user_id }}">{{ $edit->user ?$edit->user->email : "" }}</option> 
+                                </select>
                             </div>
 
                             {{-- website --}}
@@ -227,6 +231,29 @@
                 $(this).parents('tr').remove();
             });
 
+        });
+    </script>
+
+    <script type="text/javascript">
+        $('#search').select2({
+            placeholder: 'Select an user',
+            ajax: {
+                url: '/autocomplete/customer/search',
+                dataType: 'json',
+                delay: 250,
+                processResults: function(data) {
+                    console.log("data", data);
+                    return {
+                        results: $.map(data, function(item) {
+                            return {
+                                text: item.email,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
         });
     </script>
 
