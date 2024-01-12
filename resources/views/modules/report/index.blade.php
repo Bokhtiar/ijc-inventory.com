@@ -24,9 +24,10 @@
      <div class="shadow mb-3 py-3 pt-4 px-4 bg-white rounded">
         <div class="d-flex justify-content-between">
             <p>Bill Download Excel Date filter</p>
-            <form action="@route('export-bill')" method="POST">
+            {{-- <form action="@route('export-bill')" method="POST"> --}}
+                <form action="@route('report-filter')" method="POST">
                 @csrf
-                <input type="text" name="daterange" value="" class="" />
+                <input type="text" name="daterange" value="{{ @$daterange }}"  class="" />
                 <input type="submit" value="Submit" class=" " style="background-color: green; color: white; border-color:green; border-radius: 5px" name="">
             </form>
         </div>
@@ -45,10 +46,21 @@
              </div>
          </div>
      </div>
-
+  
 
      <section class="section dashboard">
          <div class="bg-white p-3 rounded shadow">
+
+            <div class="d-flex justify-content-between">
+                <p>Download pdf excel</p>
+                <p>
+                    @if (@$start_date)    
+                    <a href="@route('report.download.filter',['start_date' => @$start_date, 'end_date' => @$end_date])" class=""><span class="badge bg-success px-3"><i class="bi bi-file-earmark-excel-fill"></i> Excel</span></a>
+                    @else 
+                    <a href="@route('report.download', $type)" class=""><span class="badge bg-success px-3"><i class="bi bi-file-earmark-excel-fill"></i> Excel</span></a>
+                    @endif
+                </p>
+            </div>
              <!-- Table with stripped rows -->
              <table class="table datatable">
                  <thead>
@@ -76,15 +88,6 @@
                                          class="bi bi-eye"></i></a>
                                  <a class="btn btn-sm btn-success mt-1" href="@route('billing.print', $billing->billing_id)"><i
                                          class="bi bi-printer"></i></a>
-                                 <a class="btn btn-sm btn-info mt-1" href="@route('billing.edit', $billing->billing_id)"><i class="bi bi-pen"></i></a>
-                                 <a class="btn btn-sm btn-danger mt-1" href="@route('billing.trash', $billing->billing_id)"><i
-                                         class="bi bi-trash"></i></a>
-                                 {{-- <form action="@route('admin.billing.trash', $billing->billing_id)" method="POST">
-                                @method('DELETE')
-                                @csrf
-                                <button class="btn btn-sm btn-danger" type="submit"><i
-                                        class="bi bi-trash"></i></button>
-                            </form><!--delete--> --}}
                              </td>
                          </tr>
                      @endforeach

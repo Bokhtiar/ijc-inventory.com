@@ -97,7 +97,6 @@ class BillingController extends Controller
             );
             $insert_data[] = $data;
         }
-
         Service::insert($insert_data);
         return redirect()->route('billing.list')->with('message', 'Billing Successfully Done.');
     }
@@ -184,12 +183,10 @@ class BillingController extends Controller
     /** export bill */
     public function exportBills(Request $request)
     {
-        //dd($request->start_date);
-       
+        $type = 'filter';
         $data = [
             "daterange" => $request->daterange
         ];
-//"12/05/2023-to-12/29/2023" 
         $dateRange = explode(" - ", $data['daterange']);
         $start_date = trim($dateRange[0]);
         $end_date = trim($dateRange[1]);
@@ -201,9 +198,8 @@ class BillingController extends Controller
         $formattedEndDate = $carbonEndDate->format("Y-m-d");
 
         $filename = $formattedStartDate . '-to-' . $formattedEndDate;
-
-        $filename = str_replace(['/', '\\'], '_', $filename . '.xlsx') ;
-        return Excel::download(new ExportBilling($formattedStartDate, $formattedEndDate), $filename);
+        $filename = str_replace(['/', '\\'], '_', $filename . '.xlsx');
+        return Excel::download(new ExportBilling($formattedStartDate, $formattedEndDate, $type), $filename);
     }
 
     /** edit */

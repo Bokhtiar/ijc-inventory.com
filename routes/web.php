@@ -51,3 +51,8 @@ Route::resource('permission', PermissionController::class);
 
 /** report */
 Route::get('report/{type}', [ReportController::class, 'report'])->name('report.index');
+Route::post('report-filter', [ReportController::class, 'reportFilter'])->name('report-filter');
+Route::get('report/download/filter/{start_date}/{end_date}', [ReportController::class, 'reportFilterDownload'])->name('report.download.filter');
+
+
+Route::get('report/download/{type}', [ReportController::class, 'reportDownload'])->name('report.download');
