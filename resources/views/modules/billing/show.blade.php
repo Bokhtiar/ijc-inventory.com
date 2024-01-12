@@ -63,7 +63,7 @@
                                 </span>
 
                                 <span style="">
-                                    Email: {{ $billings->email }}
+                                    Email: {{ $billings->user ? $billings->user->email : "" }}
                                 </span>
                                 <br>
                                 <span style="">
