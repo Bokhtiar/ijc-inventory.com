@@ -122,6 +122,33 @@
                                 {{-- user end  --}}
 
 
+                                <tr>
+                                    <td>Report</td>
+                                    <td>
+                                        <input type="checkbox" name="permission[report][add]"
+                                            @isset($permission['permission']['report']['add']) checked @endisset value="1">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="permission[report][edit]"
+                                            @isset($permission['permission']['report']['edit']) checked @endisset value="1">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="permission[report][view]"
+                                            @isset($permission['permission']['report']['view']) checked @endisset value="1">
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="permission[report][delete]"
+                                            @isset($permission['permission']['report']['delete']) checked @endisset value="1">
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="permission[report][list]"
+                                            @isset($permission['permission']['report']['list']) checked @endisset value="1">
+                                    </td>
+
+                                </tr>
+
+
 
 
                             </tbody>

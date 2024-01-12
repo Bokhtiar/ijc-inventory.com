@@ -42,13 +42,15 @@
                 <span>Employee</span>
             </a>
         </li><!-- End employee Nav -->
- 
+
+         @isset(auth()->user()->role->permission['permission']['report']['list'])
         <li class="nav-item">
             <a class="nav-link" href="@route('report.index', 'today')">
                 <i class="bi bi-grid"></i>
                 <span>Report</span>
             </a>
         </li><!-- End employee Nav -->
+        @endisset
 
         <li class="nav-item">
             <a class="nav-link" href="@route('logout')">

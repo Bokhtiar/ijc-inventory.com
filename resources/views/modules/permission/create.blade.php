@@ -61,7 +61,6 @@
                                     <td><input type="checkbox" name="permission[role][view]" value="1"></td>
                                     <td><input type="checkbox" name="permission[role][delete]" value="1"></td>
                                     <td><input type="checkbox" name="permission[role][list]" value="1"></td>
-
                                 </tr>
                                 <tr>
                                     <td>Permissions</td>
@@ -76,6 +75,15 @@
                                     <td><input type="checkbox" name="permission[change_password][list]" value="1"></td>
                                 </tr>
 
+                                <tr>
+                                    <td>Report</td>
+                                    <td><input type="checkbox" name="permission[report][add]" value="1"></td>
+                                    <td><input type="checkbox" name="permission[report][edit]" value="1"></td>
+                                    <td><input type="checkbox" name="permission[report][view]" value="1"></td>
+                                    <td><input type="checkbox" name="permission[report][delete]" value="1"></td>
+                                    <td><input type="checkbox" name="permission[report][list]" value="1"></td>
+                                </tr>
+ 
                             </tbody>
                         </table>
                     </div>

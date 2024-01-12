@@ -18,7 +18,9 @@ Route::get('/', function () {
     return redirect()->route('dashboard');
 })->middleware('auth');
 
-/* Admin auth routes */
+
+Route::group(['middleware' => ['auth', 'permission']], function () {
+
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 /* billing */
 Route::get('/billing/list', [App\Http\Controllers\BillingController::class, 'index'])->name('billing.list');
@@ -48,7 +50,7 @@ Route::get('autocomplete/customer/search', [CustomerController::class, 'customer
 Route::resource('role', RoleController::class);
 Route::get('role/status/{role_id}', [RoleController::class, 'status'])->name('role.status');
 Route::resource('permission', PermissionController::class);
-
+ 
 /** report */
 Route::get('report/{type}', [ReportController::class, 'report'])->name('report.index');
 Route::post('report-filter', [ReportController::class, 'reportFilter'])->name('report-filter');
@@ -56,3 +58,4 @@ Route::get('report/download/filter/{start_date}/{end_date}', [ReportController::
 
 
 Route::get('report/download/{type}', [ReportController::class, 'reportDownload'])->name('report.download');
+});
