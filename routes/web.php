@@ -6,6 +6,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -58,6 +59,8 @@ Route::get('report/{type}', [ReportController::class, 'report'])->name('report.i
 Route::post('report-filter', [ReportController::class, 'reportFilter'])->name('report-filter');
 Route::get('report/download/filter/{start_date}/{end_date}', [ReportController::class, 'reportFilterDownload'])->name('report.download.filter');
 
+/** setting */
+Route::resource('setting', SettingController::class);
 
 Route::get('report/download/{type}', [ReportController::class, 'reportDownload'])->name('report.download');
 });

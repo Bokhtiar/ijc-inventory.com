@@ -270,8 +270,8 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
-                            aria-controls="panelsStayOpen-collapseThree">
+                            data-bs-target="#panelsStayOpen-collapse4" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapse4">
                             <div class="d-flex">
                                 <span class="material-symbols-outlined">
                                     psychology_alt
@@ -280,7 +280,7 @@
                             </div>
                         </button>
                     </h2>
-                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                    <div id="panelsStayOpen-collapse4" class="accordion-collapse collapse">
                         <div class="accordion-body question-content text-muted">
                             Of Course you can. That’s alsp a basic. You will get both
                             printed and saved to your local databases.
@@ -292,8 +292,8 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
-                            aria-controls="panelsStayOpen-collapseThree">
+                            data-bs-target="#panelsStayOpen-collapse5" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapse5">
                             <div class="d-flex">
                                 <span class="material-symbols-outlined">
                                     psychology_alt
@@ -302,7 +302,7 @@
                             </div>
                         </button>
                     </h2>
-                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                    <div id="panelsStayOpen-collapse5" class="accordion-collapse collapse">
                         <div class="accordion-body question-content text-muted">
                             No. One time pay for the system and you will be able to use it for the rest of your life.
                         </div>
@@ -312,8 +312,8 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
-                            aria-controls="panelsStayOpen-collapseThree">
+                            data-bs-target="#panelsStayOpen-collapse6" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapse6">
                             <div class="d-flex">
                                 <span class="material-symbols-outlined">
                                     psychology_alt
@@ -322,7 +322,7 @@
                             </div>
                         </button>
                     </h2>
-                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                    <div id="panelsStayOpen-collapse6" class="accordion-collapse collapse">
                         <div class="accordion-body question-content text-muted">
                             No our software doesn’t come with a smartphone app.
                         </div>

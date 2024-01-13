@@ -72,6 +72,13 @@
         @endisset
 
         <li class="nav-item">
+            <a class="nav-link" href="@route('setting.edit', 1)">
+                <i class="bi bi-grid"></i>
+                <span>Setting</span>
+            </a>
+        </li><!-- End setting Nav -->
+
+        <li class="nav-item">
             <a class="nav-link" href="@route('logout')">
                 <i class="bi bi-grid"></i>
                 <span>Logout</span>
