@@ -393,8 +393,7 @@
                         </span>
                         <p class="px-2 theme-heading">Our Location</p>
                     </div>
-                    <p class="text-muted px-4 theme-content">128/1, East Tejturi Bazar (2nd Floor), Kawran Bazar, Tejgaon,
-                        Dhaka-1215.</p>
+                    <p class="text-muted px-4 theme-content">{{ $setting->location }}</p>
                 </section>
 
 
@@ -405,8 +404,7 @@
                         </span>
                         <p class="px-2 theme-heading">Contact Phones</p>
                     </div>
-                    <p class="text-muted px-4 theme-content">Phone : +12 3 3456 7890
-                        Mobile : +12 9 8765 4321</p>
+                    <p class="text-muted px-4 theme-content">Phone : {{ $setting->phone }}</p>
                 </section>
 
 
@@ -417,7 +415,7 @@
                         </span>
                         <p class="px-2 theme-heading">Working Hours</p>
                     </div>
-                    <p class="text-muted px-4 theme-content">Sun - Thu: 8:00 am - 7:45 pm</p>
+                    <p class="text-muted px-4 theme-content">{{ $setting->work_time }}</p>
                 </section>
             </div>
 
