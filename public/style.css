@@ -11,7 +11,7 @@
      --main-color: #319ED7;
      --secondary: #F5B324;
      --white: #ffffff;
-     --gray: #c9c9c9;
+     --gray: #bdb9b9;
      --heading: 'Nunito Sans', sans-serif;
      --content: 'Roboto', sans-serif;
  }
@@ -45,7 +45,7 @@
  }
 
  .card-heading {
-    font-family: var(--heading);
+     font-family: var(--heading);
  }
 
  .card-content {
@@ -53,4 +53,35 @@
      font-size: 15px;
      line-height: 19px;
      font-family: var(--content);
+ }
+
+ .unless-img {
+     width: 100%;
+ }
+
+ .unless-title {
+     font-size: 43px;
+     font-family: var(--heading);
+ }
+
+ .unless-content{
+    color: var(--gray);
+    font-family: var(--content);
+    text-align: justify ;
+ }
+
+ /* response */
+ @media (max-width: 768px) {
+     .heading-banner {
+         font-size: 40px;
+     }
+
+     .banner-button {
+         margin-bottom: 20px;
+     }
+     .unless-title{
+            font-size: 25px;
+                font-family: var(--heading);
+                margin-top: 22px;
+     }
  }
