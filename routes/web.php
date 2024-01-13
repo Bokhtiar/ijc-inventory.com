@@ -13,13 +13,12 @@ use Illuminate\Support\Facades\Route;
 /* Web auth routes */
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/', [App\Http\Controllers\HomeController::class, 'dashboard']);
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard']);
 
 /* Web Routes */
-// Route::get('/', function () {
-//     return redirect()->route('dashboard');
-// })->middleware('auth');
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
 Route::group(['middleware' => ['auth', 'permission']], function () {
