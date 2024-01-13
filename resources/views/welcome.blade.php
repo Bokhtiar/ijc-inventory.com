@@ -49,15 +49,75 @@
 
     {{-- unless  --}}
     <section class="container my-5  ">
-       <div class="row">
- <div class="col-12 col-sm-12 col-md-6 col-lg-6 mx-auto">
-            <img src="{{ asset('assets/section1.png') }}" class="unless-img"  alt="">
-        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 mx-auto">
+                <img src="{{ asset('assets/section1.png') }}" class="unless-img" alt="">
+            </div>
 
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-auto">
-            <h3 class="unless-title">Unleash Seamless Invoicing Excellence</h3>
-            <p class="unless-content my-4">Welcome to ITM Billing, where innovation meets simplicity in the world of invoicing. Our powerful yet user-friendly software is meticulously crafted to fit the unique needs of your business, ensuring a seamless and efficient billing experience. From effortlessly creating invoices to achieving unparalleled precision, ITM Billing is your trusted partner in transforming financial operations. Elevate your business to new heights – start your journey with ITM Billing today!</p>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-auto">
+                <h3 class="unless-title">Unleash Seamless Invoicing Excellence</h3>
+                <p class="unless-content my-4">Welcome to ITM Billing, where innovation meets simplicity in the world of
+                    invoicing. Our powerful yet user-friendly software is meticulously crafted to fit the unique needs of
+                    your business, ensuring a seamless and efficient billing experience. From effortlessly creating invoices
+                    to achieving unparalleled precision, ITM Billing is your trusted partner in transforming financial
+                    operations. Elevate your business to new heights – start your journey with ITM Billing today!</p>
+            </div>
         </div>
-       </div>
+    </section>
+
+    {{-- invoice --}}
+    <section class="container my-5">
+        <h3 class="text-center invoice-heaading">Transform Your Invoicing Experience</h3>
+        <p class="text-center invoice-content">Discover the essential features that redefine efficiency and effectiveness,
+            <br> making ITM Billing your indispensable tool for streamlined invoicing.
+        </p>
+        {{-- content --}}
+        <section class="row my-5">
+            <div class="d-flex col-12 col-sm-12 col-md-6 col-lg-6">
+                <span class="material-symbols-outlined mt-1">
+                    new_releases
+                </span>
+                <p class="px-2 text-muted">Time-Saving Automation: Effortlessly automate repetitive tasks, freeing up
+                    valuable time for strategic business activities.</p>
+            </div>
+
+            <div class="d-flex col-12 col-sm-12 col-md-6 col-lg-6">
+                <span class="material-symbols-outlined mt-1">
+                    new_releases
+                </span>
+                <p class="px-2 text-muted">Faster Payment Processing: Expedite your cash flow by providing clients with prompt and professional invoices.</p>
+            </div>
+
+             <div class="d-flex col-12 col-sm-12 col-md-6 col-lg-6">
+                <span class="material-symbols-outlined mt-1">
+                    new_releases
+                </span>
+                <p class="px-2 text-muted">Error Reduction: Minimize the risk of manual errors with our precision-focused invoicing system.</p>
+            </div>
+
+            <div class="d-flex col-12 col-sm-12 col-md-6 col-lg-6">
+                <span class="material-symbols-outlined mt-1">
+                    new_releases
+                </span>
+                <p class="px-2 text-muted">Data Security: Ensure the confidentiality and security of your financial data with our advanced encryption measures.</p>
+            </div>
+
+            <div class="d-flex col-12 col-sm-12 col-md-6 col-lg-6">
+                <span class="material-symbols-outlined mt-1">
+                    new_releases
+                </span>
+                <p class="px-2 text-muted">Compliance Assurance: Stay compliant with tax regulations and financial standards through our robust invoicing software.</p>
+            </div>
+
+            <div class="d-flex col-12 col-sm-12 col-md-6 col-lg-6">
+                
+                <span class="material-symbols-outlined mt-1">
+                    new_releases
+                </span>
+                <p class="px-2 text-muted">Compliance Assurance: Stay compliant with tax regulations and financial standards through our robust invoicing software.</p>
+            </div></p>
+            </div>
+
+        </section>
     </section>
 @endsection
