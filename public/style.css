@@ -65,23 +65,51 @@
      font-family: var(--heading);
  }
 
- .unless-content{
-    color: var(--gray);
-    font-family: var(--content);
-    text-align: justify ;
+ .unless-content {
+     color: var(--gray);
+     font-family: var(--content);
+     text-align: justify;
  }
 
- .invoice-heaading{
-    font-size: 40px;
-    font-weight: 700;
+ .invoice-heaading {
+     font-size: 40px;
+     font-weight: 700;
+     font-family: var(--heading);
+ }
+
+ .invoice-content {
+     color: var(--gray);
+     font-family: var(--content);
+ }
+
+ .theme-content {
+     margin-left: 7px;
+     line-height: 1;
+     margin-top: -14px;
+     font-family: var(--content);
+ }
+ .theme-heading{
+    font-size: 18px;
+    font-weight: bold;
     font-family: var(--heading);
- }
- 
- .invoice-content{
-    color: var(--gray);
+}
+.question-title{
+    font-size: 16px;
+    font-family: var(--heading);
+    font-weight: bold;
+    margin-top: 5px;
+}
+.question-content{
+    font-size: 14px;
+    
     font-family: var(--content);
- }
-
+}
+.btn-submit{
+    background-color: var(--main-color);
+    padding-inline: 10px;
+    border: none;
+    color: white;
+}
  /* response */
  @media (max-width: 768px) {
      .heading-banner {
@@ -91,9 +119,10 @@
      .banner-button {
          margin-bottom: 20px;
      }
-     .unless-title{
-            font-size: 25px;
-                font-family: var(--heading);
-                margin-top: 22px;
+
+     .unless-title {
+         font-size: 25px;
+         font-family: var(--heading);
+         margin-top: 22px;
      }
  }
