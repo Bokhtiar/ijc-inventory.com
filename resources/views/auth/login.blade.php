@@ -10,8 +10,13 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('/admin/assets') }}/img/favicon.png" rel="icon">
-    <link href="{{ asset('/admin/assets') }}/img/apple-touch-icon.png" rel="apple-touch-icon">
+    @if ($setting->logo)
+        <link href="{{ asset($setting->logo) }}" rel="icon">
+        <link href="{{ asset($setting->logo) }} " rel="apple-touch-icon">
+    @else
+        <link href="{{ asset('/admin/assets') }}/img/favicon.png" rel="icon">
+        <link href="{{ asset('/admin/assets') }}/img/apple-touch-icon.png" rel="apple-touch-icon">
+    @endif
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -53,11 +58,11 @@
                             <div class="d-flex justify-content-center py-4">
                                 <a href="index.html" class="logo d-flex align-items-center w-auto">
                                     @if ($setting->logo)
-                                    <img src="{{ asset($setting->logo) }}" alt="">
-                                    <span class="d-none d-lg-block">{{ $setting->company_name }}</span>
+                                        <img src="{{ asset($setting->logo) }}" alt="">
+                                        <span class="d-none d-lg-block">{{ $setting->company_name }}</span>
                                     @else
-                                    <img src="{{ asset('/admin/assets') }}/img/logo.png" alt="">
-                                    <span class="d-none d-lg-block">{{ $setting->company_name }}</span>
+                                        <img src="{{ asset('/admin/assets') }}/img/logo.png" alt="">
+                                        <span class="d-none d-lg-block">{{ $setting->company_name }}</span>
                                     @endif
                                 </a>
                             </div><!-- End Logo -->
