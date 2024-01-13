@@ -447,4 +447,8 @@
             </div>
         </section>
     </section>
+
+    {{-- footer --}}
+    <hr>
+    <p class="text-center text-muted">© 2023 - 2024 IT Media. All Rights Reserved</p>
 @endsection
