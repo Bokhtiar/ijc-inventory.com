@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     {{-- banner section --}}
-    <section class="bg-banner text-white">
+    <section class="bg-banner text-white" id="about">
         <section class="container">
             <div class="py-5">
                 <div class="row">
@@ -73,7 +73,7 @@
     </section>
 
     {{-- unless  --}}
-    <section class="container my-5  ">
+    <section class="container my-5" id="feature">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-6 col-lg-6 mx-auto">
                 <img src="{{ asset('assets/section1.png') }}" class="unless-img" alt="">
@@ -192,7 +192,7 @@
     </section>
 
     {{-- question --}}
-    <section class="container my-5">
+    <section class="container my-5" id="faqs">
         <h3 class="text-center invoice-heaading">Have Questions? Look Here.</h3>
         <p class="text-center invoice-content">Aliquam a augue suscipit, luctus neque purus ipsum neque undo dolor primis
             <br>
@@ -420,7 +420,7 @@
             </div>
 
             <div class="col-12 col-sm-12 col-md-8 col-lg-8">
-                <form action="">
+                <form action="@route('contact.store')" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
@@ -435,7 +435,7 @@
                             <input type="text" class="form-control" required name="subject" placeholder="Subject" id="">
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                            <textarea name="" id="" cols="10" rows="4" class="form-control" placeholder="Message" required></textarea>
+                            <textarea name="message" required id="" cols="10" rows="4" class="form-control" placeholder="Message" required></textarea>
                         </div>
                     </div>
                     <div class="text-end">

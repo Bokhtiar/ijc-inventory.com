@@ -250,6 +250,26 @@
 
                                 </tr>
 
+                                {{-- contact --}}
+                                <tr>
+                                    <td>Contact</td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="permission[contact][edit]"
+                                            @isset($permission['permission']['contact']['edit']) checked @endisset value="1">
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="permission[contact][list]"
+                                            @isset($permission['permission']['contact']['list']) checked @endisset value="1">
+                                    </td>
+
+                                </tr>
+
 
 
 

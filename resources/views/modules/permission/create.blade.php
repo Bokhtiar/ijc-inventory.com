@@ -123,6 +123,16 @@
                                     <td><input type="checkbox" name="permission[setting][list]" value="1"></td>
                                 </tr>
  
+
+                                <tr>
+                                    <td>Contact</td>
+                                    <td></td>
+                                    <td><input type="checkbox" name="permission[contact][edit]" value="1"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><input type="checkbox" name="permission[contact][list]" value="1"></td>
+                                </tr>
+ 
                             </tbody>
                         </table>
                     </div>

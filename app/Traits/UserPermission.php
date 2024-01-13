@@ -47,8 +47,15 @@ trait UserPermission
             empty(auth()->user()->role->permission['permission']['report']['list']) && \Route::is('report.index', 'type') ||
             // setting
             empty(auth()->user()->role->permission['permission']['setting']['list']) && \Route::is('setting.list')||
-            empty(auth()->user()->role->permission['permission']['setting']['edit']) && \Route::is('setting.edit')
-        ) {
+            empty(auth()->user()->role->permission['permission']['setting']['edit']) && \Route::is('setting.edit') ||
+
+            //contact
+            empty(auth()->user()->role->permission['permission']['contact']['list']) && \Route::is('contact.index')||
+            empty(auth()->user()->role->permission['permission']['contact']['edit']) && \Route::is('contact.edit', 'id')
+        
+        
+        
+            ) {
             return abort(401);
         }
     }

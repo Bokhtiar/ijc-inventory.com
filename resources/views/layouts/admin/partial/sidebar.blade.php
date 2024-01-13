@@ -78,12 +78,19 @@
                 </a>
             </li><!-- End setting Nav -->
         @endisset
-
+        @isset(auth()->user()->role->permission['permission']['contact']['list'])
             <li class="nav-item">
-                <a class="nav-link" href="@route('logout')">
+                <a class="nav-link" href="@route('contact.index')">
                     <i class="bi bi-grid"></i>
-                    <span>Logout</span>
+                    <span>Contact</span>
                 </a>
-            </li><!-- End billing Nav -->
-        </ul>
-    </aside>
+            </li><!-- End contact Nav -->
+        @endisset
+        <li class="nav-item">
+            <a class="nav-link" href="@route('logout')">
+                <i class="bi bi-grid"></i>
+                <span>Logout</span>
+            </a>
+        </li><!-- End billing Nav -->
+    </ul>
+</aside>
