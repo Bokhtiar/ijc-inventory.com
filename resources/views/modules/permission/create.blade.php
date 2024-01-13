@@ -113,6 +113,15 @@
                                     <td>Report</td>
                                     <td><input type="checkbox" name="permission[report][list]" value="1"></td>
                                 </tr>
+
+                                <tr>
+                                    <td>Setting</td>
+                                    <td></td>
+                                    <td><input type="checkbox" name="permission[setting][edit]" value="1"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><input type="checkbox" name="permission[setting][list]" value="1"></td>
+                                </tr>
  
                             </tbody>
                         </table>

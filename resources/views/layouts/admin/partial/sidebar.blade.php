@@ -2,23 +2,22 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
-            <a class="nav-link" @if (Auth::user()->role_id == 4)
-                href="@route('profile.edit', Auth::id())"
+            <a class="nav-link"
+                @if (Auth::user()->role_id == 4) href="@route('profile.edit', Auth::id())"
                 @else 
-                href="@route('dashboard')"
-            @endif >
+                href="@route('dashboard')" @endif>
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>
         </li><!-- End Dashboard Nav -->
 
-         @isset(auth()->user()->role->permission['permission']['billing']['list'])
-        <li class="nav-item">
-            <a class="nav-link" href="@route('billing.list')">
-                <i class="bi bi-grid"></i>
-                <span>Billing List</span>
-            </a>
-        </li><!-- End billing Nav -->
+        @isset(auth()->user()->role->permission['permission']['billing']['list'])
+            <li class="nav-item">
+                <a class="nav-link" href="@route('billing.list')">
+                    <i class="bi bi-grid"></i>
+                    <span>Billing List</span>
+                </a>
+            </li><!-- End billing Nav -->
         @endisset
         @isset(auth()->user()->role->permission['permission']['billing']['add'])
             <li class="nav-item">
@@ -71,18 +70,20 @@
             </li><!-- End employee Nav -->
         @endisset
 
-        <li class="nav-item">
-            <a class="nav-link" href="@route('setting.edit', 1)">
-                <i class="bi bi-grid"></i>
-                <span>Setting</span>
-            </a>
-        </li><!-- End setting Nav -->
+        @isset(auth()->user()->role->permission['permission']['setting']['list'])
+            <li class="nav-item">
+                <a class="nav-link" href="@route('setting.edit', 1)">
+                    <i class="bi bi-grid"></i>
+                    <span>Setting</span>
+                </a>
+            </li><!-- End setting Nav -->
+        @endisset
 
-        <li class="nav-item">
-            <a class="nav-link" href="@route('logout')">
-                <i class="bi bi-grid"></i>
-                <span>Logout</span>
-            </a>
-        </li><!-- End billing Nav -->
-    </ul>
-</aside>
+            <li class="nav-item">
+                <a class="nav-link" href="@route('logout')">
+                    <i class="bi bi-grid"></i>
+                    <span>Logout</span>
+                </a>
+            </li><!-- End billing Nav -->
+        </ul>
+    </aside>

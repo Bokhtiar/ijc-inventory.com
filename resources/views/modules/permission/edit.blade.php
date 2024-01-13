@@ -132,7 +132,7 @@
                                 </tr>
 
                                 {{-- billing --}}
-                                  <tr>
+                                <tr>
                                     <td>Billing</td>
                                     <td>
                                         <input type="checkbox" name="permission[billing][add]"
@@ -154,7 +154,7 @@
 
 
 
-                                    
+
 
 
                                     <td>
@@ -163,12 +163,12 @@
                                     </td>
 
                                     <td>
-                                       PDF <input type="checkbox" name="permission[billing][pdf]"
+                                        PDF <input type="checkbox" name="permission[billing][pdf]"
                                             @isset($permission['permission']['billing']['pdf']) checked @endisset value="1">
 
                                     </td>
                                     <td>
-                                       Print <input type="checkbox" name="permission[billing][print]"
+                                        Print <input type="checkbox" name="permission[billing][print]"
                                             @isset($permission['permission']['billing']['print']) checked @endisset value="1">
                                     </td>
 
@@ -176,7 +176,7 @@
 
 
                                 {{-- employee --}}
-                                  <tr>
+                                <tr>
                                     <td>Employee</td>
                                     <td>
                                         <input type="checkbox" name="permission[employee][add]"
@@ -202,8 +202,8 @@
 
                                 </tr>
 
-                                   {{-- customer --}}
-                                  <tr>
+                                {{-- customer --}}
+                                <tr>
                                     <td>Customer</td>
                                     <td>
                                         <input type="checkbox" name="permission[customer][add]"
@@ -225,6 +225,27 @@
                                     <td>
                                         <input type="checkbox" name="permission[customer][list]"
                                             @isset($permission['permission']['customer']['list']) checked @endisset value="1">
+                                    </td>
+
+                                </tr>
+
+
+                                {{-- setting --}}
+                                <tr>
+                                    <td>Setting</td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="permission[setting][edit]"
+                                            @isset($permission['permission']['setting']['edit']) checked @endisset value="1">
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="permission[setting][list]"
+                                            @isset($permission['permission']['setting']['list']) checked @endisset value="1">
                                     </td>
 
                                 </tr>
