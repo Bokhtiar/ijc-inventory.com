@@ -51,7 +51,10 @@ trait UserPermission
 
             //contact
             empty(auth()->user()->role->permission['permission']['contact']['list']) && \Route::is('contact.index')||
-            empty(auth()->user()->role->permission['permission']['contact']['edit']) && \Route::is('contact.edit', 'id')
+            empty(auth()->user()->role->permission['permission']['contact']['edit']) && \Route::is('contact.edit', 'id') ||
+
+            // soft delete
+            empty(auth()->user()->role->permission['permission']['softDelete']['list']) && \Route::is('billing.softDeleteData')
         
         
         

@@ -21,7 +21,7 @@
             <section class="">
                 <div class="d-flex justify-content-between">
                     <h3>{{ $title }}</h3>
-                    <a href="@route('billing.pdf', $billings->billing_id)" class="btn btn-success">Download Pdf</a>
+                    
                 </div>
 
 

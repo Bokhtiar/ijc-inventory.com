@@ -111,7 +111,20 @@
 
                                 <tr>
                                     <td>Report</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td><input type="checkbox" name="permission[report][list]" value="1"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Soft Delete</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><input type="checkbox" name="permission[softDelete][list]" value="1"></td>
                                 </tr>
 
                                 <tr>

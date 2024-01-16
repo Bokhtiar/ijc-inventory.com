@@ -31,10 +31,11 @@ Route::group(['middleware' => ['auth', 'permission']], function () {
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     /* billing */
     Route::get('/billing/list', [App\Http\Controllers\BillingController::class, 'index'])->name('billing.list');
-    Route::get('/billing/trash/list', [App\Http\Controllers\BillingController::class, 'trash_list'])->name('billing.trash.list');
+    Route::get('/billing/softDeleteData', [App\Http\Controllers\BillingController::class, 'softDeleteData'])->name('billing.softDeleteData');
     Route::get('/billing-ways-service/{id}', [App\Http\Controllers\BillingController::class, 'bllling_ways_service']);
     Route::get('/billing/edit/{id}', [App\Http\Controllers\BillingController::class, 'edit'])->name('billing.edit');
     Route::get('/billing/show/{id}', [App\Http\Controllers\BillingController::class, 'show'])->name('billing.show');
+    Route::get('/billing/show/softDelete/{id}', [App\Http\Controllers\BillingController::class, 'softDeleteDataShow'])->name('billing.show.softDelete');
     Route::get('/billing/pdf/{id}', [App\Http\Controllers\BillingController::class, 'pdfDownload'])->name('billing.pdf');
     Route::get('/billing/create', [App\Http\Controllers\BillingController::class, 'create'])->name('billing.create');
     Route::post('/billing/store', [App\Http\Controllers\BillingController::class, 'store'])->name('billing.store');

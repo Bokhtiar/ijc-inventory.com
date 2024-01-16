@@ -86,6 +86,16 @@
                 </a>
             </li><!-- End contact Nav -->
         @endisset
+
+        @isset(auth()->user()->role->permission['permission']['softDelete']['list'])
+            <li class="nav-item">
+                <a class="nav-link" href="@route('billing.softDeleteData')">
+                    <i class="bi bi-grid"></i>
+                    <span>Restore Bill</span>
+                </a>
+            </li><!-- End contact Nav -->
+        @endisset
+
         <li class="nav-item">
             <a class="nav-link" href="@route('logout')">
                 <i class="bi bi-grid"></i>

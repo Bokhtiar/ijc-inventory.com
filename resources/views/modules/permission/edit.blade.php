@@ -124,9 +124,26 @@
 
                                 <tr>
                                     <td>Report</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td>
                                         <input type="checkbox" name="permission[report][list]"
                                             @isset($permission['permission']['report']['list']) checked @endisset value="1">
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td>Soft Delete</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <input type="checkbox" name="permission[softDelete][list]"
+                                            @isset($permission['permission']['softDelete']['list']) checked @endisset value="1">
                                     </td>
 
                                 </tr>

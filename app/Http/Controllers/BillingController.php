@@ -30,18 +30,6 @@ class BillingController extends Controller
         }
     }
 
-
-    public function trash_list()
-    {
-        try {
-            $billings = Billing::where('status', 1)->latest()->get(['billing_id', 'status', 'date', 'ref', 'telephone', 'email', 'cell_no']);
-            return view('modules.billing.trash', ['title' => "Billing List", 'billings' => $billings]);
-        } catch (\Throwable $th) {
-            throw $th;
-        }
-    }
-
-
     /* create page  */
     public function create()
     {
@@ -107,6 +95,7 @@ class BillingController extends Controller
     /* specific resoruce show */
     public function show($id)
     {
+  
         try {
             $billings = Billing::find($id);
             $services = Service::where('billing_id', $id)->get();
@@ -142,7 +131,7 @@ class BillingController extends Controller
             // foreach ($services as $item) {
             //     $item->delete();
             // }
-            return redirect()->back()->with('success', "Deleted Successfully Done.");
+            return redirect()->back()->with('message', "Deleted Successfully Done.");
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -275,5 +264,23 @@ class BillingController extends Controller
         Service::insert($insert_data);
         }
         return redirect()->route('billing.list')->with('message', 'Billing Update Successfully Done.');
+    }
+
+    public function softDeleteData()
+    {
+        $billings = Billing::onlyTrashed()->get();
+        return view('modules.billing.softDeleteData', ['title' => 'Restore List', 'billings' => $billings]);
+    }
+
+    public function softDeleteDataShow($id)
+    {
+
+        try {
+            $billings = Billing::withTrashed()->find($id);
+            $services = Service::where('billing_id', $id)->get();
+            return view('modules.billing.show', ['title' => "Billing Show", 'billings' => $billings, 'services' => $services]);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }
