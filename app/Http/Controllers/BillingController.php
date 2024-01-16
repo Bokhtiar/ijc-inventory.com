@@ -138,10 +138,10 @@ class BillingController extends Controller
     {
         try {
             Billing::find($id)->delete();
-            $services = Service::where('billing_id', $id)->get();
-            foreach ($services as $item) {
-                $item->delete();
-            }
+            // $services = Service::where('billing_id', $id)->get();
+            // foreach ($services as $item) {
+            //     $item->delete();
+            // }
             return redirect()->back()->with('success', "Deleted Successfully Done.");
         } catch (\Throwable $th) {
             throw $th;
