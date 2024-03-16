@@ -39,7 +39,7 @@
                 <input required class="form-control" type="number" name="phone" placeholder="Employee phone" value="{{ @$edit->phone }}" id="">
             </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 my-2">
-                <input required class="form-control" type="number" name="password" placeholder="Employee password" value="{{ @$edit->password_text }}" id="">
+                <input required class="form-control" type="text" name="password" placeholder="Employee password" value="{{ @$edit->password_text }}" id="">
             </div>
             <div class="my-2 text-center">
                 <input type="submit" name="" value="Create Employee" class="btn btn btn-success" id="">

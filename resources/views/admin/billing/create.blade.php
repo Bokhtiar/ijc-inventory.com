@@ -31,7 +31,7 @@
                         value="IJC/{{ $lastTowDigit[2] . '' . $lastTowDigit[3] }} /Inv-{{ App\Models\Billing::count() + 1 }}"
                         name="ref" id="">
                 </div>
-
+ 
                 {{-- heading --}}
                 <div class="row mt-3">
                     {{-- address --}}
@@ -76,7 +76,7 @@
                             {{-- email --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Email.</div>
-                                <input type="email" required class="form-control ml-3" name="email" id="">
+                                <input type="email" class="form-control ml-3" name="email" id="">
                             </div>
 
                             {{-- website --}}

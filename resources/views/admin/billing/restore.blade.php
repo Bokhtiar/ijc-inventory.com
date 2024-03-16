@@ -22,7 +22,7 @@
         <div class="shadow px-4 py-4 bg-white">
              <form action="@route('admin.billing.store')" method="POST">
                 @csrf
-                @php
+                 @php
                     $today = Carbon\Carbon::now();
                     $currentYear = $today->year;
                     $lastTowDigit = str_split($currentYear);
@@ -30,8 +30,9 @@
                 {{-- refence --}}
                 <div class="d-flex ">
                     <div class="my-auto fw-bold">Ref.....</div>
-                    <input disabled required type="text" class="form-control ml-3" value="{{ $edit->ref }}" name="ref"
-                        id="">
+                    <input disabled required type="text" class="form-control ml-3"
+                        value="IJC/{{ $lastTowDigit[2] . '' . $lastTowDigit[3] }} /Inv-{{ App\Models\Billing::count() + 1 }}"
+                        name="ref" id="">
                 </div>
 
                 {{-- heading --}}
@@ -81,7 +82,7 @@
                             {{-- email --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Email.</div>
-                                <input type="email" required class="form-control ml-3" value="{!! $edit->email !!}" name="email" id="">
+                                <input type="email"  class="form-control ml-3" value="{!! $edit->email !!}" name="email" id="">
                             </div>
 
                             {{-- website --}}

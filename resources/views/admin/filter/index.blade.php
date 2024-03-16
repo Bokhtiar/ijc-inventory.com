@@ -11,7 +11,7 @@
         'parent_url' => 'admin.dashboard',
     ])
     @endcomponent
-   
+
     <section class="section dashboard ">
         <div class="bg-white p-3 rounded shadow">
             <div class="d-flex justify-content-between">
@@ -23,18 +23,37 @@
                         <input type="text" class="form-control" name="company_name" value="{{ @$company_name }}"
                             placeholder="compnay name">
                     </div>
-                    <div class="col-auto">
+                    <div class="col-auto d-flex">
                         <button type="submit" class="btn btn-primary mb-3">Search</button>
+
+
+
                     </div>
                 </form>
 
+               
+                    <form class="row g-3" action="@route('admin.downloadBill.compnay_name_ways')" method="POST">
+                        @csrf
+                        @method('POST')
+                        <div class="col-auto">
+                            <label for="" class="visually-hidden">Company name</label>
+                            <input type="text" hidden class="form-control" name="company_name"
+                                value="{{ @$company_name }}" placeholder="compnay name">
+                        </div>
+                        <div class="col-auto d-flex">
+                            <button type="submit" class="btn btn-primary mb-3">Download</button>
+
+
+                        </div>
+                    </form>
+                
                 {{-- date filter --}}
                 <div>
                     <form action="@route('admin.filter.between-date')" class="" method="POST">
                         @csrf
-                        <input  type="date" name="start_date" id="" value="{{ @$start_date }}">
-                        <input  type="date" name="end_date" id="" value="{{ @$end_date }}">
-                        <input type="submit" value="Submit"  name="" id="">
+                        <input type="date" name="start_date" id="" value="{{ @$start_date }}">
+                        <input type="date" name="end_date" id="" value="{{ @$end_date }}">
+                        <input type="submit" value="Submit" name="" id="">
                     </form>
                 </div>
             </div>

@@ -57,7 +57,8 @@ Route::group(["as" => 'admin.', "prefix" => 'admin', "middleware" => ['auth', 'a
     Route::post('/filter/company_name', [App\Http\Controllers\Admin\FilterController::class, 'companyfilter'])->name('filter.company_name');
     Route::post('/filter/between-date', [App\Http\Controllers\Admin\FilterController::class, 'betweenDate'])->name('filter.between-date');
 
-    
+    //download bill
+     Route::post('/downloadBill/compnay_name_ways', [App\Http\Controllers\Admin\FilterController::class, 'donwloadCompnayWays'])->name('downloadBill.compnay_name_ways');
     
     // export bill
     Route::post('/export-bill', [BillingController::class, 'exportBills'])->name('export-bill');

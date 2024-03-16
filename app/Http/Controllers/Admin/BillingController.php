@@ -258,7 +258,7 @@ class BillingController extends Controller
             'billings' => $billings,
             'services' => $services
         ];
-
+        
         $pdf = PDF::loadView('admin.billing.pdf', $data);
 
         //return $pdf->stream('info.pdf', $data, array("Attachment" => false));

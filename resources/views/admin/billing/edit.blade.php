@@ -32,7 +32,7 @@
                     <div class="my-auto fw-bold">Ref.....</div>
                     <input disabled required type="text" class="form-control ml-3" value="{{ $edit->ref }}" name="ref"
                         id="">
-                </div>
+                </div> 
 
                 {{-- heading --}}
                 <div class="row mt-3">
@@ -81,7 +81,7 @@
                             {{-- email --}}
                             <div class="d-flex mt-1">
                                 <div class="my-auto fw-bold">Email.</div>
-                                <input type="email" required class="form-control ml-3" value="{!! $edit->email !!}" name="email" id="">
+                                <input type="email" class="form-control ml-3" value="{!! $edit->email !!}" name="email" id="">
                             </div>
 
                             {{-- website --}}
