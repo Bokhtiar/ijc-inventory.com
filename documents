@@ -9,3 +9,7 @@ composer require psr/simple-cache:^1.0 maatwebsite/excel --ignore-platform-reqs 
 
 <!-- excel file column size with controll -->
  https://laraveldaily.com/post/laravel-excel-export-formatting-and-styling-cells
+
+ <!-- jwt auth -->
+ https://blog.logrocket.com/implementing-jwt-authentication-laravel-10/
+ jwt-auth secret [jwt-auth secret [U23A7Pvl6lpiu4Tr7XsqpG03B2IChQXGOR3oLPa0HVW58Kr60twgdNpabNsS8F1K]]
