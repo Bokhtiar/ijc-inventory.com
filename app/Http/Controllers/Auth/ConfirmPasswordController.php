@@ -26,6 +26,13 @@ class ConfirmPasswordController extends Controller
     /* Create a new controller instance. */
     public function __construct()
     {
+        /* after login auth user redirect page */
+        // if (Auth::check() && Auth::user()->role->id == 1) {
+        //     $this->redirectTo = route('admin.dashboard');
+        // } else {
+        //     $this->redirectTo = route('admin.dashboard');
+        // }
+ $this->redirectTo = route('admin.dashboard');
         $this->middleware('auth');
     }
 }

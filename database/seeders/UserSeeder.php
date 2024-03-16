@@ -11,36 +11,22 @@ class UserSeeder extends Seeder
     /* Run the database seeds. */
     public function run(): void
     {
+         /* admin create information */
          DB::table('users')->insert([
-            "name"=>'super admin',
+            "name"=>'admin',
             "phone" => "01638107361",
             "role_id"=>1,
-            "email"=>'superadmin@gmail.com',
-            "password"=>bcrypt(12345678)
-        ]);
-        
-        DB::table('users')->insert([
-            "name"=>'admin',
-            "phone" => "01287107361",
-            "role_id"=>2,
             "email"=>'admin@gmail.com',
-            "password"=>bcrypt(12345678)
+            "password"=>bcrypt(12345678),
         ]);
 
+        /* user create information */
         DB::table('users')->insert([
-            "name" => 'employee',
-            "phone" => "01258107361",
-            "role_id" => 3,
-            "email" => 'employee@gmail.com',
-            "password" => bcrypt(12345678)
-        ]);
-
-        DB::table('users')->insert([
-            "name" => 'customer',
-            "phone" => "01328107361",
-            "role_id" => 4,
-            "email" => 'customer@gmail.com',
-            "password" => bcrypt(12345678)
+            "name"=>'user',
+            "phone" => "0128107361",
+            "role_id"=>2,
+            "email"=>'user@gmail.com',
+            "password"=>bcrypt(12345678),
         ]);
     }
 }

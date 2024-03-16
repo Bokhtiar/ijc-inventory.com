@@ -2,105 +2,77 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
-            <a class="nav-link"
-                @if (Auth::user()->role_id == 4) href="@route('profile.edit', Auth::id())"
-                @else 
-                href="@route('dashboard')" @endif>
+            <a class="nav-link" href="@route('admin.dashboard')">
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>
         </li><!-- End Dashboard Nav -->
 
-        @isset(auth()->user()->role->permission['permission']['billing']['list'])
+        @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
             <li class="nav-item">
-                <a class="nav-link" href="@route('billing.list')">
-                    <i class="bi bi-grid"></i>
-                    <span>Billing List</span>
-                </a>
-            </li><!-- End billing Nav -->
-        @endisset
-        @isset(auth()->user()->role->permission['permission']['billing']['add'])
-            <li class="nav-item">
-                <a class="nav-link" href="@route('billing.create')">
-                    <i class="bi bi-grid"></i>
-                    <span>Billing Create</span>
-                </a>
-            </li><!-- End billing Nav -->
-        @endisset
-        @isset(auth()->user()->role->permission['permission']['role']['list'])
-            <li class="nav-item">
-                <a class="nav-link" href="@route('role.index')">
-                    <i class="bi bi-grid"></i>
-                    <span>Role</span>
-                </a>
-            </li><!-- End role Nav -->
-        @endisset
-        @isset(auth()->user()->role->permission['permission']['permission']['list'])
-            <li class="nav-item">
-                <a class="nav-link" href="@route('permission.index')">
-                    <i class="bi bi-grid"></i>
-                    <span>Permission</span>
-                </a>
-            </li><!-- End permission Nav -->
-        @endisset
-        @isset(auth()->user()->role->permission['permission']['employee']['list'])
-            <li class="nav-item">
-                <a class="nav-link" href="@route('employee.index')">
+                <a class="nav-link" href="@route('admin.employee.list')">
                     <i class="bi bi-grid"></i>
                     <span>Employee</span>
                 </a>
-            </li><!-- End employee Nav -->
-        @endisset
+            </li><!-- End billing Nav -->
 
-        @isset(auth()->user()->role->permission['permission']['customer']['list'])
             <li class="nav-item">
-                <a class="nav-link" href="@route('customer.index')">
-                    <i class="bi bi-grid"></i>
-                    <span>Customer</span>
+                <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>Restore</span><i
+                        class="bi bi-chevron-down ms-auto"></i>
                 </a>
-            </li><!-- End customer Nav -->
-        @endisset
-
-        @isset(auth()->user()->role->permission['permission']['report']['list'])
+                <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a class="nav-link" href="@route('admin.billing.softDeleteData')">
+                            <i class="bi bi-grid"></i>
+                            <span>Restore Bill</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="@route('admin.employee.softdeleteData')">
+                            <i class="bi bi-grid"></i>
+                            <span>Restore Employee</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End Tables Nav -->
+        @endif
+        @if (Auth::user()->role_id == 1)
             <li class="nav-item">
-                <a class="nav-link" href="@route('report.index', 'today')">
+                <a class="nav-link" href="@route('admin.filter')">
                     <i class="bi bi-grid"></i>
-                    <span>Report</span>
+                    <span>Bill Filter</span>
                 </a>
-            </li><!-- End employee Nav -->
-        @endisset
-
-        @isset(auth()->user()->role->permission['permission']['setting']['list'])
-            <li class="nav-item">
-                <a class="nav-link" href="@route('setting.edit', 1)">
-                    <i class="bi bi-grid"></i>
-                    <span>Setting</span>
-                </a>
-            </li><!-- End setting Nav -->
-        @endisset
-        @isset(auth()->user()->role->permission['permission']['contact']['list'])
-            <li class="nav-item">
-                <a class="nav-link" href="@route('contact.index')">
-                    <i class="bi bi-grid"></i>
-                    <span>Contact</span>
-                </a>
-            </li><!-- End contact Nav -->
-        @endisset
-
-        @isset(auth()->user()->role->permission['permission']['softDelete']['list'])
-            <li class="nav-item">
-                <a class="nav-link" href="@route('billing.softDeleteData')">
-                    <i class="bi bi-grid"></i>
-                    <span>Restore Bill</span>
-                </a>
-            </li><!-- End contact Nav -->
-        @endisset
+            </li><!-- End billing Nav -->
+        @endif
 
         <li class="nav-item">
-            <a class="nav-link" href="@route('logout')">
+            <a class="nav-link" href="@route('admin.billing.list')">
+                <i class="bi bi-grid"></i>
+                <span>Billing List</span>
+            </a>
+        </li><!-- End billing Nav -->
+
+
+
+        <li class="nav-item">
+            <a class="nav-link" href="@route('admin.billing.create')">
+                <i class="bi bi-grid"></i>
+                <span>Billing Create</span>
+            </a>
+        </li><!-- End billing Nav -->
+
+
+
+        <li class="nav-item">
+            <a class="nav-link" href="@route('admin.logout')">
                 <i class="bi bi-grid"></i>
                 <span>Logout</span>
             </a>
         </li><!-- End billing Nav -->
+
+
+
+
     </ul>
 </aside>

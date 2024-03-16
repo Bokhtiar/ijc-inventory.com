@@ -21,13 +21,14 @@ return new class extends Migration
             $table->string('date');
             $table->string('cell_no');
             $table->string('telephone');
-            $table->string('user_id');
+            $table->string('email');
             $table->text('website')->nullable();
 
             $table->longText('less_advance')->nullable();
             $table->longText('foreign_company')->nullable();
             $table->text('bill_creator');
             $table->text('biller_designation');
+            $table->longText('note')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });

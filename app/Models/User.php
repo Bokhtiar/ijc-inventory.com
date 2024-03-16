@@ -6,11 +6,15 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
 
     /* The attributes that are mass assignable. */
     protected $fillable = [
@@ -19,17 +23,11 @@ class User extends Authenticatable
         'email',
         'role_id',
         'password',
-
-        'designation',
-        'profile_pic',
-        'date_of_birth',
-        'gender',
-        'join_date',
-        'address',
+        'password_text',
+        'created_by',
+        'is_admin',
+        'deleted_at'
     ];
-
-
-
 
     /* The attributes that should be hidden for serialization. */
     protected $hidden = [
@@ -47,12 +45,5 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo(Role::class);
-    }
-
-    public static function customerEmail($email)
-    {
-        if ($email) {
-            # code...
-        }
     }
 }

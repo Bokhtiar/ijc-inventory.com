@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,18 +7,13 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Pages / Login - {{ $setting->company_name }}</title>
+    <title>Pages / Login - IJC Management</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    @if ($setting->logo)
-        <link href="{{ asset($setting->logo) }}" rel="icon">
-        <link href="{{ asset($setting->logo) }} " rel="apple-touch-icon">
-    @else
-        <link href="{{ asset('/admin/assets') }}/img/favicon.png" rel="icon">
-        <link href="{{ asset('/admin/assets') }}/img/apple-touch-icon.png" rel="apple-touch-icon">
-    @endif
+    <link href="{{ asset('/admin/assets') }}/img/favicon.png" rel="icon">
+    <link href="{{ asset('/admin/assets') }}/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -57,13 +54,8 @@
 
                             <div class="d-flex justify-content-center py-4">
                                 <a href="index.html" class="logo d-flex align-items-center w-auto">
-                                    @if ($setting->logo)
-                                        <img src="{{ asset($setting->logo) }}" alt="">
-                                        <span class="d-none d-lg-block">{{ $setting->company_name }}</span>
-                                    @else
-                                        <img src="{{ asset('/admin/assets') }}/img/logo.png" alt="">
-                                        <span class="d-none d-lg-block">{{ $setting->company_name }}</span>
-                                    @endif
+                                    <img src="{{ asset('/admin/assets') }}/img/logo.png" alt="">
+                                    <span class="d-none d-lg-block">IJC Management</span>
                                 </a>
                             </div><!-- End Logo -->
 
@@ -93,7 +85,7 @@
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
-
+                                               
                                             </div>
                                         </div>
 
@@ -108,7 +100,7 @@
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
-
+                                           
                                         </div>
 
                                         <div class="col-12">
@@ -121,13 +113,7 @@
                                         <div class="col-12">
                                             <button class="btn btn-primary w-100" type="submit">Login</button>
                                         </div>
-
-                                        @if (Route::has('password.request'))
-                                            <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                {{ __('Forgot Your Password?') }}
-                                            </a>
-                                        @endif
-
+                                  
                                     </form>
                                 </div>
                             </div>

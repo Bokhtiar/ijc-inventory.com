@@ -8,14 +8,9 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
-   <!-- Favicons -->
-    @if ($setting->logo)
-        <link href="{{ asset($setting->logo) }}" rel="icon">
-        <link href="{{ asset($setting->logo) }} " rel="apple-touch-icon">
-    @else
-        <link href="{{ asset('/admin/assets') }}/img/favicon.png" rel="icon">
-        <link href="{{ asset('/admin/assets') }}/img/apple-touch-icon.png" rel="apple-touch-icon">
-    @endif
+    <!-- Favicons -->
+    <link href="{{ asset('/admin/assets') }}/img/favicon.png" rel="icon">
+    <link href="{{ asset('/admin/assets') }}/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">

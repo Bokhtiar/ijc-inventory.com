@@ -6,12 +6,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Billing extends Model
 {
     use HasFactory;
-
     use SoftDeletes;
-
     protected $dates = ['deleted_at'];
     
     protected $table = 'billings';
@@ -26,18 +25,31 @@ class Billing extends Model
         'date',
         'cell_no',
         'telephone',
-        'user_id',
+        'email',
         'website',
         'less_advance',
         'foreign_company',
         'bill_creator',
         'biller_designation',
-    
+        'note',
+        
+        'created_by',
+        'created_by_boss_id'
     ];
 
-    // Billing model
-    public function user()
+
+
+    public function createdBy()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'created_by', 'id');
     }
+
+    public static function service_amount($id)
+    {
+        return Service::where('billing_id', $id)->sum('grand_total');
+    }
+
 }
+
+
+
