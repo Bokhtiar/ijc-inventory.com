@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\AdminApiMiddleware;
 use App\Http\Middleware\UserMiddleware;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -53,6 +54,7 @@ class Kernel extends HttpKernel
          /* custome middleware for role base authentication */
          'user' => UserMiddleware::class,
          'admin' => AdminMiddleware::class,
+        'AdminApiMiddleware' => AdminApiMiddleware::class,
          
     ];
 }
