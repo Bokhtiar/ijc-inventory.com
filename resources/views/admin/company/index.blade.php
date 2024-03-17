@@ -12,6 +12,13 @@
     ])
     @endcomponent
 
+    @component('components.heading', [
+        'pageTitle' => "Company create",
+        'anotherPageIcon' => 'bi bi-plus',
+        'anotherPageUrl' => 'admin.company.create',
+    ])
+    @endcomponent
+
 
 
     <section class="section dashboard my-5">
@@ -42,10 +49,14 @@
                                 @endif
                             </td>
                             <td class="">
-                                <a class="btn btn-sm btn-success mb-1" href="@route('admin.company.show', $company->company_id)"><i
-                                        class="bi bi-eye"></i></a>
-                                <a class="btn btn-sm btn-success mb-1" href="@route('admin.company.print', $company->company_id)"><i
-                                        class="bi bi-printer"></i></a>
+                                <a class="btn btn-sm btn-success mb-1" href="@route('admin.company.edit', $company->company_id)"><i
+                                        class="bi bi-pen"></i></a>
+                               <form action="@route('admin.company.destroy', $company->company_id)" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-sm btn-danger" type="submit"><i
+                                            class="bi bi-trash"></i></button>
+                                </form><!--delete-->
                                 {{-- <a class="btn btn-sm btn-danger" href="@route('admin.company.destroy', $company->company_id)"><i class="bi bi-trash"></i></a> --}}
                             </td>
 

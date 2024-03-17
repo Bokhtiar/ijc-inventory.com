@@ -31,7 +31,7 @@ class CompnayController extends Controller
     public function store(Request $request)
     {
         $company = new Company();
-        $company->name = $request->company_name;
+        $company->name = $request->name;
         $company->save();
         return redirect()->route('admin.company.index')->with('success', "Company create successfully.");
     }
@@ -59,7 +59,7 @@ class CompnayController extends Controller
     public function update(Request $request, string $id)
     {
         $company = Company::find($id);
-        $company->name = $request->company_name;
+        $company->name = $request->name;
         $company->save();
         return redirect()->route('admin.company.index')->with('success', "Company update successfully.");
     }

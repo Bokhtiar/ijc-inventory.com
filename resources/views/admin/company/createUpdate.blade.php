@@ -29,16 +29,16 @@
         @endif
         @csrf
         <div class="row">
-            <div class="col-12 col-sm-6 col-md-6 col-lg-6 my-2">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 my-2">
                 <input required class="form-control" type="text" name="name" placeholder="Name"
                     value="{{ @$edit->name }}" id="">
             </div>
 
             <div class="my-2 text-center">
                 @if (@$edit)
-                    <input type="submit" name="" value="Update company" class="btn btn btn-success" id="">
+                    <input type="submit"  value="Update company" class="btn btn btn-success" id="">
                     @else
-                         <input type="submit" name="" value="Create company" class="btn btn btn-success" id="">
+                         <input type="submit"  value="Create company" class="btn btn btn-success" id="">
                 @endif
 
                
