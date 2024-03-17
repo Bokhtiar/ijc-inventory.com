@@ -32,5 +32,7 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('logout', [AuthController::class, 'logout']);
 
 Route::group(['middleware' =>  'AdminApiMiddleware', 'prefix' => 'admin'], function () {
-    Route::resource('company', CompanyController::class);
-});
+    Route::resource('company', CompanyController::class)->only([
+        'index', 'store', 'show', 'update', 'destroy',
+    ]);;
+}); 
