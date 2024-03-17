@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BillingController;
+use App\Http\Controllers\Admin\CompnayController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -60,6 +61,9 @@ Route::group(["as" => 'admin.', "prefix" => 'admin', "middleware" => ['auth', 'a
     //download bill
      Route::post('/downloadBill/compnay_name_ways', [App\Http\Controllers\Admin\FilterController::class, 'donwloadCompnayWays'])->name('downloadBill.compnay_name_ways');
     
+    //task
+    Route::resource('company', CompnayController::class);
+
     // export bill
     Route::post('/export-bill', [BillingController::class, 'exportBills'])->name('export-bill');
     Route::get('/logout', [App\Http\Controllers\Admin\AdminDashboardController::class, 'logout'])->name('logout');

@@ -10,6 +10,13 @@
 
         @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
             <li class="nav-item">
+                <a class="nav-link" href="@route('admin.company.index')">
+                    <i class="bi bi-grid"></i>
+                    <span>Compnay</span>
+                </a>
+            </li><!-- End company Nav -->
+
+             <li class="nav-item">
                 <a class="nav-link" href="@route('admin.employee.list')">
                     <i class="bi bi-grid"></i>
                     <span>Employee</span>
