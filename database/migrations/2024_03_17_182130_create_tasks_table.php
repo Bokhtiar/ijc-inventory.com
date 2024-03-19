@@ -18,12 +18,12 @@ return new class extends Migration
             $table->enum('type', ['work_schedule', 'task']);
             $table->longText('summary');
             $table->string('priority');
-            $table->string('due_start');
+            $table->string('due_date');
             $table->integer('assign');
             $table->string('start_date');
             $table->integer('created_by');
             $table->integer('created_by_boss_id');
-            $table->string('status');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

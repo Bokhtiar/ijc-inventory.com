@@ -21,17 +21,21 @@ class AdminApiMiddleware
     {
         try {
             $token = $request->header('Authorization');
-
+            
             if (!$token) {
                 $errorArray = ['Token not found.'];
                 return $this->HttpErrorResponse(array($errorArray), 404);
             }
 
             $user = JWTAuth::parseToken()->authenticate($token);
+            
             /* check role */
             if ($user) {
+                
                 return $next($request);
+                
             } else {
+              
                 $errorArray = ['Invalid Role Permission.'];
                 return $this->HttpErrorResponse(array($errorArray), 404);
             }
