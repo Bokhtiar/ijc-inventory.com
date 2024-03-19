@@ -85,8 +85,7 @@ class TaskController extends Controller
                 ->latest()
                 ->get();
 
-            return $this->HttpSuccessResponse('Task list.', $tasks_boss, 200);
-
+            
 
             // Merge collections of objects
             $tasks = $tasks->merge($tasks_boss);
