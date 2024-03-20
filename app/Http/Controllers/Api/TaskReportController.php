@@ -13,9 +13,9 @@ class TaskReportController extends Controller
     use ReportTrait;
     use HttpResponseTrait;
 
-    public function report($filter)
-    {
-        $reportData = $this->generateReport($filter);
+    public function report(Request $request,$filter)
+    { 
+        $reportData = $this->generateReport($request, $filter);
         return $this->HttpSuccessResponse($filter. ' ' ."report", $reportData, 200);
     }
 }
