@@ -276,7 +276,6 @@ trait ReportTrait
             return $tasks->merge($tasks_boss);
             //return $this->HttpSuccessResponse('Task list.', $tasks, 200);
         }
-
     }
 
     protected function generateYearReport($request)
@@ -360,7 +359,5 @@ trait ReportTrait
             return $tasks->merge($tasks_boss);
             //return $this->HttpSuccessResponse('Task list.', $tasks, 200);
         }
-
-        //return Task::with(['company', 'assign', 'created_by', "created_by_boss_id"])->whereYear('created_at', now()->year)->get();
     }
 }

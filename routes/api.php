@@ -36,4 +36,5 @@ Route::group(['middleware' =>  'AdminApiMiddleware', 'prefix' => 'admin'], funct
 
     /** report */
     Route::get('/task/report/{filter}', [TaskReportController::class, 'report']);
+    Route::get('/task/date/between', [TaskReportController::class, 'date_between']);
 }); 
